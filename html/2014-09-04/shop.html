@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>故宫商城</title>
+
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+
+</head>
+<body>
+
+<div class="wrap">
+	
+	<div class="top_bar base-clear">
+		<div class="top_left">亲，欢迎您来到故宫商城！</div>
+		<div class="top_right">
+			<span id="searchBox">
+				<input class="search" type="text" />
+				<input class="search_btn" type="submit" value="" />
+			</span>
+			<span>
+				<a href="#">登录</a> | <a href="#">注册</a>
+			</span>
+			<span>
+				<a id="shop" href="#">您的购物车</a>
+			</span>
+		</div>
+	</div>
+
+	<div class="header">
+		<div class="nav">
+			<ul>
+				<li><a class="nav1" href="#"></a></li>
+				<li class=""><a class="nav2" href="#"></a></li>
+				<li><a class="nav3" href="#"></a></li>
+				<li class="c_nav"></li>
+				<li><a class="nav4" href="#"></a></li>
+				<li><a class="nav5" href="#"></a></li>
+				<li><a class="nav6" href="#"></a></li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="main shop_bg">
+
+		
+		<div class="shop_wrap">
+			
+			<div class="shop_title base-clear">
+				<h3>我的购物车</h3>
+				<div class="shop_step shop_step1"></div>
+			</div>
+
+			<table class="table" width="100%" align="center" border="0" cellpadding="5" cellspacing="1">
+				<tbody>
+					<tr>
+						<th width="50px"><input class="check_all" id="all" type="checkbox" /><label class="check_label" for="all">全选</label></th>
+						<th>商品名称</th>
+						<th>商品定价</th>
+						<th>优惠价</th>
+						<th>购买数量</th>
+						<th>小计</th>
+						<th>操作</th>
+					</tr>
+					<tr>
+						<td class="check_set">
+							<input id="s1" type="checkbox" />
+						</td>
+						<td>
+							<a class="shop_pic" href="goods.php?id=8" target="_blank"><img src="images/shop_pic.png" border="0" title=""></a>
+							<a class="shop_pic_info" href="goods.php?id=8" target="_blank" class="f6">文房礼品<br>全手工雕刻莲花图案陶瓷对杯/情侣杯一对<br>尺寸：25*35*5cm</a>
+						</td>
+						<td class="s">
+							<s>￥385.00元</s>
+						</td>
+						<td class="rmb">
+							￥385.00元
+						</td>
+						<td>
+							<input type="text" value="1" size="4" style="text-align:center " onkeydown="showdiv(this)">
+						</td>
+						<td class="rmb">
+							￥385.00元</td>
+						<td class="del">
+							<a href="javascript:if (confirm('您确实要把该商品移出购物车吗？')) location.href='flow.php?step=drop_goods&id=49';" class="f6">删除</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="check_set">
+							<input id="s1" type="checkbox" />
+						</td>
+						<td>
+							<a class="shop_pic" href="goods.php?id=8" target="_blank"><img src="images/shop_pic.png" border="0" title=""></a>
+							<a class="shop_pic_info" href="goods.php?id=8" target="_blank" class="f6">文房礼品<br>全手工雕刻莲花图案陶瓷对杯/情侣杯一对<br>尺寸：25*35*5cm</a>
+						</td>
+						<td class="s">
+							<s>￥385.00元</s>
+						</td>
+						<td class="rmb">
+							￥385.00元
+						</td>
+						<td>
+							<input type="text" value="1" size="4" style="text-align:center " onkeydown="showdiv(this)">
+						</td>
+						<td class="rmb">
+							￥385.00元</td>
+						<td class="del">
+							<a href="javascript:if (confirm('您确实要把该商品移出购物车吗？')) location.href='flow.php?step=drop_goods&id=49';" class="f6">删除</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table class="table" width="100%" align="center" border="0" cellpadding="5" cellspacing="1">
+				<tbody>
+					<tr>
+						<th style="text-align:left;">
+							购物金额小计 ￥385.00元
+						</th>
+						<th style="text-align:right;" class="del">
+							<a href="#">清空购物车</a>
+						</th>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="btn_wrap">
+				<a href="./" >
+					<img src="images/goon_shop.png" alt="">
+				</a>
+				<a href="flow.php?step=checkout" class="">
+					<img src="images/pay_shop.png" alt="">
+				</a>
+			</div>
+
+
+			<div class="shop_pic_list">
+				<ul class="base-clear">
+					<li>
+						<a class="s_p_l_a" href="#"><img src="" alt=""></a>
+						<h5>￥168.00</h5>
+						<p>文房礼品<br>全手工雕刻莲花图案陶瓷对杯/情侣杯一对</p>
+						<p><a class="s_p_l_btn" href="#">加入购物车</a></p>
+					</li>
+					<li>
+						<a class="s_p_l_a" href="#"><img src="" alt=""></a>
+						<h5>￥168.00</h5>
+						<p>文房礼品<br>全手工雕刻莲花图案陶瓷对杯/情侣杯一对</p>
+						<p><a class="s_p_l_btn" href="#">加入购物车</a></p>
+					</li>
+					<li>
+						<a class="s_p_l_a" href="#"><img src="" alt=""></a>
+						<h5>￥168.00</h5>
+						<p>文房礼品<br>全手工雕刻莲花图案陶瓷对杯/情侣杯一对</p>
+						<p><a class="s_p_l_btn" href="#">马上抢购</a></p>
+					</li>
+					<li>
+						<a class="s_p_l_a" href="#"><img src="" alt=""></a>
+						<h5>￥168.00</h5>
+						<p>文房礼品<br>全手工雕刻莲花图案陶瓷对杯/情侣杯一对</p>
+						<p><a class="s_p_l_btn" href="#">马上抢购</a></p>
+					</li>
+				</ul>
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+
+
+	<div class="footer">
+		<img src="images/footer.png" alt="">
+	</div>
+</div>
+</body>
+</html>
