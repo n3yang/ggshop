@@ -71,6 +71,9 @@
 		             <li class="slide-panel" data-pic="images/77.jpg">
 		                <div class="slide-pic"></div>
 		            </li>
+		             <li class="slide-panel" data-pic="images/88.jpg">
+		                <div class="slide-pic"></div>
+		            </li>
 		        </ul>
 		        <div class="slide-trigger dib-wrap">
 		            <a class="dib a1 active"></a>
@@ -81,6 +84,11 @@
 		            <a class="dib a6"></a>
 		            <a class="dib a7"></a>
 		            <a class="dib a8"></a>
+		        </div>
+
+		        <div class="slide-btn">
+		        	<a class="prev" href="javascript:;"></a>
+		        	<a class="next" href="javascript:;"></a>
 		        </div>
 		    </div>
 		</div>
@@ -107,6 +115,7 @@
 		var defaults = {    
   			aLi: this.find('.slide-panel'),
 			aA: this.find('.slide-trigger a'),
+			aBtn: this.find('.slide-btn a'),
 			autoPlayTime: 3000,
 			showTime: 1000,
 			setInit: true
@@ -154,6 +163,30 @@
 			}
 		};
 		
+		opts.aBtn.eq(1).click(function () {
+			if( !opts.aLi.is( ":animated" )){
+				if( page == opts.aLi.length - 1 ){
+					page = 0;
+					showSlide();
+				}else{
+					page++;
+					showSlide();
+				}
+			}
+		});
+
+		opts.aBtn.eq(0).click(function () {
+			if( !opts.aLi.is( ":animated" )){
+				if( page == 0){
+					page = opts.aLi.length - 1;
+					showSlide();
+				}else{
+					page--;
+					showSlide();
+				}
+			}
+		});
+
 		opts.aA.click(function(){
 			if( !opts.aLi.is( ":animated" ) ){
 				var index = opts.aA.index( this ); 
