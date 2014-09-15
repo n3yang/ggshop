@@ -1,10 +1,40 @@
 <?php
 /**
- * The index template file for Pinwu.
+ * The index template file for gugongshop.
  *
- * @package WordPress
- * @subpackage Pinwu
+ * @package Gugong
+ * @subpackage GugongShop
  */
-get_header(); 
-echo '<h1>网站正在建设中。。。</h1>';
-get_footer();
+?>
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>故宫商城</title>
+
+<link rel="stylesheet" href="<?php bloginfo('template_url') ?>/css/base.css" />
+<link rel="stylesheet" href="<?php bloginfo('template_url') ?>/css/style.css" />
+<script type="text/javascript" src="<?php bloginfo('template_url') ?>/js/jquery-1.8.3.js"></script>
+
+
+<style>
+	html{
+		height: 100%;
+	}
+	body{
+		background: url(<?php bloginfo('template_url') ?>/images/index.jpg) center top no-repeat;
+		height: 100%;
+		background-size:100% 100%; 
+	}
+	div{
+		text-align: center;
+		padding-top: 350px;
+	}
+</style>
+</head>
+<body>
+	<div>
+		<a href="shop"><img src="<?php bloginfo('template_url') ?>/images/index_btn.jpg" alt=""></a>
+	</div>
+</body>
+</html>
