@@ -180,11 +180,9 @@ body{
 .list_item_wrap li a{
 	display: block;
 	width: 255px;
-	height: 50px;
+	height: 215px;
 	overflow: hidden;
 	text-decoration: none;
-	position: relative;
-	padding-top: 165px;
 }
 .list_item_wrap li a img{
 	position: absolute;
@@ -196,7 +194,7 @@ body{
 .list_item_wrap li.active a img{
 	width: 315px;
 	height: 198px;
-	top: -40px;
+	top: -19px;
 	left: -19px;
 }
 .list_item_wrap li a div{
@@ -205,6 +203,13 @@ body{
 	color: #000;
 	overflow: hidden;
 	text-align: left;
+}
+.list_item_wrap li a em{
+	display: inline-block;
+	position: relative;
+	width: 255px;
+	height: 160px;
+	overflow: hidden;
 }
 .list_item_wrap li a div p{
 	display: block;
