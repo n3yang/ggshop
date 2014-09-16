@@ -755,6 +755,10 @@ a.shop_pic_info{
 	width: 740px;
 	padding-left: 50px;
 }
+.user_center_title{
+	margin-bottom: 20px;
+}
+
 .user_center_title h3{
 	font-size: 16px;
 	height: 20px;
@@ -764,6 +768,14 @@ a.shop_pic_info{
 }
 .user_center_cen{
 	padding-top: 20px;
+}
+.user_center_cen p{
+	margin-bottom: 20px;
+}
+.user_center_cen h4{
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 20px;
 }
 .input_line {
 	margin: 20px 0
@@ -783,16 +795,20 @@ a.shop_pic_info{
 	border: 2px solid #ccc;
 	padding: 5px;
 }
-input.center_btn{
+input.center_btn, a.center_btn{
+	display: inline-block;
+	text-align: center;
 	padding: 10px 40px;
 	color: #fff;
 	background: #da4c3c;
 	cursor: pointer;
 	font-size: 16px;
+	line-height: 16px;
 	border:none;
 	-moz-border-radius: 5px;     
     -webkit-border-radius: 5px;
     border-radius:5px; 
+    text-decoration: none;
 }
 
 .footer{
@@ -895,4 +911,46 @@ select{
 	display: inline-block;
 	width: 100px;
 	color: #3db79b;
+}
+.table1{
+	margin-bottom: 20px;
+}
+
+.table1 th{
+	background: #f7f7f7;
+	height: 30px;
+	padding: 2px 5px;
+	text-align: left;
+}
+.table1 td{
+	padding:5px;
+}
+
+.add_box{
+	float: left;
+	width: 220px;
+	border: 2px solid #ccc;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.user_center_cen .active{
+	border: 2px solid #4db096;
+}
+.add_box h5{
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ccc;
+}
+.add_box h5 span{
+	float: left;
+	margin-left: 5px;
+}
+.add_box h5 em{
+	float: right;
+	margin-right: 5px;
+}
+.add_box p{
+	color: #666;
+	padding: 10px;
+	min-height: 120px;
 }

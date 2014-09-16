@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>故宫商城</title>
+
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="js/geo.js"></script>
+
+</head>
+<body>
+
+<div class="wrap">
+	
+	<div class="top_bar base-clear">
+		<div class="top_left">亲，欢迎您来到故宫商城！</div>
+		<div class="top_right">
+			<span id="searchBox">
+				<input class="search" type="text" />
+				<input class="search_btn" type="submit" value="" />
+			</span>
+			<span>
+				<a href="#">登录</a> | <a href="#">注册</a>
+			</span>
+			<span>
+				<a id="shop" href="#">您的购物车</a>
+			</span>
+		</div>
+	</div>
+
+	<div class="header">
+		<div class="nav">
+			<ul>
+				<li><a class="nav1" href="#"></a></li>
+				<li class=""><a class="nav2" href="#"></a></li>
+				<li><a class="nav3" href="#"></a></li>
+				<li class="c_nav"></li>
+				<li><a class="nav4" href="#"></a></li>
+				<li><a class="nav5" href="#"></a></li>
+				<li><a class="nav6" href="#"></a></li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="main user_center_bg">
+
+
+		<div class="user_center_wrap base-clear">
+			
+			<div class="user_center_menu">
+				<h2>
+					<img src="images/tx.jpg" alt="">
+				</h2>
+				<h3>笑美美</h3>
+				<dl>
+					<dt>订单中心</dt>
+					<dd><a href="#">我的订单</a></dd>
+					<dd><a href="#">未付款的订单</a></dd>
+					<dd><a href="#">退换货</a></dd>
+				</dl>
+				<dl>
+					<dt>个人中心</dt>
+					<dd><a href="#">我的地址</a></dd>
+					<dd><a href="#">我的代金卷</a></dd>
+					<dd><a href="#">我的评价</a></dd>
+					<dd><a href="#">我的最爱</a></dd>
+				</dl>
+				<dl>
+					<dt>帐号设置</dt>
+					<dd><a href="#">基本资料</a></dd>
+					<dd><a href="#">登录绑定</a></dd>
+					<dd><a href="#">修改密码</a></dd>
+				</dl>
+			</div>
+			<div class="user_center_box">
+				
+				<div class="user_center_title">
+					<h3>我的最爱</h3>
+					<div class="user_center_cen">
+						<div class="shop_pic_list">
+							<ul class="base-clear">
+								<li>
+									<a class="s_p_l_a" href="#"><img src="" alt=""></a>
+									<h5>￥168.00</h5>
+									<p>文房礼品<br>全手工雕刻莲花图案陶瓷对杯/情侣杯一对</p>
+									<p><a class="s_p_l_btn" href="#">加入购物车</a></p>
+								</li>
+								<li>
+									<a class="s_p_l_a" href="#"><img src="" alt=""></a>
+									<h5>￥168.00</h5>
+									<p>文房礼品<br>全手工雕刻莲花图案陶瓷对杯/情侣杯一对</p>
+									<p><a class="s_p_l_btn" href="#">加入购物车</a></p>
+								</li>
+								<li>
+									<a class="s_p_l_a" href="#"><img src="" alt=""></a>
+									<h5>￥168.00</h5>
+									<p>文房礼品<br>全手工雕刻莲花图案陶瓷对杯/情侣杯一对</p>
+									<p><a class="s_p_l_btn" href="#">马上抢购</a></p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+	<div class="footer">
+		<p>
+			北京市公安局朝阳分居备案编号110105014669  京ICP证070359号  互联网药品信息服务资格证编号（京）-非经营性- 2011-0034   新出发京零字第大120007号<br>网络文化经营许可证  京网文（2011）0168-061号 Copyright  © 2004-2013  故宫GD.COM版权所有
+		</p>
+		<img src="images/footer.png" alt="">
+	</div>
+</div>
+<script>
+	
+function promptinfo()
+{
+    var address = document.getElementById('address');
+    var s1 = document.getElementById('s1');
+    var s2 = document.getElementById('s2');
+    var s3 = document.getElementById('s3');
+    address.value = s1.value + s2.value + s3.value;
+}
+
+$(function () {
+	setup();
+	preselect('北京市');
+	promptinfo();
+
+
+	//
+
+	$(".shop_add_box input").change(function () {
+		$(".shop_add_box label").css({
+			"border": "2px solid #fff"
+		})
+		$(this).siblings('label').css({
+			"border": "2px solid #3db79b"
+		})
+	})
+
+
+})
+</script>
+</body>
+</html>
