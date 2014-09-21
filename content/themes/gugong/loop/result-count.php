@@ -11,6 +11,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+return;
+
 global $woocommerce, $wp_query;
 
 if ( ! woocommerce_products_will_display() )

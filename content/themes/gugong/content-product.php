@@ -11,60 +11,100 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-global $product, $woocommerce_loop;
-
-// Store loop count we're currently on
-if ( empty( $woocommerce_loop['loop'] ) )
-	$woocommerce_loop['loop'] = 0;
-
-// Store column count for displaying the grid
-if ( empty( $woocommerce_loop['columns'] ) )
-	$woocommerce_loop['columns'] = apply_filters( 'loop_shop_columns', 4 );
-
-// Ensure visibility
-if ( ! $product || ! $product->is_visible() )
-	return;
-
-// Increase loop count
-$woocommerce_loop['loop']++;
-
-// Extra post classes
-$classes = array();
-if ( 0 == ( $woocommerce_loop['loop'] - 1 ) % $woocommerce_loop['columns'] || 1 == $woocommerce_loop['columns'] )
-	$classes[] = 'first';
-if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] )
-	$classes[] = 'last';
 ?>
-<li <?php post_class( $classes ); ?>>
+	<div class="main list_bg">
 
-	<?php do_action( 'woocommerce_before_shop_loop_item' ); ?>
+		<div class="list_wrap">
+			
+			<div class="list_ad">
+				
+			</div>
 
-	<a href="<?php the_permalink(); ?>">
+			<div class="list_box base-clear">
+				<div class="list_menu">
+					<ul>
+						<li>
+							<a href="/category/clothing">宫廷服饰</a>
+						</li>
+						<li>
+							<a href="/category/electronics">宫廷数码</a>
+						</li>
+						<li>
+							<a href="/category/home">宫廷家居</a>
+						</li>
+						<li>
+							<a href="/category/study">宫廷文房</a>
+						</li>
+						<li>
+							<a href="/category/sports">宫廷体育</a>
+						</li>
+						<li>
+							<a href="/category/media">宫廷音画</a>
+						</li>
+						<li>
+							<a href="/category/toys">宫廷童趣</a>
+						</li>
+					</ul>
+				</div>
+							
+				<div class="list_con">
+					
+					<div class="list_item_wrap">
+						<ul>
+							<?php 
+							while ( have_posts() ) : the_post(); global $product;
+							?>
+							<li>
+								<?php do_action( 'woocommerce_before_shop_loop_item' ); ?>
+								<a href="<?php the_permalink(); ?>">
+									<em>
+										<?php the_post_thumbnail('shop_catalog') ?>
+									</em>
+									<div>
+										<p>RMB: <strong><?php echo ($product->get_price()); ?></strong></p>
+										<span><?php the_title() ?></span>
+									</div>
+								</a>
+								<?php // do_action( 'woocommerce_after_shop_loop_item' ); ?>
+							</li>
+							<?php
+							endwhile;
+							?>
+						</ul>
 
-		<?php
-			/**
-			 * woocommerce_before_shop_loop_item_title hook
-			 *
-			 * @hooked woocommerce_show_product_loop_sale_flash - 10
-			 * @hooked woocommerce_template_loop_product_thumbnail - 10
-			 */
-			do_action( 'woocommerce_before_shop_loop_item_title' );
-		?>
+						<!-- <div class="jogger"><a class="prev" href=""> &lt; 上一页</a> <span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a><a href="#?page=4">4</a><a href="#?page=5">5</a><a href="#?page=6">6</a><a class="next" href="#?page=2">下一页 &gt; </a></div> -->
 
-		<h3><?php the_title(); ?></h3>
 
-		<?php
-			/**
-			 * woocommerce_after_shop_loop_item_title hook
-			 *
-			 * @hooked woocommerce_template_loop_rating - 5
-			 * @hooked woocommerce_template_loop_price - 10
-			 */
-			do_action( 'woocommerce_after_shop_loop_item_title' );
-		?>
+							<?php
+		echo paginate_links( apply_filters( 'woocommerce_pagination_args', array(
+			'base'         => str_replace( 999999999, '%#%', get_pagenum_link( 999999999 ) ),
+			'format'       => '',
+			'current'      => max( 1, get_query_var( 'paged' ) ),
+			'total'        => $wp_query->max_num_pages,
+			'prev_text'    => '&larr;',
+			'next_text'    => '&rarr;',
+			'type'         => 'list',
+			'end_size'     => 3,
+			'mid_size'     => 3
+		) ) );
+	?>
+					</div>
 
-	</a>
+				</div>
 
-	<?php do_action( 'woocommerce_after_shop_loop_item' ); ?>
 
-</li>
+			</div>
+
+		</div>
+
+	</div>
+
+<script>
+	
+$(function () {
+	$(".list_item_wrap li").hover(function () {
+		$(this).toggleClass("active")
+	})
+})
+
+</script>

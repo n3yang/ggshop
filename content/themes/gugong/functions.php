@@ -1,11 +1,13 @@
 <?php
 /**
- * Pinwu functions and definitions
+ * GugongShop functions and definitions
  * 
  * @package WordPress
  * @subpackage 故宫商城
  */
 
+
+flush_rewrite_rules();
 
 // turn off auto update
 remove_action( 'wp_version_check', 'wp_version_check' );

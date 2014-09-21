@@ -24,19 +24,16 @@ get_header( 'shop' ); ?>
 
 		if (is_tax()){
 			if ( have_posts() ) {
-				do_action( 'woocommerce_before_shop_loop' );
+				// do_action( 'woocommerce_before_shop_loop' ); // loop/orderby.php
 				woocommerce_product_loop_start();
 				woocommerce_product_subcategories();
-				while ( have_posts() ) : the_post(); 
-					 wc_get_template_part( 'content', 'product' );
-				endwhile; // end of the loop.
+				wc_get_template_part( 'content', 'product' );
 				woocommerce_product_loop_end();
 				do_action( 'woocommerce_after_shop_loop' );
 			} else {
 				wc_get_template( 'loop/no-products-found.php' );
 			}
-			$term = get_queried_object();
-			
+			// $term = get_queried_object();
 		} else {
 			get_template_part('content', 'shop');
 		}
