@@ -9,25 +9,39 @@
 		                </div>
 		            </li>
 		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/22.jpg">
-		              <div class="slide-pic"></div>
+		                <div class="slide-pic">
+		             		<a style="position:absolute;width:1200px;height:367px;" href="category/media"></a>
+		                </div>
 		            </li>
 		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/33.jpg">
-		                <div class="slide-pic"></div>
+		                <div class="slide-pic">
+		                	<a style="position:absolute;width:1200px;height:367px;" href="category/sports"></a>
+		                </div>
 		            </li>
 		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/44.jpg">
-		                <div class="slide-pic"></div>
+		                <div class="slide-pic">
+		                	<a style="position:absolute;width:1200px;height:367px;" href="category/study"></a>
+		                </div>
 		            </li>
 		             <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/55.jpg">
-		                <div class="slide-pic"></div>
+		                <div class="slide-pic">
+		                	<a style="position:absolute;width:1200px;height:367px;" href="category/home"></a>
+		                </div>
 		            </li>
 		             <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/66.jpg">
-		                <div class="slide-pic"></div>
+		                <div class="slide-pic">
+		                	<a style="position:absolute;width:1200px;height:367px;" href="category/electronics"></a>
+		                </div>
 		            </li>
 		             <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/77.jpg">
-		                <div class="slide-pic"></div>
+		                <div class="slide-pic">
+		                	<a style="position:absolute;width:1200px;height:367px;" href="category/clothing"></a>
+		                </div>
 		            </li>
 		             <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/88.jpg">
-		                <div class="slide-pic"></div>
+		                <div class="slide-pic">
+		                	<a style="position:absolute;width:1200px;height:367px;" href="category/foods"></a>
+		                </div>
 		            </li>
 		        </ul>
 		        <div class="slide-trigger dib-wrap">
