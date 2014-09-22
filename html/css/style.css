@@ -19,7 +19,6 @@ body{
 	padding-top: 10px;
 	background: url(../images/header.jpg) no-repeat;
 }
-
 .top_left{
 	float: left;
 	line-height: 36px;
@@ -446,18 +445,21 @@ DIV.jogger .next{
 
 
 
-
-
-.login_wrap{
-	height: 790px;
-	background: url(../images/login_bg.jpg) no-repeat;
-	padding-top: 19px;
+.login_header{
+	background: url(../images/header_login.jpg) no-repeat;
 }
-
+.login_wrap{
+	height: 648px;
+	background: url(../images/login_bg_half.jpg) no-repeat;
+	padding-top: 1px;
+}
+.reg_header{
+	background: url(../images/header_reg.jpg) no-repeat;
+}
 .reg_wrap{
-	height: 790px;
-	background: url(../images/reg_bg.jpg) no-repeat;
-	padding-top: 19px;
+	height: 648px;
+	background: url(../images/reg_bg_half.jpg) no-repeat;
+	padding-top: 1px;
 }
 .login_box{
 	width: 686px;
