@@ -6,8 +6,7 @@
  * @subpackage 故宫商城
  */
 
-
-flush_rewrite_rules();
+add_rewrite_rule('/account/reg', 'page.php?page=account', 'top');
 
 // turn off auto update
 remove_action( 'wp_version_check', 'wp_version_check' );

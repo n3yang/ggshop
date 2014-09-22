@@ -75,7 +75,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 						<!-- <div class="jogger"><a class="prev" href=""> &lt; 上一页</a> <span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a><a href="#?page=4">4</a><a href="#?page=5">5</a><a href="#?page=6">6</a><a class="next" href="#?page=2">下一页 &gt; </a></div> -->
 
 
-							<?php
+							<?php 
+							ggshop_pagin_nav();
+		/*
 		echo paginate_links( apply_filters( 'woocommerce_pagination_args', array(
 			'base'         => str_replace( 999999999, '%#%', get_pagenum_link( 999999999 ) ),
 			'format'       => '',
@@ -87,6 +89,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			'end_size'     => 3,
 			'mid_size'     => 3
 		) ) );
+		*/
 	?>
 					</div>
 
@@ -108,3 +111,5 @@ $(function () {
 })
 
 </script>
+
+
