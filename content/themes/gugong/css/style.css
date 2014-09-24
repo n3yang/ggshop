@@ -19,7 +19,6 @@ body{
 	padding-top: 10px;
 	background: url(../images/header.jpg) no-repeat;
 }
-
 .top_left{
 	float: left;
 	line-height: 36px;
@@ -318,16 +317,17 @@ DIV.jogger .next{
 
 .item_title_right{
 	float: right;	
-	width: 480px;
+	width: 550px;
 }
 .item_title_right h2{
 	color: #c8382d;
 	font-size: 30px;
 	margin-bottom: 20px;
+	padding-top: 20px;
 }
 .item_title_right h3{
 	font-size: 24px;
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 }
 .item_title_right h4{
 	font-size: 24px;
@@ -446,18 +446,21 @@ DIV.jogger .next{
 
 
 
-
-
-.login_wrap{
-	height: 790px;
-	background: url(../images/login_bg.jpg) no-repeat;
-	padding-top: 19px;
+.login_header{
+	background: url(../images/header_login.jpg) no-repeat;
 }
-
+.login_wrap{
+	height: 648px;
+	background: url(../images/login_bg_half.jpg) no-repeat;
+	padding-top: 1px;
+}
+.reg_header{
+	background: url(../images/header_reg.jpg) no-repeat;
+}
 .reg_wrap{
-	height: 790px;
-	background: url(../images/reg_bg.jpg) no-repeat;
-	padding-top: 19px;
+	height: 648px;
+	background: url(../images/reg_bg_half.jpg) no-repeat;
+	padding-top: 1px;
 }
 .login_box{
 	width: 686px;
@@ -925,7 +928,10 @@ select{
 .table1 td{
 	padding:5px;
 }
-
+.table2{
+	border-top: 2px solid #4db096;
+	padding: 10px 0;
+}
 .add_box{
 	float: left;
 	width: 220px;
@@ -953,4 +959,39 @@ select{
 	color: #666;
 	padding: 10px;
 	min-height: 120px;
+}
+.mct .rmb {
+	text-align: center;
+	color: #000;
+	font-weight: bold;
+}
+.mct .rmb span{
+	color: #ccc;
+	font-weight: 100
+}
+.mct .dd{
+	text-align: center;
+	color: #333
+}
+.mct .dd span.through{
+	color: green;
+}
+.mct .dd em, .mct a{
+	color: #3468b1;
+}
+.mct_t th{
+	background: #f1f1f1;
+	border-top: 1px solid #ccc;
+}
+.mct_t img{
+	vertical-align: middle;
+	width: 16px;
+	height: 16px;
+	margin-right: 2px;
+}
+.mct_t span{
+	color: #3468b1;
+}
+.mct_t em{
+	margin-left: 20px;
 }
