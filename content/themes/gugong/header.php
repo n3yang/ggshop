@@ -20,25 +20,42 @@
 </head>
 <body>
 
+<?php
+$current_user = wp_get_current_user();
+?>
 <div class="wrap">
 	
 	<div class="top_bar base-clear">
-		<div class="top_left">亲，欢迎您来到故宫商城！</div>
+		<div class="top_left"><?php echo $current_user->ID==0 ? '亲' : $current_user->display_name; ?>，欢迎您来到故宫商城！</div>
 		<div class="top_right">
 			<span id="searchBox">
 				<input class="search" type="text" />
 				<input class="search_btn" type="submit" value="" />
 			</span>
 			<span>
-				<a href="#">登录</a> | <a href="#">注册</a>
+				<?php if ($current_user->ID==0){ ?>
+				<a href="/account?login">登录</a> | <a href="/account?reg">注册</a>
+				<?php }else{ ?>
+				<a href="<?php echo wp_logout_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>"?>退出</a>
+				<?php } ?>
 			</span>
 			<span>
 				<a id="shop" href="/cart">您的购物车</a>
 			</span>
 		</div>
 	</div>
-
-	<div class="header">
+<?php
+// 对header背景图片进行特殊定义
+$header_css = array('header');
+if ($_SERVER['REQUEST_URI'] == '/account?reg') {
+	$header_css[] = 'reg_header';
+}
+if ($_SERVER['REQUEST_URI'] == '/account?login') {
+	$header_css[] = 'login_header';
+}
+$header_css = implode(' ', $header_css);
+?>
+	<div class="<?php echo $header_css ?>">
 		<div class="nav">
 			<ul>
 				<li><a class="nav1" href="/"></a></li>

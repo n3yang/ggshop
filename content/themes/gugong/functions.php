@@ -6,7 +6,6 @@
  * @subpackage 故宫商城
  */
 
-add_rewrite_rule('/account/reg', 'page.php?page=account', 'top');
 
 // turn off auto update
 remove_action( 'wp_version_check', 'wp_version_check' );
@@ -118,3 +117,24 @@ function ggshop_pagin_nav($range = 4){
     echo '</div>';}
 }
 
+
+
+/***************/
+
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+
+
+// add_rewrite_rule('/account/reg', 'index.php?page_id=7', 'top');
+// add_filter( 'query_vars', function(){return array('aaa');}, 10 );
+// add_rewrite_endpoint('aaa', EP_PAGES);
+
+
+add_action( 'init', 'woocommerce_clear_cart_url' );
+function woocommerce_clear_cart_url() {
+	global $woocommerce;
+	
+	if ( $_SERVER['REQUEST_URI'] == '/cart?empty-cart' ) {
+		$woocommerce->cart->empty_cart();
+	}
+}

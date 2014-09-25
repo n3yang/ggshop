@@ -14,13 +14,42 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php wc_print_notices(); ?>
 
+
+
+    <div class="main login_wrap">
+
+        <div class="login_box base-clear">
+            
+            <div class="login_left">
+                <div class="dib-wrap">
+                    <span class="dib">
+                        <a href="#" title="微博"><img src="<?php bloginfo('template_url')?>/images/weibo.png" alt=""></a>
+                    </span>
+                    <span class="dib">
+                        <a href="#" title="腾讯QQ"><img src="<?php bloginfo('template_url')?>/images/qq.png" alt=""></a>
+                    </span>
+                    <span class="dib">
+                        <a href="#" title="微信"><img src="<?php bloginfo('template_url')?>/images/weixin.png" alt=""></a>
+                    </span>
+                </div>
+                <h3>登录帐号后，您已同意用户条款！</h3>
+            </div>
+            <div class="login_right">
+
+                <h3 style="margin-bottom:30px">
+                    <a class="active" href="/account?login">登录</a>　|　<a href="/account?reg">注册</a>
+                </h3>
+
+
 <form method="post" class="lost_reset_password">
 
 	<?php if( 'lost_password' == $args['form'] ) : ?>
 
         <p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.', 'woocommerce' ) ); ?></p>
 
-        <p class="form-row form-row-first"><label for="user_login"><?php _e( 'Username or email', 'woocommerce' ); ?></label> <input class="input-text" type="text" name="user_login" id="user_login" /></p>
+        <div class="input_box">
+            <input class="login_name" type="text" name="user_login" id="user_login" />
+        </div>
 
 	<?php else : ?>
 
@@ -46,3 +75,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php wp_nonce_field( $args['form'] ); ?>
 
 </form>
+
+
+
+            </div>
+
+        </div>
+
+    </div>

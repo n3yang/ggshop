@@ -140,7 +140,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						</th>
 						<th style="text-align:right;" class="del">
 							<input type="submit" class="button" name="update_cart" value="<?php _e( 'Update Cart', 'woocommerce' ); ?>" />
-							<a href="#">清空购物车</a>
+							<a href="/cart?empty-cart">清空购物车</a>
 						</th>
 					</tr>
 					<?php if ( WC()->cart->coupons_enabled() ) { ?>
@@ -173,7 +173,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 				<a href="/shop" >
 					<img src="<?php bloginfo('template_url') ?>/images/goon_shop.png" alt="">
 				</a>
-				<a href="/checkout" class="">
+				<a href="#/checkout" class="">
 					<img src="<?php bloginfo('template_url') ?>/images/pay_shop.png" alt="">
 				</a>
 			</div>

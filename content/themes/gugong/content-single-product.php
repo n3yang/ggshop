@@ -115,19 +115,16 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 					<img src="<?php bloginfo('template_url') ?>/images/ather.png" alt="">
 				</div>
 				<div class="shop_pic_list">
-					<form class="cart" method="post" enctype='multipart/form-data'>
 					<ul class="base-clear">
 						<?php while ( $products->have_posts() ) : $products->the_post(); global $product;?>
 						<li>
 							<a class="s_p_l_a" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('shop_single') ?></a>
 							<h5><?php echo wc_price($product->get_price());?></h5>
 							<p><?php the_title() ?></p>
-							<p><a class="s_p_l_btn" href="###" onclick="" data-product-id="<?php echo esc_attr( $product->id ); ?>">加入购物车</a></p>
+							<p><a class="s_p_l_btn" href="/cart?add-to-cart=<?php echo esc_attr( $product->id ); ?>">加入购物车</a></p>
 						</li>
 						<?php endwhile; ?>
 					</ul>
-					<input type="hidden" name="add-to-cart" value="" />
-					</form>
 				</div>
 				<?php 
 				} // end if 
