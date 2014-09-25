@@ -66,9 +66,9 @@ class WC_Shortcodes {
 		$before 	= empty( $wrapper['before'] ) ? '<div class="' . esc_attr( $wrapper['class'] ) . '">' : $wrapper['before'];
 		$after 		= empty( $wrapper['after'] ) ? '</div>' : $wrapper['after'];
 
-		echo $before;
+		// echo $before;
 		call_user_func( $function, $atts );
-		echo $after;
+		// echo $after;
 
 		return ob_get_clean();
 	}
