@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.', 'woocommerce' ) ); ?></p>
 
         <div class="input_box">
-            <input class="login_name" type="text" name="user_login" id="user_login" />
+            <input class="login_name" type="text" name="user_login" id="user_login" placeholder="用户名或邮箱" />
         </div>
 
 	<?php else : ?>
