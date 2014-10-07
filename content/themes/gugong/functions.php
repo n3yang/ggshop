@@ -84,6 +84,17 @@ add_action( 'load-index.php', function () {
 	update_user_meta( get_current_user_id(), 'show_welcome_panel', 0 );
 });
 
+
+add_action('init', function(){
+	wp_enqueue_style('jquery-ui-style', get_template_directory_uri().'/css/jquery-ui.css');
+}, 0);
+
+add_filter('woocommerce_cart_totals_coupon_html', function($value){
+	if (preg_match('/<span class="amount">(.*)<\/span>/', $value, $matches)) {
+		$value = str_replace("&yen;&nbsp;", "&yen;&nbsp;-", $matches[1]);
+		return $value;
+	}
+});
 /********** customize the admin panel **********/
 
 
