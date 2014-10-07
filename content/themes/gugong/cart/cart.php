@@ -143,17 +143,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 							<a href="/cart?empty-cart">清空购物车</a>
 						</th>
 					</tr>
-					<?php if ( WC()->cart->coupons_enabled() ) { ?>
-					<tr>
-						<td colspan="2">
-							<div class="coupon">
-							<label for="coupon_code"><?php _e( 'Coupon', 'woocommerce' ); ?>:</label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php _e( 'Coupon code', 'woocommerce' ); ?>" /> <input type="submit" class="button" name="apply_coupon" value="<?php _e( 'Apply Coupon', 'woocommerce' ); ?>" />
 
-							<?php do_action('woocommerce_cart_coupon'); ?>
-							</div>
-						</td>
-					</tr>
-					<?php } ?>
 				</tbody>
 			</table>
 
@@ -173,7 +163,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 				<a href="/shop" >
 					<img src="<?php bloginfo('template_url') ?>/images/goon_shop.png" alt="">
 				</a>
-				<a href="#/checkout" class="">
+				<a href="/checkout" class="">
 					<img src="<?php bloginfo('template_url') ?>/images/pay_shop.png" alt="">
 				</a>
 			</div>

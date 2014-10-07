@@ -10,15 +10,15 @@
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
-<tr class="shipping">
-	<th><?php
+
+	<?php
 		if ( $show_package_details ) {
-			printf( __( 'Shipping #%d', 'woocommerce' ), $index + 1 );
+			// printf( __( 'Shipping #%d', 'woocommerce' ), $index + 1 );
 		} else {
-			_e( 'Shipping and Handling', 'woocommerce' );
+			// _e( 'Shipping and Handling', 'woocommerce' );
 		}
-	?></th>
-	<td>
+	?>
+	
 		<?php if ( ! empty( $available_methods ) ) : ?>
 
 			<?php if ( 1 === count( $available_methods ) ) :
@@ -93,5 +93,4 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				echo '<p class="woocommerce-shipping-contents"><small>' . __( 'Shipping', 'woocommerce' ) . ': ' . implode( ', ', $product_names ) . '</small></p>';
 			?>
 		<?php endif; ?>
-	</td>
-</tr>
+
