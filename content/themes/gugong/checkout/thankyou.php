@@ -12,6 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 global $woocommerce;
 
 if ( $order ) : ?>
+	<div class="main shop_bg" style="min-height: 400px">
+
+		
+		<div class="shop_wrap" style="width: 600px">
+
 
 	<?php if ( in_array( $order->status, array( 'failed' ) ) ) : ?>
 
@@ -33,7 +38,7 @@ if ( $order ) : ?>
 
 	<?php else : ?>
 
-		<p><?php _e( 'Thank you. Your order has been received.', 'woocommerce' ); ?></p>
+		<h3 style="line-height: 400%;text-align: center">感谢您的惠顾！订单已收到，我们将尽快处理，请耐心等待！</h3>
 
 		<ul class="order_details">
 			<li class="order">
@@ -55,15 +60,35 @@ if ( $order ) : ?>
 			</li>
 			<?php endif; ?>
 		</ul>
-		<div class="clear"></div>
+
 
 	<?php endif; ?>
 
 	<?php do_action( 'woocommerce_thankyou_' . $order->payment_method, $order->id ); ?>
-	<?php do_action( 'woocommerce_thankyou', $order->id ); ?>
+
+	<?php //do_action( 'woocommerce_thankyou', $order->id ); ?>
+
+		<div style="text-align: center; margin-top 20px">
+			<a href="/shop" >继续购物</a>
+		</div>
+
+		</div>
+
+	</div>
+
+
 
 <?php else : ?>
 
 	<p><?php _e( 'Thank you. Your order has been received.', 'woocommerce' ); ?></p>
 
 <?php endif; ?>
+
+<style type="text/css">
+.order_details{
+	margin: 40px 100px 40px 100px;
+}
+.order_details li{
+	margin: 3px;
+}
+</style>

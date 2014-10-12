@@ -26,6 +26,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 							</td>
 							<td>
 								<input type="text" class="input-text " name="shipping_first_name" id="shipping_first_name" value="<?php echo $checkout->get_value('shipping_first_name');?>">
+								<input type="hidden" name="shipping_country" id="shipping_country" value="CN"  class="country_to_state" />
+								<input id="ship-to-different-address-checkbox" class="input-checkbox"  type="hidden" name="ship_to_different_address" value="1" />
 							</td>
 						</tr>
 						<!---

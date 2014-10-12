@@ -97,16 +97,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 					<tbody>
 						<tr>
 							<th style="text-align:right;">
-								购物金额小计： <?php wc_cart_totals_subtotal_html(); ?>元 </br>
-								<?php foreach ( WC()->cart->get_coupons( 'order' ) as $code => $coupon ) : ?>
-									优惠：<?php wc_cart_totals_coupon_html( $coupon ); ?><br />
-								<?php endforeach; ?>
-								<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
-								邮费：<?php wc_cart_totals_shipping_html(); ?><br />
-								<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
-								<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
-								共计：<?php wc_cart_totals_order_total_html(); ?>元 <br />
-								<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
+								购物车金额小计： <?php wc_cart_totals_subtotal_html(); ?>元 </br>
 					</tbody>
 				</table>
 
@@ -114,9 +105,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 	<?php do_action( 'woocommerce_review_order_before_payment' ); ?>
 
-	<div id="payment">
+			<div class="shop_add">
+				<h3 class="shop_add_title">选择付款方式</h3>
+				<div class="shop_add_box">
+
 		<?php if ( WC()->cart->needs_payment() ) : ?>
-		<ul class="payment_methods methods">
 			<?php
 				$available_gateways = WC()->payment_gateways->get_available_payment_gateways();
 				if ( ! empty( $available_gateways ) ) {
@@ -132,17 +125,17 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 					foreach ( $available_gateways as $gateway ) {
 						?>
-						<li class="payment_method_<?php echo $gateway->id; ?>">
+						<span class="payment_method_<?php echo $gateway->id; ?>">
 							<input id="payment_method_<?php echo $gateway->id; ?>" type="radio" class="input-radio" name="payment_method" value="<?php echo esc_attr( $gateway->id ); ?>" <?php checked( $gateway->chosen, true ); ?> data-order_button_text="<?php echo esc_attr( $gateway->order_button_text ); ?>" />
-							<label for="payment_method_<?php echo $gateway->id; ?>"><?php echo $gateway->get_title(); ?> <?php echo $gateway->get_icon(); ?></label>
+							<label for="payment_method_<?php echo $gateway->id; ?>"><?php // echo $gateway->get_title(); ?> <?php echo $gateway->get_icon(); ?></label>
 							<?php
 								if ( $gateway->has_fields() || $gateway->get_description() ) :
 									echo '<div class="payment_box payment_method_' . $gateway->id . '" ' . ( $gateway->chosen ? '' : 'style="display:none;"' ) . '>';
-									$gateway->payment_fields();
+									//$gateway->payment_fields();
 									echo '</div>';
 								endif;
 							?>
-						</li>
+						</span>
 						<?php
 					}
 				} else {
@@ -156,12 +149,54 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 				}
 			?>
-		</ul>
-		<?php endif; ?>
 
-		<div class="form-row place-order">
+		<?php endif; ?>
+				</div>
+			</div>
+
+			<div class="count_box">
+				<table class="table_form" width="100%" align="center" border="0" cellpadding="5" cellspacing="1">
+					<tbody>
+						<tr>
+							<th style="text-align:left; vertical-align: top">
+
+							<form class="checkout_coupon" method="post" style="display:none">
+								<label for="">激活代金卷</label>
+								<input type="text" name="coupon_code" class="form_text" placeholder="<?php _e( 'Coupon code', 'woocommerce' ); ?>" id="coupon_code" value="" />
+								<input class="form_btn" type="submit" name="apply_coupon" value="激活" />
+							</form>
+							</th>
+							<th style="text-align:right;" class="count">
+								<?php foreach ( WC()->cart->get_coupons( 'order' ) as $code => $coupon ) : ?>
+								<h5>优惠：<em><?php wc_cart_totals_coupon_html( $coupon ); ?></em></h5>
+								<?php endforeach; ?>
+								<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
+								<h3>邮费：<em><?php wc_cart_totals_shipping_html(); ?></em></h3>
+								<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
+								<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
+								<h3>付款金额：<em><?php wc_cart_totals_order_total_html(); ?>元</em></h3>
+								<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
+								<p>
+									收货人：<span id="shipping_name_reivew">谁谁谁 北京市</span>
+								</p>
+								<p>
+									收货地址：<span id="shipping_address_review">北京市哪里哪里哪里</span>
+								</p>
+							</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+		<div class="btn_wrap" style="text-align:right">
 
 			<noscript><?php _e( 'Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so.', 'woocommerce' ); ?><br/><input type="submit" class="button alt" name="woocommerce_checkout_update_totals" value="<?php _e( 'Update totals', 'woocommerce' ); ?>" /></noscript>
+
+				<a href="/cart" >
+					<img src="<?php bloginfo('template_url') ?>/images/fh_btn.png" alt="">
+				</a>
+
 
 			<?php wp_nonce_field( 'woocommerce-process_checkout' ); ?>
 
@@ -169,8 +204,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 			<?php
 			$order_button_text = apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) );
-
-			echo apply_filters( 'woocommerce_order_button_html', '<input type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '" />' );
+			
+			echo apply_filters( 'woocommerce_order_button_html', '<input type="image" src="' . get_bloginfo('template_url') . '/images/ok.png" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '" />' );
 			?>
 
 			<?php if ( wc_get_page_id( 'terms' ) > 0 && apply_filters( 'woocommerce_checkout_show_terms', true ) ) { 
@@ -186,10 +221,21 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 		</div>
 
-		<div class="clear"></div>
-
 	</div>
 
 	<?php do_action( 'woocommerce_review_order_after_payment' ); ?>
 
-<?php if ( ! is_ajax() ) : ?></div><?php endif; ?>
+<?php if ( ! is_ajax() ) : ?>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$('#shipping_name_reivew').text($('#shipping_first_name').val());
+	$('#shipping_address_review').text($('#shipping_address_1').val());
+});
+$('#shipping_first_name, #shipping_address_1').change(function() {
+	$('#shipping_name_reivew').text($('#shipping_first_name').val());
+	$('#shipping_address_review').text($('#shipping_address_1').val());
+});
+</script>
+	</div>
+
+<?php endif; ?>

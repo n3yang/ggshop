@@ -89,12 +89,7 @@ add_action('init', function(){
 	wp_enqueue_style('jquery-ui-style', get_template_directory_uri().'/css/jquery-ui.css');
 }, 0);
 
-add_filter('woocommerce_cart_totals_coupon_html', function($value){
-	if (preg_match('/<span class="amount">(.*)<\/span>/', $value, $matches)) {
-		$value = str_replace("&yen;&nbsp;", "&yen;&nbsp;-", $matches[1]);
-		return $value;
-	}
-});
+
 /********** customize the admin panel **********/
 
 
@@ -130,7 +125,7 @@ function ggshop_pagin_nav($range = 4){
 
 
 
-/***************/
+/************ woocommerce 定制 *************/
 
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
@@ -149,3 +144,29 @@ function woocommerce_clear_cart_url() {
 		$woocommerce->cart->empty_cart();
 	}
 }
+
+
+add_filter('woocommerce_cart_totals_coupon_html', function($value){
+	if (preg_match('/<span class="amount">(.*)<\/span>/', $value, $matches)) {
+		$value = str_replace("&yen;&nbsp;", "&yen;&nbsp;-", $matches[1]);
+		return $value;
+	}
+});
+
+add_action('woocommerce_checkout_process', function(){
+	$checkout = WC()->checkout();
+	foreach ($checkout->checkout_fields['billing'] as $key => $field) {
+		$checkout->checkout_fields['billing'][$key]['required'] = 0;
+	}
+	$checkout->checkout_fields['shipping']['shipping_country']['required']  = 0;
+	$checkout->checkout_fields['shipping']['shipping_city']['required']     = 0;
+	$checkout->checkout_fields['shipping']['shipping_state']['required']    = 0;
+	$checkout->checkout_fields['shipping']['shipping_postcode']['required'] = 0;
+});
+
+add_action('woocommerce_before_checkout_form', function(){
+	global $current_user;
+	if ($current_user->ID==0){
+		wp_redirect('/account?login');
+	}
+});
