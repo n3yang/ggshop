@@ -54,3 +54,4 @@ content/uploads/*
 .buildpath
 .project
 .settings/*
+content/plugins/woocommerce/logs/*.txt
