@@ -289,8 +289,14 @@ DIV.jogger .next{
 .big_pic{
 	width: 352px;
 	height: 350px;
-	background: url(../images/big_pic_bg.png) no-repeat;
-	padding-bottom: 20px;
+	border:1px solid #b28850;
+	-moz-border-radius: 10px; 
+    -webkit-border-radius: 10px; 
+    border-radius:10px; 
+    overflow: hidden;
+	margin-bottom: 20px;
+	border:1px solid #b28850;
+	background: #fff;
 }
 .big_pic img{
 	width: 352px;
@@ -305,14 +311,22 @@ DIV.jogger .next{
 }
 .small_pic_item{
 	display: inline-block;
-	width: 109px;
-	height: 109px;
-	margin-right: 11px;
-	background: url(../images/small_pic_bg.png) no-repeat;
+	width: 108px;
+	height: 108px;
+	margin-right: 10px;
+	border:1px solid #b28850;
+	-moz-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    border-radius:5px; 
+    overflow: hidden;
+    background: #fff;
+}
+.small_pic_item.active{
+	border:1px solid #dc6254;
 }
 .small_pic_item img{
-	width: 109px;
-	height: 109px;
+	width: 108px;
+	height: 108px;
 }
 
 .item_title_right{
@@ -324,6 +338,9 @@ DIV.jogger .next{
 	font-size: 30px;
 	margin-bottom: 20px;
 	padding-top: 20px;
+}
+.item_title_right h2 s{
+	margin-right: 5px;
 }
 .item_title_right h3{
 	font-size: 24px;
@@ -1035,4 +1052,18 @@ select{
 	margin: 0 10px;
 	color: #fff;
 	text-decoration: none;
+}
+.crumbs{
+	height: 30px;
+	line-height: 30px;
+	border-bottom: 1px solid #666;
+	color: #666;
+	font-size: 12px;
+	margin-bottom: 20px;
+	font-weight: normal;
+}
+.crumbs a{
+	display: inline-block;
+	text-decoration: none;
+	font-size: 14px;
 }
