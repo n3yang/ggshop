@@ -567,7 +567,7 @@ class WC_Bocpay extends WC_Payment_Gateway {
     }
 
     /**
-     * Display Alipay Trade No. in the backend.
+     * Display Bocpay Trade No. in the backend.
      * 
      * @access public
      * @param mixed $order

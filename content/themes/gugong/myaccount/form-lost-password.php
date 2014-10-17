@@ -12,9 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<?php wc_print_notices(); ?>
-
-
 
     <div class="main login_wrap">
 
@@ -40,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <a class="active" href="/account?login">登录</a>　|　<a href="/account?reg">注册</a>
                 </h3>
 
-
+                <h4><?php wc_print_notices(); ?></h4>
 <form method="post" class="lost_reset_password">
 
 	<?php if( 'lost_password' == $args['form'] ) : ?>
