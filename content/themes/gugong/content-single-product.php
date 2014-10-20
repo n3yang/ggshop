@@ -36,6 +36,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 			</div>
 			<div class="item_box">
+
+				<h3 class="crumbs">
+					<a href="/shop">商城首页</a> &gt;&gt; <a href="#"><?php echo $product->get_categories();?></a> &gt;&gt; <a href="#"><?php the_title() ?></a> 
+				</h3>
+
 				<div class="item_title base-clear">
 					<?php
 						/**
@@ -61,8 +66,16 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 						 */
 						// do_action( 'woocommerce_single_product_summary' );
 					?>	
-						<h2><?php echo $product->get_price_html(); ?></h2>
-						<!-- <h3></h3> -->
+					<?php
+						if ($product->get_sale_price()) {
+							echo '<h3><s style="color:gray">原价：'.wc_price($product->get_regular_price()).'</s></h3>';
+							echo '<h2>优惠价：'.wc_price($product->get_sale_price()).'</h2>';
+						} else {
+							echo '<h2>'.wc_price($product->get_price()).'</h2>';
+						}
+						?>
+						
+						<h3><? echo $product->get_categories(); ?></h3>
 						<h4><?php the_title() ?></h4>
 
 						<?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?>

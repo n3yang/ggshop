@@ -47,10 +47,11 @@ $current_user = wp_get_current_user();
 <?php
 // 对header背景图片进行特殊定义
 $header_css = array('header');
-if ($_SERVER['REQUEST_URI'] == '/account?reg') {
+$requri = $_SERVER['REQUEST_URI'];
+if ($requri == '/account?reg') {
 	$header_css[] = 'reg_header';
 }
-if ($_SERVER['REQUEST_URI'] == '/account?login') {
+if ($requri == '/account?login' || $requri=='/account/lost-password') {
 	$header_css[] = 'login_header';
 }
 $header_css = implode(' ', $header_css);
