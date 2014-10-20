@@ -129,7 +129,7 @@ function ggshop_pagin_nav($range = 4){
 
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
-
+remove_action( 'woocommerce_before_single_product', 'wc_print_notices', 10);
 
 // add_rewrite_rule('/account/reg', 'index.php?page_id=7', 'top');
 // add_filter( 'query_vars', function(){return array('aaa');}, 10 );
