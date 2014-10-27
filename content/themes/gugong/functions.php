@@ -170,3 +170,24 @@ add_action('woocommerce_before_checkout_form', function(){
 		wp_redirect('/account?login');
 	}
 });
+
+function get_the_product_image_html($product){
+
+	$attachment_ids = $product->get_gallery_attachment_ids();
+	if (empty($attachment_ids)) {
+		return;
+	}
+
+	foreach ( $attachment_ids as $attachment_id ) {
+		$image = wp_get_attachment_image( $attachment_id , 'shop_single' );
+		if ( ! $image )
+			continue;
+		$image_title = esc_attr( get_the_title( $attachment_id ) );
+		$image_single = wp_get_attachment_image_src( $attachment_id );
+		return apply_filters( 'woocommerce_single_product_image_html', 
+			sprintf( '%s', $image ), 
+			$attachment_id, 
+			$product->ID );
+		break;
+	}
+}

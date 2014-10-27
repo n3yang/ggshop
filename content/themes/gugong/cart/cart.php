@@ -60,7 +60,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 					<td class="product-thumbnail">
 						<?php
-							$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+							$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', wp_get_attachment_image( get_post_thumbnail_id($product_id) ), $cart_item, $cart_item_key );
 
 							if ( ! $_product->is_visible() )
 								echo $thumbnail;
@@ -187,7 +187,7 @@ if ( $products->have_posts() ) : ?>
 				<ul class="base-clear">
 					<?php while ( $products->have_posts() ) : $products->the_post(); global $product; ?>
 					<li>
-						<a class="s_p_l_a" href="<?php the_permalink() ?>"><?php echo $product->get_image('shop_single') ?></a>
+						<a class="s_p_l_a" href="<?php the_permalink() ?>"><?php echo get_the_product_image_html( $product ) ?></a>
 						<h5><?php echo wc_price($product->get_price()) ?></h5>
 						<p><?php the_title() ?></p>
 						<p><a class="s_p_l_btn" href="/cart/?add-to-cart=<?php echo get_the_id() ?>">加入购物车</a></p>
