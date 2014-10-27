@@ -187,7 +187,7 @@ if ( $products->have_posts() ) : ?>
 				<ul class="base-clear">
 					<?php while ( $products->have_posts() ) : $products->the_post(); global $product; ?>
 					<li>
-						<a class="s_p_l_a" href="<?php the_permalink() ?>"><?php the_post_thumbnail('shop_single') ?></a>
+						<a class="s_p_l_a" href="<?php the_permalink() ?>"><?php echo $product->get_image('shop_single') ?></a>
 						<h5><?php echo wc_price($product->get_price()) ?></h5>
 						<p><?php the_title() ?></p>
 						<p><a class="s_p_l_btn" href="/cart/?add-to-cart=<?php echo get_the_id() ?>">加入购物车</a></p>

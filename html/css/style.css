@@ -134,9 +134,9 @@ body{
 	float: left;
 }
 .list_con{
-	float: right;
+	float: left;
 	width: 800px;
-	text-align: right;
+	text-align: left;
 }
 .list_menu ul{
 	width: 176px;
@@ -222,7 +222,14 @@ body{
 	top: 0px;
 	left: 0px;
 }
-
+/*
+.list_item_wrap li.active a img{
+	width: 315px;
+	height: 198px;
+	top: -19px;
+	left: -30px;
+}
+*/
 .list_item_wrap li a div{
 	height: 30px;
 	padding: 10px;
