@@ -87,7 +87,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 								<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
 								<input type="image" src="<?php bloginfo('template_url') ?>/images/btn1.png" >
 								<!-- <img src="<?php bloginfo('template_url') ?>/images/btn1.png" alt=""></a> -->
-								<a href="javascript:;" class="btn"><img src="<?php bloginfo('template_url') ?>/images/btn2.png" alt=""></a>
+								<a id="add_favorite" href="javascript:;" class="btn" data-pid="<?php echo $product->id ?>"><img src="<?php bloginfo('template_url') ?>/images/btn2.png" alt=""></a>
 							</form>
 						</div>
 					</div><!-- .summary -->
@@ -150,3 +150,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		</div>
 
 	</div>
+	<script type="text/javascript">
+	$('#add_favorite').click(function(event) {
+		var request_uri = '/ucp/favorite?ajax=1&act=add&pid='+$(this).attr('data-pid')
+		$.get(request_uri, function(data) {
+			alert(data);
+		});
+		
+	});
+	</script>

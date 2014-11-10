@@ -5,7 +5,6 @@
  * @package Gugong
  * @subpackage GugongShop
  */
-
 get_header(); ?>
 
 <?php

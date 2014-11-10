@@ -14,7 +14,7 @@ remove_action('wp_head', 'wp_generator');
 // turn off links in header
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wlwmanifest_link');
-
+remove_action('template_redirect', 'wp_shortlink_header', 11 );
 
 // add user's tel in user pannel
 // add_filter('user_contactmethods', function ($user_contactmethods){
@@ -123,7 +123,32 @@ function ggshop_pagin_nav($range = 4){
     echo '</div>';}
 }
 
+/**
+ * redirect unregistered user to login page, registered user do nothing
+ * @param string $value [description]
+ */
+function ggshop_redirect_not_login($value='')
+{
+	if (!is_user_logged_in()) {
+		wp_redirect('/login');
+		exit;
+	}
+}
 
+
+
+/**
+ * get user favorite list
+ * @param  int $user_id 
+ * @return array
+ */
+function ggshop_get_user_favorite($user_id=''){
+	if (empty($user_id)){
+		$user_id = get_current_user_id();
+	}
+	$rs = get_user_meta($user_id, 'ggshop_user_favorite', true);
+	return empty($rs) ? array() : json_decode($rs, 1);
+}
 
 /************ woocommerce 定制 *************/
 
@@ -132,7 +157,7 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
 remove_action( 'woocommerce_before_single_product', 'wc_print_notices', 10);
 
 // add_rewrite_rule('/account/reg', 'index.php?page_id=7', 'top');
-// add_filter( 'query_vars', function(){return array('aaa');}, 10 );
+// add_filter( 'query_vars', function(){return array('aaa');}, 0 );
 // add_rewrite_endpoint('aaa', EP_PAGES);
 
 
@@ -191,3 +216,30 @@ function get_the_product_image_html($product){
 		break;
 	}
 }
+
+
+
+
+// add query vars
+add_filter( 'query_vars', 'ggshop_add_query_vars', 0 );
+function ggshop_add_query_vars( $vars ) {
+	$vars[] = 'ucp-mod';
+	return $vars;
+}
+
+// register API endpoints
+add_action( 'init', 'ggshop_add_endpoint' );
+function ggshop_add_endpoint() {
+	// REST API
+	add_rewrite_rule( 'ucp/([^/]+)', 'index.php?pagename=ucp&ucp-mod=$matches[1]', 'top' );
+}
+
+/*
+// handle REST/legacy API request
+add_action( 'parse_request', 'fhandle_api_requests', 0 );
+function fhandle_api_requests() {
+	// echo $_GET['user'];
+	var_dump($_SERVER['REQUEST_URI']);
+	exit;
+}
+*/

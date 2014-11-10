@@ -1029,6 +1029,8 @@ select{
 }
 .mct .rmb {
 	text-align: center;
+	vertical-align: top;
+	padding-top: 55px;
 	color: #000;
 	font-weight: bold;
 }
@@ -1037,7 +1039,9 @@ select{
 	font-weight: 100
 }
 .mct .dd{
+	vertical-align: top;
 	text-align: center;
+	padding-top: 55px;
 	color: #333
 }
 .mct .dd span.through{
