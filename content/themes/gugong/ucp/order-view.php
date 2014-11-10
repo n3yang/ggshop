@@ -11,7 +11,7 @@ $order_id = $matches[1];
 $order = new WC_Order($order_id);
 
 $current_user_id = get_current_user_id();
-if ($current_user_id != $order->get_user_id()) {
+if ($current_user_id != $order->customer_user) {
 	wp_redirect('/shop');
 }
 
