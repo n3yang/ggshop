@@ -13,11 +13,6 @@
 		             		<a style="position:absolute;width:1200px;height:367px;" href="category/media"></a>
 		                </div>
 		            </li>
-		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/33.jpg">
-		                <div class="slide-pic">
-		                	<a style="position:absolute;width:1200px;height:367px;" href="category/sports"></a>
-		                </div>
-		            </li>
 		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/44.jpg">
 		                <div class="slide-pic">
 		                	<a style="position:absolute;width:1200px;height:367px;" href="category/study"></a>
@@ -38,15 +33,20 @@
 		                	<a style="position:absolute;width:1200px;height:367px;" href="category/clothing"></a>
 		                </div>
 		            </li>
+		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/33.jpg">
+		                <div class="slide-pic">
+		                	<a style="position:absolute;width:1200px;height:367px;" href="category/zhuangmei"></a>
+		                </div>
+		            </li>
 		        </ul>
 		        <div class="slide-trigger dib-wrap">
 		            <a class="dib a1 active" href="category/toys"></a>
 		            <a class="dib a2" href="category/media"></a>
-		            <a class="dib a3" href="category/sports"></a>
 		            <a class="dib a4" href="category/study"></a>
 		            <a class="dib a5" href="category/home"></a>
 		            <a class="dib a6" href="category/electronics"></a>
 		            <a class="dib a7" href="category/clothing"></a>
+		            <a class="dib a9" href="category/zhuangmei"></a>
 		        </div>
 
 		        <div class="slide-btn">

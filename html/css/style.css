@@ -465,6 +465,9 @@ DIV.jogger .next{
 #ui-slide .slide-trigger .a8{
 	background: url(../images/a8.png) center top no-repeat;
 }
+#ui-slide .slide-trigger .a9{
+	background: url(../images/a9.png) center top no-repeat;
+}
 #ui-slide .slide-trigger a.active{
 	background-position: 0 -196px
 }
@@ -593,7 +596,7 @@ DIV.jogger .next{
 	cursor: pointer;
 }
 a.login_info{
-	color: #da4c3c;
+	color: #fff;
 	margin-right: 10px;
 }
 
@@ -1029,6 +1032,8 @@ select{
 }
 .mct .rmb {
 	text-align: center;
+	vertical-align: top;
+	padding-top: 55px;
 	color: #000;
 	font-weight: bold;
 }
@@ -1037,7 +1042,9 @@ select{
 	font-weight: 100
 }
 .mct .dd{
+	vertical-align: top;
 	text-align: center;
+	padding-top: 55px;
 	color: #333
 }
 .mct .dd span.through{

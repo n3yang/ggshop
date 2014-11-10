@@ -36,13 +36,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 							<a href="/category/study">宫廷文房</a>
 						</li>
 						<li>
-							<a href="/category/sports">宫廷体育</a>
-						</li>
-						<li>
 							<a href="/category/media">宫廷音画</a>
 						</li>
 						<li>
 							<a href="/category/toys">宫廷童趣</a>
+						</li>
+						<li>
+							<a href="/category/zhuangmei">壮壮美美</a>
 						</li>
 					</ul>
 				</div>
