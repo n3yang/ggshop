@@ -8,11 +8,13 @@ if (empty($matches[1])){
 	wp_redirect('/shop');
 }
 $order_id = $matches[1];
+$order = new WC_Order($order_id);
 
-$order = new WC_Order(29);
+$current_user_id = get_current_user_id();
+if ($current_user_id != $order->get_user_id()) {
+	wp_redirect('/shop');
+}
 
-var_dump($order->get_checkout_payment_url());
-// $checkout = WC()->checkout;
 get_header();
 ?>
 
