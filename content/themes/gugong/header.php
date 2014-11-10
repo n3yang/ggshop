@@ -59,7 +59,7 @@ $header_css = implode(' ', $header_css);
 	<div class="<?php echo $header_css ?>">
 		<div class="nav">
 			<ul>
-				<li><a class="nav1" href="/"></a></li>
+				<li><a class="nav1" href="/shop"></a></li>
 				<li><a class="nav2" href="#"></a></li>
 				<li><a class="nav3" href="#"></a></li>
 				<li class="c_nav"></li>
