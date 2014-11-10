@@ -77,10 +77,9 @@ get_header();
 						<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 							<td>
 								<?php
-									$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
-
+									$image = get_the_product_image_html($_product);
 									if ( ! $_product->is_visible() )
-										echo $thumbnail;
+										echo $image;
 									else
 										printf( '<a class="shop_pic" href="%s">%s</a>', $_product->get_permalink(), $thumbnail );
 
@@ -157,7 +156,7 @@ get_header();
 		</div>
 
 		<?php endif; ?>
-		
+
 	</div>
 
 </form>

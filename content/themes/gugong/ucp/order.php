@@ -95,7 +95,7 @@ get_header();
 							if ( in_array( $order->status, apply_filters( 'woocommerce_valid_order_statuses_for_payment', array( 'pending', 'failed' ), $order ) ) ) {
 								$actions['pay'] = array(
 									'url'  => '/ucp/order-view/'.$order->id.'#payment',
-									'url'  => $order->get_checkout_payment_url(),
+									// 'url'  => $order->get_checkout_payment_url(),
 									'name' => __( 'Pay', 'woocommerce' )
 								);
 							}
