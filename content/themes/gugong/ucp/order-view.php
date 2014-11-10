@@ -145,7 +145,6 @@ get_header();
 				}
 			?>
 		</ul>
-		<?php endif; ?>
 
 		<div class="form-row" style="text-align: right">
 			<?php wp_nonce_field( 'woocommerce-pay' ); ?>
@@ -157,6 +156,8 @@ get_header();
 			<input type="hidden" name="woocommerce_pay" value="1" />
 		</div>
 
+		<?php endif; ?>
+		
 	</div>
 
 </form>
