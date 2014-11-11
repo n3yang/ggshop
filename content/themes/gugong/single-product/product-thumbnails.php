@@ -50,5 +50,10 @@ if ( $attachment_ids ) {
 	?>
 		</div>
 	</div>
+	<script>
+	$('.small_pic_item').hover(function() {
+		$('.big_pic img').attr('src', $(this).data('single-pic'));
+	};
+	</script>
 	<?php
 }
