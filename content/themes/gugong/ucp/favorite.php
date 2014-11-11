@@ -4,6 +4,9 @@
 if ($_REQUEST['ajax'] && $_REQUEST['act']=='add' && !empty($_REQUEST['pid'])) {
 	$new_fav = intval($_REQUEST['pid']);
 	$user = wp_get_current_user();
+	if ($user->ID==0) {
+		exit('请登陆后再收藏');
+	}
 	// TODO: 检测pid的有效性
 	$favorite = ggshop_get_user_favorite();
 	if (array_key_exists($new_fav, $favorite)){
