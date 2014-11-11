@@ -159,7 +159,7 @@ body{
 	padding-left: 40px;
 	background: url(../images/list_menu_hover.png) no-repeat;
 }
-.list_menu ul li a:hover{
+.list_menu ul li a:hover, .list_menu ul li a.active{
 	text-decoration: none;
 	background: url(../images/list_menu_hover.png) 0 -38px no-repeat;
 }
@@ -263,7 +263,7 @@ body{
 
 
 DIV.jogger {
-	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; MARGIN: 7px; PADDING-TOP: 2px;
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; MARGIN: 7px; PADDING-TOP: 2px; text-align: right;
 }
 DIV.jogger A {
 	COLOR: #fff; BACKGROUND-COLOR: #da4c3c; TEXT-DECORATION: none; 
@@ -1130,4 +1130,16 @@ select{
 	width: 18px;
 	text-align: center;
 	margin-right: 15px
+}
+
+.order_details {
+	display: none;
+}
+.shop_wrap .order_detail{
+	display: block;
+}
+
+.cart-button{
+	width: 100px;
+	font-size: 18px;
 }
