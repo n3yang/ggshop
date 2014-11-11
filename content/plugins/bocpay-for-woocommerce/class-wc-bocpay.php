@@ -332,13 +332,24 @@ class WC_Bocpay extends WC_Payment_Gateway {
             return array(
                 'result'   => 'success',
                 'bocpay'   => 1,
-                'redirect' => '',
+                'redirect' => $order->get_checkout_payment_url( true ),
                 'sources'  => $sources
             );
         }
 
     }
 
+    /**
+     * Output for the order received page.
+     *
+     * @access public
+     * @return void
+     */
+    function receipt_page( $order ) {
+
+        $result = $this->process_payment($order);
+        echo $this->build_gateway_form( $result );
+    }
 
     function build_gateway_form($result) {
 
@@ -420,10 +431,10 @@ class WC_Bocpay extends WC_Payment_Gateway {
             }
             
             // Avoid duplicate order comments
-            $order_trade_status = get_post_meta( $order_id, '_alipay_trade_current_status', true );
+            $order_trade_status = get_post_meta( $order_id, '_bocpay_trade_current_status', true );
             if( empty( $order_trade_status ) ) $order_trade_status = 1;
 
-            if ( $this->payment_method == 'direct' ) {
+            
                 // Direct payment
 
                 if ( $_POST['trade_status'] == 'TRADE_FINISHED' || $_POST['trade_status'] == 'TRADE_SUCCESS' ) {
@@ -438,61 +449,7 @@ class WC_Bocpay extends WC_Payment_Gateway {
                     $this->successful_request( $_POST );
                 }
 
-            } else {
-                // Escrow and Dual Payment 
-
-                switch( $_POST['trade_status'] ){
-
-                    case 'WAIT_BUYER_PAY' :
-
-                        if( $order_trade_status == 1 ){
-                            $order->add_order_note( __( 'Order received, awaiting payment', 'alipay' ) );                            
-                            update_post_meta( $order_id, '_alipay_trade_current_status',  ++$order_trade_status );
-                        }
-                        $this->successful_request( $_POST );
-                        break;
-
-                    case 'WAIT_SELLER_SEND_GOODS' :
-
-                        /************** Check order status before updating*/
-                        $order_needs_updating = ( in_array( $order->status, array('processing', 'completed') ) ) ? false : true;
-                        if( $order_needs_updating ){
-                            $status = apply_filters( 'woocommerce_alipay_payment_successful_status', 'processing', $order);                            
-                        }  
-
-                        if( $order_trade_status == 2 ){
-                            if( isset($_POST['trade_no']) && !empty($_POST['trade_no']) ){
-                                update_post_meta( $order_id, 'Alipay Trade No.', wc_clean( $_POST['trade_no'] ) );
-                                $success = $this->send_goods_confirm( wc_clean( $_POST['trade_no'] ), $order );
-                            }
-                            $order->update_status( $status, __( 'Payment received, awaiting fulfilment', 'alipay' ) );
-                            update_post_meta( $order_id, '_alipay_trade_current_status', ++$order_trade_status );
-                        }
-                        $this->successful_request( $_POST );
-                        break;
-
-                    case 'WAIT_BUYER_CONFIRM_GOODS' :
-
-                        if( $order_trade_status == 3 ){
-                            $order->add_order_note( __( 'Your order has been shipped, awaiting buyer\'s confirmation', 'alipay' ) );
-                            update_post_meta( $order_id, '_alipay_trade_current_status', ++$order_trade_status );
-                        }                        
-                        $this->successful_request($_POST);
-                        break;
-
-                    case 'TRADE_FINISHED' :
-
-                        if( $order_trade_status == 4 ){
-                            $this->payment_complete( $order );
-                        }
-                        $this->successful_request( $_POST );
-                        break;
-
-                    default :
-
-                        $this->successful_request( $_POST );
-                }                    
-            }
+            
 
         } else {
 
