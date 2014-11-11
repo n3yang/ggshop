@@ -21,31 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			</div>
 
 			<div class="list_box base-clear">
-				<div class="list_menu">
-					<ul>
-						<li>
-							<a href="/category/clothing">宫廷服饰</a>
-						</li>
-						<li>
-							<a href="/category/electronics">宫廷数码</a>
-						</li>
-						<li>
-							<a href="/category/home">宫廷家居</a>
-						</li>
-						<li>
-							<a href="/category/study">宫廷文房</a>
-						</li>
-						<li>
-							<a href="/category/media">宫廷音画</a>
-						</li>
-						<li>
-							<a href="/category/toys">宫廷童趣</a>
-						</li>
-						<li>
-							<a href="/category/zhuangmei">壮壮美美</a>
-						</li>
-					</ul>
-				</div>
+				<? get_template_part('category-list') ?>
 							
 				<div class="list_con">
 					

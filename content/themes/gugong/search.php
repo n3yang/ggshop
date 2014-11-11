@@ -7,10 +7,9 @@
  */
 get_header();
 $search_query = get_search_query();
-
                                         
 $args = array(
-    'posts_per_page'    => 10,
+    'posts_per_page'    => 8,
     'paged'             => $paged>1 ? $paged : 1,
     's'                 => $search_query,
     'post_type'         => 'product',

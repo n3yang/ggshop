@@ -61,7 +61,7 @@ get_header();
 							</ul>
 							<?php
 							else:
-								echo '<p><a href="/shop">您还没有任何收藏，快去浏览我们的商品吧~</a></p>';
+								echo '<p><a href="/shop">您还没有任何收藏，快去看看我们的商品吧~</a></p>';
 							endif;?>
 						</div>
 					</div>
