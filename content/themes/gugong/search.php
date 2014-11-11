@@ -7,68 +7,82 @@
  */
 get_header();
 $search_query = get_search_query();
+
+                                        
+$args = array(
+    'posts_per_page'    => 10,
+    'paged'             => $paged>1 ? $paged : 1,
+    's'                 => $search_query,
+    'post_type'         => 'product',
+);
+$posts = query_posts($args);
+
 ?>
 
-	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/style/products.css"/>
-	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/products.js"></script>
-    
-	<!--ListOfProducts-->
-    <div class="main">
-    	
-        <?php echo pinwu_get_ad_banner() ?>
+    <div class="main list_bg">
 
-        <div class="products base-clear">
-        	<?php get_sidebar() ?>
+        <div class="list_wrap">
             
-            <div class="products-right">
-            	<div class="products-list-wrap">
-   
-                    <div class="products-list-result">
-                    	<div class="products-list-result-title">
-                        	<div class="ti dib-wrap">
-                            	<span class="dib"><a class="active">关键字搜索：<?php echo $search_query ?></a></span>
-                            </div>
-                        </div>
-                        <div class="products-info">
-                        	<div class="products-info-c">
-                            	
-                                <!--以下部分为文章内容-->
-                                <div class="news-list">
-                                    <ul>
-                                    	<?php
-                                    	$args = array(
-                                    		'posts_per_page'    => 20,
-                                    		'paged'             => $paged>1 ? $paged : 1,
-                                            's'                 => $search_query,
-                                    	);
-										$posts = query_posts($args);
-										if (have_posts()){ while(have_posts()) : the_post();
-										?>
-                                        <li>
-                                            <a href="<?php the_permalink() ?>" target="_blank"><?php the_title() ?></a>
-                                            <span><?php echo get_the_date() ?></span>
-                                        </li>
-                                    	<?php
-                                            endwhile;
-                                        } else {
-                                            echo '没有查询到相关内容';
-                                        }
-                                        ?>
-                                    </ul>
-                                </div>
-                                <!--以上部分为文章内容-->                                
-                                <p>
-                                    <?php pingwu_pagin_nav(); ?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
+            <div class="list_ad">
+                
             </div>
+
+            <div class="list_box base-clear">
+                <?php get_template_part('category-list') ?>
+                            
+                <div class="list_con">
+                    
+                    <div class="list_item_wrap">
+                        <ul>
+                            <?php 
+                            if (have_posts()){ while ( have_posts() ) : the_post(); global $product;
+                            ?>
+                            <li>
+                                <?php do_action( 'woocommerce_before_shop_loop_item' ); ?>
+                                <a href="<?php the_permalink(); ?>">
+                                    <em>
+                                        <?php the_post_thumbnail('shop_catalog') ?>
+                                    </em>
+                                    <div>
+                                        <p>RMB: <strong><?php echo ($product->get_price()); ?></strong></p>
+                                        <span><?php the_title() ?></span>
+                                    </div>
+                                </a>
+                                <?php // do_action( 'woocommerce_after_shop_loop_item' ); ?>
+                            </li>
+                            <?php
+                                endwhile;
+                            } else {
+                                echo '<div class="list_con" style="text-align: center"><h3>没有找到符合要求的产品</h3></div>';
+                            }
+                            ?>
+                        </ul>
+
+                        <!-- <div class="jogger"><a class="prev" href=""> &lt; 上一页</a> <span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a><a href="#?page=4">4</a><a href="#?page=5">5</a><a href="#?page=6">6</a><a class="next" href="#?page=2">下一页 &gt; </a></div> -->
+
+
+                            <?php ggshop_pagin_nav() ?>
+                    </div>
+
+                </div>
+
+
+            </div>
+
         </div>
-        
-    </div> 
+
+    </div>
+
+<script>
+    
+$(function () {
+    $(".list_item_wrap li").hover(function () {
+        $(this).toggleClass("active")
+    })
+})
+
+</script>
+
 
 
 <?php

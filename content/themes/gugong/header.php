@@ -16,7 +16,17 @@
 <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/base.css" />
 <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/style.css" />
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery-1.8.3.js"></script>
-
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".search_btn").click(function() {
+		location.href='/search/'+encodeURI($("#search-text").val());
+	});
+	$("#header_search").submit(function() {
+		location.href='/search/'+encodeURI($("#search-text").val());
+		return false;
+	});
+});
+</script>
 </head>
 <body>
 
@@ -29,8 +39,10 @@ $current_user = wp_get_current_user();
 		<div class="top_left"><?php echo $current_user->ID==0 ? '亲' : $current_user->display_name; ?>，欢迎您来到故宫商城！</div>
 		<div class="top_right">
 			<span id="searchBox">
-				<input class="search" type="text" />
-				<input class="search_btn" type="submit" value="" />
+				<form id="header_search" action="/search/" method="get">
+					<input id="search-text" class="search" type="text" name="s" />
+					<input class="search_btn" type="submit" value="" />
+				</form>
 			</span>
 			<span>
 				<?php if ($current_user->ID==0){ ?>
