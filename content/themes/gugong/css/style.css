@@ -1138,3 +1138,8 @@ select{
 .shop_wrap .order_detail{
 	display: block;
 }
+
+.cart-button{
+	width: 100px;
+	font-size: 18px;
+}

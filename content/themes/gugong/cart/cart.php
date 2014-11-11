@@ -140,8 +140,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 							购物金额小计 <?php echo WC()->cart->get_cart_subtotal(); ?>元
 						</th>
 						<th style="text-align:right;" class="del">
-							<input type="submit" class="button" name="update_cart" value="<?php _e( 'Update Cart', 'woocommerce' ); ?>" />
-							<a href="/cart?empty-cart">清空购物车</a>
+							<input type="submit" class="cart-button" name="update_cart" value="<?php _e( 'Update Cart', 'woocommerce' ); ?>" />
+							<input type="button" class="cart-button" name="empty_cart" onclick="location.href='/cart?empty-cart'" value="清空购物车" />
 						</th>
 					</tr>
 
