@@ -60,6 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</div>
 					<div class="input_box">
 						<input class="login_btn" type="submit" name="login" value=" " /> 
+						<input type="hidden" name="redirect" value="/shop" ?>
 					</div>
 					<div class="input_box">
 						<?php wp_nonce_field( 'woocommerce-login' ); ?>

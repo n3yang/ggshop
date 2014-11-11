@@ -1131,3 +1131,10 @@ select{
 	text-align: center;
 	margin-right: 15px
 }
+
+.order_details {
+	display: none;
+}
+.shop_wrap .order_detail{
+	display: block;
+}
