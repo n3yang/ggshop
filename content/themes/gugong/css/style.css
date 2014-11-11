@@ -263,7 +263,7 @@ body{
 
 
 DIV.jogger {
-	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; MARGIN: 7px; PADDING-TOP: 2px;
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; MARGIN: 7px; PADDING-TOP: 2px; text-align: right;
 }
 DIV.jogger A {
 	COLOR: #fff; BACKGROUND-COLOR: #da4c3c; TEXT-DECORATION: none; 
