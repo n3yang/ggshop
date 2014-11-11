@@ -130,7 +130,7 @@ function ggshop_pagin_nav($range = 4){
 function ggshop_redirect_not_login($value='')
 {
 	if (!is_user_logged_in()) {
-		wp_redirect('/login');
+		wp_redirect('/account?login');
 		exit;
 	}
 }
@@ -192,7 +192,7 @@ add_action('woocommerce_checkout_process', function(){
 add_action('woocommerce_before_checkout_form', function(){
 	global $current_user;
 	if ($current_user->ID==0){
-		wp_redirect('/account?login');
+		wp_redirect('/account?login&redirect='.urlencode('/checkout'));
 	}
 });
 

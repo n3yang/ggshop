@@ -11,6 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+if (isset($_REQUEST['redirect'])){
+	$redirect_url = $_REQUEST['redirect'];
+}else{
+	$redirect_url = '/shop';
+}
 ?>
 
 <?php do_action( 'woocommerce_before_customer_login_form' ); ?>
@@ -60,7 +65,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</div>
 					<div class="input_box">
 						<input class="login_btn" type="submit" name="login" value=" " /> 
-						<input type="hidden" name="redirect" value="/shop" ?>
+						<input type="hidden" name="redirect" value="<?=$redirect_url?>" />
 					</div>
 					<div class="input_box">
 						<?php wp_nonce_field( 'woocommerce-login' ); ?>
