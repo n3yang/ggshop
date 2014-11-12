@@ -230,10 +230,42 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 jQuery(document).ready(function($) {
 	$('#shipping_name_reivew').text($('#shipping_first_name').val());
 	$('#shipping_address_review').text($('#shipping_address_1').val());
-});
-$('#shipping_first_name, #shipping_address_1').change(function() {
-	$('#shipping_name_reivew').text($('#shipping_first_name').val());
-	$('#shipping_address_review').text($('#shipping_address_1').val());
+
+	$('#shipping_first_name, #shipping_address_1').change(function() {
+		$('#shipping_name_reivew').text($('#shipping_first_name').val());
+		$('#shipping_address_review').text($('#shipping_address_1').val());
+	});
+
+	$('.checkout').submit(function() {
+		if ($('#shipping_first_name').val()==''){
+			alert('请输入收货人姓名');
+			return false;
+		}
+		if ($('#shipping_last_name').val()==''){
+			alert('请输入手机号码');
+			return false;
+		}
+		if ($('#shipping_address_1').val()=='' || $('#shipping_address_1').val().length<6){
+			alert('请输入详细地址');
+			return false;
+		}
+		if ($('#invoice_box').attr('checked')){
+			if ($('#invoice_title').val()=='') {
+				alert('请输入发票信息');
+				return false;
+			};
+		}
+		return true;
+	});
+
+	$('#invoice_box').change(function() {
+		if ($('#invoice_box').attr('checked')){
+			$('#invoice_title_tr').show();
+		} else {
+			$('#invoice_title_tr').hide();
+		}
+	});
+	
 });
 </script>
 	</div>

@@ -25,9 +25,17 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 								收货人姓名：
 							</td>
 							<td>
-								<input type="text" class="input-text " name="shipping_first_name" id="shipping_first_name" value="<?php echo $checkout->get_value('shipping_first_name');?>">
+								<input type="text" class="form_text " name="shipping_first_name" id="shipping_first_name" value="<?php echo $checkout->get_value('shipping_first_name');?>">
 								<input type="hidden" name="shipping_country" id="shipping_country" value="CN"  class="country_to_state" />
 								<input id="ship-to-different-address-checkbox" class="input-checkbox"  type="hidden" name="ship_to_different_address" value="1" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								手机号码：
+							</td>
+							<td>
+								<input class="form_text" type="text" name="shipping_last_name" id="shipping_last_name" value="<?php echo $checkout->get_value('shipping_last_name');?>">
 							</td>
 						</tr>
 						<!---
@@ -54,16 +62,16 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 								详细地址：
 							</td>
 							<td>
-								<input class="form_text" type="text" name="shipping_address_1" id="shipping_address_1" value="<?php echo $checkout->get_value('shipping_address_1');?>">
+								<input class="form_text" type="text" name="shipping_address_1" id="shipping_address_1" value="<?php echo $checkout->get_value('shipping_address_1');?>" style="width: 400px">
 							</td>
 						</tr>
 						<tr>
-							<td>
-								手机号码：
-							</td>
-							<td>
-								<input class="form_text" type="text" name="shipping_last_name" id="shipping_last_name" value="<?php echo $checkout->get_value('shipping_last_name');?>">
-							</td>
+							<td>需要发票 </td>
+							<td><input type="checkbox" id="invoice_box"></td>
+						</tr>
+						<tr id="invoice_title_tr" style="display: none">
+							<td>发票抬头：</td>
+							<td><input name="shipping_company" id="invoice_title" class="form_text" value="<?=$checkout->get_value('shipping_company')?>"></td>
 						</tr>
 						<!--
 						<tr>
