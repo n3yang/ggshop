@@ -25,6 +25,9 @@ $(document).ready(function() {
 		location.href='/search/'+encodeURI($("#search-text").val());
 		return false;
 	});
+	$('.ggshop-message .close').click(function() {
+		$(this).parent().hide();
+	});
 });
 </script>
 </head>
@@ -60,10 +63,10 @@ $current_user = wp_get_current_user();
 // 对header背景图片进行特殊定义
 $header_css = array('header');
 $requri = $_SERVER['REQUEST_URI'];
-if ($requri == '/account?reg') {
+if (strpos($requri,'/account?reg')===0) {
 	$header_css[] = 'reg_header';
 }
-if ($requri == '/account?login' || $requri=='/account/lost-password') {
+if (strpos($requri, '/account?login')===0 || $requri=='/account/lost-password') {
 	$header_css[] = 'login_header';
 }
 $header_css = implode(' ', $header_css);

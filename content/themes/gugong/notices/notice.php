@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! $messages ) return;
 ?>
 
-<?php foreach ( $messages as $message ) : ?>
-	<div class="ggshop-info"><?php echo wp_kses_post( $message ); ?></div>
-<?php endforeach; ?>
+<div class="ggshop-message">
+    <button type="button" class="close">×</button>
+    <?php foreach ( $messages as $message ) : ?>
+    <?php echo wp_kses_post( $message ); ?>
+    <?php endforeach; ?>
+</div>
