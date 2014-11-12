@@ -21,8 +21,8 @@
 		</div>
 		<div class="a_link">
 			<a href="#"><em>1</em>购买流程</a>
-			<a href="#"><em>2</em>退换货规则</a>
-			<a href="#"><em>3</em>联系我们</a>
+			<a href="/returns-and-replacements"><em>2</em>退换货规则</a>
+			<a href="/contact-us"><em>3</em>联系我们</a>
 		</div>
 		<img src="<?php bloginfo('template_url'); ?>/images/footer.png" alt="">
 		<?php } ?>
