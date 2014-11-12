@@ -53,7 +53,7 @@ if ( $attachment_ids ) {
 	<script>
 	$('.small_pic_item').hover(function() {
 		$('.big_pic img').attr('src', $(this).data('single-pic'));
-	};
+	});
 	</script>
 	<?php
 }
