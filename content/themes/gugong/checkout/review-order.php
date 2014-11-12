@@ -39,7 +39,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 							</td>
 							<td>
 								<?php
-									$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+									$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', get_the_product_image_html($_product), $cart_item, $cart_item_key );
 
 									if ( ! $_product->is_visible() )
 										echo $thumbnail;
