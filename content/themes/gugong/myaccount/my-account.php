@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+wp_redirect('/ucp');
+
 // wc_print_notices(); ?>
 
 <div style="height: 300px;text-align: center; padding-top: 100px">

@@ -33,7 +33,7 @@
 		                	<a style="position:absolute;width:1200px;height:367px;" href="category/clothing"></a>
 		                </div>
 		            </li>
-		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/33.jpg">
+		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/99.jpg">
 		                <div class="slide-pic">
 		                	<a style="position:absolute;width:1200px;height:367px;" href="category/zhuangmei"></a>
 		                </div>
