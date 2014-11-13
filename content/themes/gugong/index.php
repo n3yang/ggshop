@@ -39,7 +39,7 @@
 </head>
 <body>
 	<div>
-		<a href="shop"><img src="<?php bloginfo('template_url') ?>/images/index_btn.jpg" alt=""></a>
+		<a href="#"><img src="images/index_btn.png" alt="" onmouseover="javascript:this.src='images/index_btn_over.png'" onmouseout="javascript:this.src='images/index_btn.png'"></a>
 	</div>
 </body>
 </html>
