@@ -38,7 +38,7 @@
 </head>
 <body>
 	<div>
-		<a href="#"><img src="<?=bloginfo('template_url')?>/images/index_btn.png" alt="" onmouseover="javascript:this.src='<?=bloginfo('template_url')?>/images/index_btn_over.png'" onmouseout="javascript:this.src='<?=bloginfo('template_url')?>/images/index_btn.png'"></a>
+		<a href="/shop"><img src="<?=bloginfo('template_url')?>/images/index_btn.png" alt="" onmouseover="javascript:this.src='<?=bloginfo('template_url')?>/images/index_btn_over.png'" onmouseout="javascript:this.src='<?=bloginfo('template_url')?>/images/index_btn.png'"></a>
 	</div>
 </body>
 </html>
