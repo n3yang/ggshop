@@ -16,7 +16,6 @@
 <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/css/style.css" />
 <script type="text/javascript" src="<?php bloginfo('template_url') ?>/js/jquery-1.8.3.js"></script>
 
-
 <style>
 	html{
 		height: 100%;
@@ -39,7 +38,7 @@
 </head>
 <body>
 	<div>
-		<a href="#"><img src="images/index_btn.png" alt="" onmouseover="javascript:this.src='images/index_btn_over.png'" onmouseout="javascript:this.src='images/index_btn.png'"></a>
+		<a href="#"><img src="<?=bloginfo('template_url')?>/images/index_btn.png" alt="" onmouseover="javascript:this.src='<?=bloginfo('template_url')?>/images/index_btn_over.png'" onmouseout="javascript:this.src='<?=bloginfo('template_url')?>/images/index_btn.png'"></a>
 	</div>
 </body>
 </html>
