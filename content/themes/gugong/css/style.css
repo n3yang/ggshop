@@ -187,10 +187,13 @@ body{
 0% {background: #fff;border: 5px solid #fff;}
 100% {background: #D5BA5A;border: 5px solid #D5BA5A;}
 }
+.list_item_wrap ul{
+    margin-left: 10px;
+}
 .list_item_wrap li{
 	display: inline-block;
-	width: 255px;
-	height: 203px;
+	width: 300px;
+	height: 239px;
 	margin-left: 80px;
 	padding-bottom: 10px;
 	margin-bottom: 50px;
@@ -210,15 +213,15 @@ body{
 
 .list_item_wrap li a{
 	display: block;
-	width: 255px;
-	height: 215px;
+	width: 300px;
+	height: 253px;
 	overflow: hidden;
 	text-decoration: none;
 }
 .list_item_wrap li a img{
 	position: absolute;
-	width: 255px;
-	height: 160px;
+	width: 300px;
+	height: 188px;
 	top: 0px;
 	left: 0px;
 }
@@ -240,8 +243,8 @@ body{
 .list_item_wrap li a em{
 	display: inline-block;
 	position: relative;
-	width: 255px;
-	height: 160px;
+	width: 300px;
+	height: 188px;
 	overflow: hidden;
 }
 .list_item_wrap li a div p{
