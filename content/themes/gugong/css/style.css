@@ -680,8 +680,10 @@ a.shop_pic img{
 	height: 130px;
 }
 a.shop_pic_info{
+	display: block;
+}
+.user_center_box a.shop_pic_info{
 	display: inline-block;
-	vertical-align: middle;
 }
 .check_set{
 	text-align: center;
@@ -712,16 +714,17 @@ a.shop_pic_info{
 	margin: 0 5px;
 }
 
+td.product-title{
+	vertical-align: top;
+	padding-top: 60px;
+}
 .product-thumbnail{
 	width: 135px;
 }
 dl.variation{
 	display: block;
 	vertical-align: top;
-	position: relative;
-	bottom: 50px;
 	float: left;
-	clear: both;
 }
 dl.variation dt{
 	display: inline-block;

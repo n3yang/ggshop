@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 					<tbody>
 						<tr>
 							<th width="50px">
-							<th>商品名称</th>
+							<th colspan="2">商品名称</th>
 							<th>商品定价</th>
 							<th>优惠价</th>
 							<th>购买数量</th>
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 						<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 							<td class="check_set">
 							</td>
-							<td>
+							<td class="product-thumbnail">
 								<?php
 									$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', get_the_product_image_html($_product), $cart_item, $cart_item_key );
 
@@ -46,7 +46,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 									else
 										printf( '<a class="shop_pic" href="%s">%s</a>', $_product->get_permalink(), $thumbnail );
 								?>
-
+							</td>
+							<td class="product-title">
 								<?php
 									if ( ! $_product->is_visible() )
 										echo apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key );
@@ -62,12 +63,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 								?>
 							</td>
 							<td class="s">
-								<s><?php echo wc_price($_product->get_regular_price()); ?></s>
+								<s><?php echo ($_product->get_regular_price()); ?></s>
 							</td>
 							<td class="rmb">
-								<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); ?>元
+								<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); ?>
 							</td>
-							<td><?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times; %s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); ?><?php echo WC()->cart->get_item_data( $cart_item ); ?>
+							<td><?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times; %s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); ?>
 							</td>
 							<td class="rmb">
 								<?php
@@ -168,19 +169,19 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 							</th>
 							<th style="text-align:right;" class="count">
 								<?php foreach ( WC()->cart->get_coupons( 'order' ) as $code => $coupon ) : ?>
-								<h5>优惠：<em><?php wc_cart_totals_coupon_html( $coupon ); ?></em></h5>
+								<h3>优惠：<em><?php wc_cart_totals_coupon_html( $coupon ); ?></em></h3>
 								<?php endforeach; ?>
 								<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
 								<h3>邮费：<em><?php wc_cart_totals_shipping_html(); ?></em></h3>
 								<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
 								<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
-								<h3>付款金额：<em><?php wc_cart_totals_order_total_html(); ?>元</em></h3>
+								<h3>付款金额：<em><?php wc_cart_totals_order_total_html(); ?></em></h3>
 								<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
 								<p>
-									收货人：<span id="shipping_name_reivew">谁谁谁 北京市</span>
+									收货人：<span id="shipping_name_reivew"></span>
 								</p>
 								<p>
-									收货地址：<span id="shipping_address_review">北京市哪里哪里哪里</span>
+									收货地址：<span id="shipping_address_review"></span>
 								</p>
 							</th>
 						</tr>

@@ -63,7 +63,7 @@ get_header();
 				<table class="table1 mct" width="100%" align="center" border="0" cellpadding="5" cellspacing="1">
 					<tbody>
 						<tr>
-							<th>商品名称</th>
+							<th colspan="2">商品名称</th>
 							<th style="width:90px">优惠价</th>
 							<th style="width:35px">数量</th>
 							<th style="width:90px">小计</th>
@@ -75,15 +75,19 @@ get_header();
 							if ( $_product && $_product->exists() ) {
 						?>
 						<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
-							<td>
+							<td class="product-thumbnail">
 								<?php
 									$image = get_the_product_image_html($_product);
 									if ( ! $_product->is_visible() )
 										echo $image;
 									else
-										printf( '<a class="shop_pic" href="%s">%s</a>', $_product->get_permalink(), $thumbnail );
-
-									echo $_product->get_title();
+										printf( '<a class="shop_pic" href="%s">%s</a>', $_product->get_permalink(), $image );
+								?>
+							</td>
+							<td class="">
+								<?php 
+								printf( '<a href="%s">%s</a>', $_product->get_permalink(), $_product->get_title());
+								// Meta data
 								?>
 							</td>
 							<td class="">
@@ -104,7 +108,7 @@ get_header();
 					</tbody>
 
 				<tfoot>
-					<td colspan="4" style="text-align: right; background-color: #f7f7f7">订单金额合计：<?=$order->get_formatted_order_total()?></td>
+					<td colspan="5" style="text-align: right; background-color: #f7f7f7">订单金额合计：<?=$order->get_formatted_order_total()?></td>
 				</tfoot>
 
 			</table>
