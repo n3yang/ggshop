@@ -67,13 +67,18 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 						// do_action( 'woocommerce_single_product_summary' );
 					?>	
 					<?php
-						if ($product->get_sale_price()) {
-							echo '<h3><s style="color:gray">原价：'.wc_price($product->get_regular_price()).'</s></h3>';
-							echo '<h2>优惠价：'.wc_price($product->get_sale_price()).'</h2>';
+
+						if ($product->product_type=='variable'){
+							echo '<h3><div class="single_variation_price">'.$product->get_price_html().'</div><h3>';
 						} else {
-							echo '<h2>'.wc_price($product->get_price()).'</h2>';
+							if ($product->get_sale_price()) {
+								echo '<h3><s style="color:gray">原价：'.wc_price($product->get_regular_price()).'</s></h3>';
+								echo '<h2>优惠价：'.wc_price($product->get_sale_price()).'</h2>';
+							} else {
+								echo '<h2>'.wc_price($product->get_price()).'</h2>';
+							}
 						}
-						?>
+					?>
 						
 						<h3><?php echo $product->get_categories(); ?></h3>
 						<h4><?php the_title() ?></h4>
@@ -82,14 +87,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 						<?php $product->list_attributes(); ?>
 
-						<div class="btn_wrap">
-							<form class="cart" method="post" enctype='multipart/form-data'>
-								<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
-								<input type="image" src="<?php bloginfo('template_url') ?>/images/btn1.png" >
-								<!-- <img src="<?php bloginfo('template_url') ?>/images/btn1.png" alt=""></a> -->
-								<a id="add_favorite" href="javascript:;" class="btn" data-pid="<?php echo $product->id ?>"><img src="<?php bloginfo('template_url') ?>/images/btn2.png" alt=""></a>
-							</form>
-						</div>
+						<?php woocommerce_template_single_add_to_cart();?>
+
 					</div><!-- .summary -->
 				</div>
 			<div class="itme_info">
@@ -159,3 +158,5 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		
 	});
 	</script>
+
+<?php do_action( 'woocommerce_after_single_product' ); ?>

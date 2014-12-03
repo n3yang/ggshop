@@ -20,9 +20,9 @@ global $woocommerce, $product, $post;
 			<tbody>
 				<?php $loop = 0; foreach ( $attributes as $name => $options ) : $loop++; ?>
 					<tr>
-						<td class="label"><label for="<?php echo sanitize_title($name); ?>"><?php echo wc_attribute_label( $name ); ?></label></td>
+						<td class="label"><label for="<?php echo sanitize_title($name); ?>"><?php echo wc_attribute_label( $name ); ?>：</label></td>
 						<td class="value"><select id="<?php echo esc_attr( sanitize_title( $name ) ); ?>" name="attribute_<?php echo sanitize_title( $name ); ?>">
-							<option value=""><?php echo __( 'Choose an option', 'woocommerce' ) ?>&hellip;</option>
+							<option value="">请选择&hellip;</option>
 							<?php
 								if ( is_array( $options ) ) {
 
@@ -70,7 +70,7 @@ global $woocommerce, $product, $post;
 							?>
 						</select> <?php
 							if ( sizeof( $attributes ) == $loop )
-								echo '<a class="reset_variations" href="#reset">' . __( 'Clear selection', 'woocommerce' ) . '</a>';
+								echo '<a class="reset_variations" href="#reset">重新选择</a>';
 						?></td>
 					</tr>
 		        <?php endforeach;?>
@@ -79,14 +79,14 @@ global $woocommerce, $product, $post;
 
 		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
-		<div class="single_variation_wrap" style="display:none;">
+		<div class="btn_wrap" style="display:block;">
 			<?php do_action( 'woocommerce_before_single_variation' ); ?>
 
 			<div class="single_variation"></div>
 
 			<div class="variations_button">
-				<?php woocommerce_quantity_input(); ?>
-				<button type="submit" class="single_add_to_cart_button button alt"><?php echo $product->single_add_to_cart_text(); ?></button>
+				<input type="image" src="<?php bloginfo('template_url') ?>/images/btn1.png" >
+				<a id="add_favorite" href="javascript:;" class="btn" data-pid="<?php echo $product->id ?>"><img src="<?php bloginfo('template_url') ?>/images/btn2.png" alt=""></a>
 			</div>
 
 			<input type="hidden" name="add-to-cart" value="<?php echo $product->id; ?>" />
@@ -105,5 +105,10 @@ global $woocommerce, $product, $post;
 	<?php endif; ?>
 
 </form>
-
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wc_add_to_cart_variation_params = {"i18n_no_matching_variations_text":"很抱歉，没有商品符合您的选择条件，请尝试其它商品。","i18n_unavailable_text":"抱歉，该商品已下架，请选择其它商品。"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='<?=bloginfo('template_url')?>/js/add-to-cart-variation.min.js'></script>
 <?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>

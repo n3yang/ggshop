@@ -396,7 +396,10 @@ DIV.jogger .next{
 .item_title_right .btn_wrap .btn{
 	margin-right: 10px
 }
-
+.item_title_right .single_variation_price del{
+	display: block;
+	color: gray;
+}
 .itme_info{
 	padding: 50px 0;
 }
@@ -679,7 +682,6 @@ a.shop_pic img{
 a.shop_pic_info{
 	display: inline-block;
 	vertical-align: middle;
-	margin-left: 5px;
 }
 .check_set{
 	text-align: center;
@@ -708,6 +710,28 @@ a.shop_pic_info{
 	width: 230px;
 	float: left;
 	margin: 0 5px;
+}
+
+.product-thumbnail{
+	width: 135px;
+}
+dl.variation{
+	display: block;
+	vertical-align: top;
+	position: relative;
+	bottom: 50px;
+	float: left;
+	clear: both;
+}
+dl.variation dt{
+	display: inline-block;
+	float: left;
+	clear: left;
+}
+dl.variation dd{
+	margin: 0 0 0 8px;
+	display: inline-block;
+	float: left;
 }
 
 .shop_pic_list li a.s_p_l_a{
@@ -1181,3 +1205,4 @@ button.close {
 	opacity: .2;
 	filter: alpha(opacity=20);
 }
+

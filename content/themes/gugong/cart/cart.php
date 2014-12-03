@@ -36,7 +36,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 			<table class="table" width="100%" align="center" border="0" cellpadding="5" cellspacing="1">
 					<tr>
 						<th width="50px"><input class="check_all" id="all" type="checkbox" /><label class="check_label" for="all">全选</label></th>
-						<th>商品名称</th>
+						<th colspan="2">商品名称</th>
 						<th>商品定价</th>
 						<th>优惠价</th>
 						<th>购买数量</th>
@@ -68,7 +68,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 							else
 								printf( '<a class="shop_pic" href="%s">%s</a>', $_product->get_permalink(), $thumbnail );
 						?>
-
+					</td>
+					<td class="product-title">
 						<?php
 							if ( ! $_product->is_visible() )
 								echo apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key );
