@@ -32,7 +32,6 @@ class WC_Bocpay extends WC_Payment_Gateway {
         $this->current_currency       = get_option('woocommerce_currency');
         // $this->multi_currency_enabled = in_array( 'woocommerce-multilingual/wpml-woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && get_option( 'icl_enable_multi_currency' ) == 'yes';
         $this->supported_currencies   = array( 'RMB', 'CNY' );
-        // $this->lib_path               = plugin_dir_path( __FILE__ ) . 'lib';
 
         $this->charset                =  strtolower( get_bloginfo( 'charset' ) );
         if( !in_array( $this->charset, array( 'gbk', 'utf-8') ) ) {
@@ -63,7 +62,6 @@ class WC_Bocpay extends WC_Payment_Gateway {
         }
 
         // Actions
-        add_action( 'admin_notices', array( $this, 'requirement_checks' ) );        
         add_action( 'woocommerce_update_options_payment_gateways', array( $this, 'process_admin_options' ) ); // WC <= 1.6.6
         add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) ); // WC >= 2.0
         add_action( 'woocommerce_thankyou_bocpay', array( $this, 'thankyou_page' ) );
@@ -97,17 +95,7 @@ class WC_Bocpay extends WC_Payment_Gateway {
         return $is_available;
     }
 
-    /**
-     * Check if requirements are met and display notices
-     *
-     * @access public
-     * @return void
-     */
-    function requirement_checks() { 
-        if ( !in_array( $this->current_currency, array( 'RMB', 'CNY') ) && !$this->exchange_rate ) {
-            echo '<div class="error"><p>' . sprintf( __('Alipay is enabled, but the store currency is not set to Chinese Yuan. Please <a href="%1s">set the %2s against the Chinese Yuan exchange rate</a>.', 'alipay' ), admin_url( 'admin.php?page=wc-settings&tab=checkout&section=wc_alipay#woocommerce_alipay_exchange_rate' ), $this->current_currency ) . '</p></div>';
-        }
-    }
+
 
     /**
      * Admin Panel Options
@@ -120,7 +108,6 @@ class WC_Bocpay extends WC_Payment_Gateway {
 
         ?>
         <h3>交通银行支付平台</h3>
-        <p>123</p>
        
         <table class="form-table">
             <?php
@@ -196,6 +183,7 @@ class WC_Bocpay extends WC_Payment_Gateway {
         if (!$fp) {
             $this->log->add('bocpay', "code: 999999\tmessage:".$notifyMsg);
             echo ("支付网管错误，请稍后再试");
+            return;
         }
 
         $in  = "<?xml version='1.0' encoding='UTF-8'?>";
@@ -220,8 +208,9 @@ class WC_Bocpay extends WC_Payment_Gateway {
         $errMsg_value = $errMsg->item(0)->nodeValue;
 
         if ($retCode_value != '0'){
-            $this->log->add('bocpay', "code: $retCode_value\tmessage: $errMsg_value");
+            $this->log->add('bocpay', "code: $retCode_value\tmessage: $notifyMsg");
             echo ("支付网关错误，请稍后再试");
+            return;
         }
         
         $sources = explode('|', $notifyMsg);
@@ -238,7 +227,7 @@ class WC_Bocpay extends WC_Payment_Gateway {
         $order = new WC_Order($order_id);
 
         if( $order->status != 'completed'){
-            $order->payment_complete();
+            $this->payment_complete($order);
             $order->add_order_note ('支付成功');
             update_post_meta( $order_id, 'Bocpay Trade No.', wc_clean( $sources[8] ) );
             $this->log->add('bocpay', "code: 000000\tmessage: ".$notifyMsg);
@@ -286,7 +275,7 @@ class WC_Bocpay extends WC_Payment_Gateway {
         $retMsg="";
 
         if (!$fp) {
-            $this->log->add('bocpay', "code: $errno\tmessage: $errstr");
+            $this->log->add('bocpay', "code: 999999\tmessage: $errstr");
             throw new Exception("支付网关错误：$errstr ($errno)", 1);
         } else {
             $in  = "<?xml version='1.0' encoding='UTF-8'?>";
@@ -381,84 +370,68 @@ class WC_Bocpay extends WC_Payment_Gateway {
      * @access public
      * @return void
      */
-
     function check_bocpay_response() {
 
-        $_POST = stripslashes_deep( $_POST );
-
-        error_log(json_encode($_REQUEST, 1), 3, '/tmp/bocpay.log');exit;
-
-        global $woocommerce;
-        @ob_clean();
-
-        if ( isset( $_POST['seller_id'] ) && $_POST['seller_id'] == $this->partnerID ) {
-
-            if ( 'yes' == $this->debug ){
-                $this->log->add('alipay', 'Received notification from Alipay, the order number is: ' . $_POST['out_trade_no']);
-            }
-
-            // Get order id
-            $out_trade_no   = $_POST['out_trade_no'];
-            $order_id       = $out_trade_no;
-
-            if ( !$order_id || !is_numeric( $order_id ) ){
-                 wp_die("Invalid Order ID");
-            }
-
-            // Get alipay config
-            $order = new WC_Order( $order_id );
-            $alipay_config = $this->get_alipay_config();
-			unset( $_POST['wc-api'] );
-
-            // Verify alipay's notification
-            require_once( "lib/alipay_notify.class.php" );
-            $alipayNotify = new AlipayNotify( $alipay_config );
-
-            // Log verification
-             if ( 'yes' == $this->debug ){
-                $log = true;
-            }
-                
-            $verify_result = $alipayNotify->verifyNotify( $log );
-
-            if ( $this->debug == 'yes' ) {
-                $debug_verify_result = $verify_result ? 'Valid' : 'Invalid';
-                $this->log->add('alipay', 'Verification result: ' . $debug_verify_result);                    
-            }
-
-            if( !$verify_result ){
-                wp_die("fail");
-            }
-            
-            // Avoid duplicate order comments
-            $order_trade_status = get_post_meta( $order_id, '_bocpay_trade_current_status', true );
-            if( empty( $order_trade_status ) ) $order_trade_status = 1;
-
-            
-                // Direct payment
-
-                if ( $_POST['trade_status'] == 'TRADE_FINISHED' || $_POST['trade_status'] == 'TRADE_SUCCESS' ) {
-
-                    $order->add_order_note( __( 'The order is completed', 'alipay' ) );
-
-                    $this->payment_complete( $order );                   
-
-                    if( isset($_POST['trade_no']) && !empty($_POST['trade_no']) ){
-                        update_post_meta( $order_id, 'Alipay Trade No.', wc_clean( $_POST['trade_no'] ) );
-                    }  
-                    $this->successful_request( $_POST );
-                }
-
-            
-
-        } else {
-
-            wp_die("Alipay Notification Request Failure");
+        if (empty($_POST['notifyMsg'])) {
+            wp_die("Invalid Requirements");
         }
+        $notifyMsg = $_POST['notifyMsg'];
+
+        $fp = @stream_socket_client($this->sock_url, $errno, $errstr, 30);
+        $retMsg="";
+        $tranCode = "cb2200_verify";
+
+        if (!$fp) {
+            $this->log->add('bocpay', "code: 999999\tmessage: $notifyMsg");
+            wp_die("Invalid FP");
+        } else {
+            $in  = "<?xml version='1.0' encoding='UTF-8'?>";
+            $in .= "<Message>";
+            $in .= "<TranCode>".$tranCode."</TranCode>";
+            $in .= "<merchantID>".$this->merchantID."</merchantID>";
+            $in .= "<MsgContent>".$notifyMsg."</MsgContent>";
+            $in .= "</Message>";
+            fwrite($fp, $in);
+            while (!feof($fp)) {
+                $retMsg = $retMsg.fgets($fp, 1024);
+            }
+            fclose($fp);
+        }
+
+        $dom = new DOMDocument;
+        @$dom->loadXML($retMsg);
+        $retCode = $dom->getElementsByTagName('retCode');
+        $retCode_value = $retCode->item(0)->nodeValue;
+    
+        $errMsg = $dom->getElementsByTagName('errMsg');
+        $errMsg_value = $errMsg->item(0)->nodeValue;
+
+        if ($retCode_value!='0'){
+            $this->log->add('bocpay', "code: retCode_value\tmessage: $notifyMsg");
+            wp_die('Invalid Code');
+        }
+
+        $sources = explode('|', $notifyMsg);
+        if ($sources[9]!='1'){
+            $this->log->add('bocpay', "code: 999998\tmessage: $notifyMsg");
+            wp_die('Payment Failure');
+        }
+
+        $order_id = $sources[5];
+        $order = new WC_Order($order_id);
+        if( $order->status != 'completed'){
+            $this->payment_complete( $order );
+            $order->add_order_note ('支付成功');
+            update_post_meta( $order_id, 'Bocpay Trade No.', wc_clean( $sources[8] ) );
+            $this->log->add('bocpay', "code: 000000\tmessage: ".$notifyMsg);
+            echo "Success";
+            exit;
+        }
+
     }
 
     /**
-     * Complete order when customer release funds from Alipay
+     * Complete order when customer release funds from BOC
      *
      * By default woocommerce doesn't complete order automatically if order status is processing.
      * So we have to deal with this process, order is supposed to be completed when customer release funds.
@@ -488,24 +461,6 @@ class WC_Bocpay extends WC_Payment_Gateway {
 
             do_action( 'woocommerce_payment_complete', $order->id );
         }
-    }
-
-    /**
-     * Successful Payment!
-     *
-     * @access public
-     * @param array $posted
-     * @return void
-     */
-    function successful_request( $posted ) {
-
-        if ( 'yes' == $this->debug ){
-            $this->log->add('alipay', 'Trade Status Received: [' . $posted['trade_status'] . '] For Order: [' . $posted['out_trade_no'] . ']');
-        }
-
-        header('HTTP/1.1 200 OK');
-        echo "success";
-        exit;
     }
 
     /**
