@@ -16,12 +16,12 @@
 					<dd><a href="/ucp/address">我的地址</a></dd>
 					<!-- <dd><a href="#">我的代金卷</a></dd> -->
 					<!-- <dd><a href="#">我的评价</a></dd> -->
-					<dd><a href="/ucp/favorite">我的最爱</a></dd>
+					<dd><a href="/ucp/favorite">我的收藏</a></dd>
 				</dl>
 				<dl>
 					<dt>帐号设置</dt>
-					<!--
- 					<dd><a href="#">基本资料</a></dd>
+ 					<!--
+ 					<dd><a href="/ucp/info">基本资料</a></dd>
 					<dd><a href="#">登录绑定</a></dd>
 					-->
 					<dd><a href="/ucp/password">修改密码</a></dd>
