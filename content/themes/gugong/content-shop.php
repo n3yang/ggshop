@@ -40,8 +40,8 @@
 		            </li>
 		        </ul>
 		        <div class="slide-trigger dib-wrap">
-		            <a class="dib a1 active" href="category/toys"></a>
-		            <a class="dib a2" href="category/media"></a>
+		            <a class="dib a2 active" href="category/hot"></a>
+		            <a class="dib a1" href="category/toys"></a>
 		            <a class="dib a4" href="category/study"></a>
 		            <a class="dib a5" href="category/home"></a>
 		            <a class="dib a6" href="category/electronics"></a>
