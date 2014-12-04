@@ -117,12 +117,13 @@ $(function () {
 		// 	"border": "2px solid #3db79b"
 		// })
 		var address='';
-		$('#s1 option:selected, #s2 option:selected, #s3 option:selected').each(function(i) {
-			if ($(this).index()!=0) {
-				if (i==1 && $(this).length<3){
+		$('#s1, #s2, #s3').each(function(i) {
+			selected = $(this).find('option:selected');
+			if (selected.index()!=0) {
+				if (i==1 && $('#s1 option:selected').index()<5){
 					return;
 				}
-				address+=$(this).val();
+				address+=selected.val();
 			}
 		});;
 		$('#address').val(address);
