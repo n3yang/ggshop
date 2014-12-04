@@ -110,5 +110,5 @@ global $woocommerce, $product, $post;
 var wc_add_to_cart_variation_params = {"i18n_no_matching_variations_text":"很抱歉，没有商品符合您的选择条件，请尝试其它商品。","i18n_unavailable_text":"抱歉，该商品已下架，请选择其它商品。"};
 /* ]]> */
 </script>
-<script type='text/javascript' src='<?=bloginfo('template_url')?>/js/add-to-cart-variation.min.js'></script>
+<script type='text/javascript' src='<?=bloginfo('template_url')?>/js/add-to-cart-variation.js'></script>
 <?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
