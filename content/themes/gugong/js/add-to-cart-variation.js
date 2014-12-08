@@ -310,8 +310,8 @@
 					variation_alt = variation.image_alt;
 
 				$variation_form.find( '.variations_button' ).show();
+				// hack, 2014.12.04 
 				// $variation_form.find( '.single_variation' ).html( variation.price_html + variation.availability_html );
-				// hack
 				if (variation.price_html){
 					$('.single_variation_price' ).html( variation.price_html + variation.availability_html );
 				}
