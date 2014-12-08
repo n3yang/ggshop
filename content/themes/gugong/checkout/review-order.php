@@ -98,7 +98,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 					<tbody>
 						<tr>
 							<th style="text-align:right;">
-								购物车金额小计： <?php wc_cart_totals_subtotal_html(); ?>元 </br>
+								购物车金额小计:  <?php wc_cart_totals_subtotal_html(); ?>元 </br>
 					</tbody>
 				</table>
 
@@ -169,19 +169,19 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 							</th>
 							<th style="text-align:right;" class="count">
 								<?php foreach ( WC()->cart->get_coupons( 'order' ) as $code => $coupon ) : ?>
-								<h3>优惠：<em><?php wc_cart_totals_coupon_html( $coupon ); ?></em></h3>
+								<h3>优惠: <em><?php wc_cart_totals_coupon_html( $coupon ); ?></em></h3>
 								<?php endforeach; ?>
 								<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
-								<h3>邮费：<em><?php wc_cart_totals_shipping_html(); ?></em></h3>
+								<?php wc_cart_totals_shipping_html(); ?>
 								<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
 								<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
-								<h3>付款金额：<em><?php wc_cart_totals_order_total_html(); ?></em></h3>
+								<h3>付款金额: <em><?php wc_cart_totals_order_total_html(); ?></em></h3>
 								<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
 								<p>
-									收货人：<span id="shipping_name_reivew"></span>
+									收货人: <span id="shipping_name_reivew"></span>
 								</p>
 								<p>
-									收货地址：<span id="shipping_address_review"></span>
+									收货地址: <span id="shipping_address_review"></span>
 								</p>
 							</th>
 						</tr>

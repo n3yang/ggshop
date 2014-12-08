@@ -21,6 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	
 		<?php if ( ! empty( $available_methods ) ) : ?>
 
+			<h3>
 			<?php if ( 1 === count( $available_methods ) ) :
 				$method = current( $available_methods );
 
@@ -47,6 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				</ul>
 
 			<?php endif; ?>
+			</h3>
 
 		<?php elseif ( ! WC()->customer->get_shipping_state() || ! WC()->customer->get_shipping_postcode() ) : ?>
 
