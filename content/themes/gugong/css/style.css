@@ -521,10 +521,14 @@ DIV.jogger .next{
 	background: url(../images/reg_bg_half.jpg) no-repeat;
 	padding-top: 1px;
 }
+.reg_wrap .login_box{
+	background: url(../images/reg_box_bg.png) no-repeat;
+	height: 563px;
+}
 .login_box{
 	width: 686px;
 	height: 428px;
-	margin: 50px auto 0;
+	margin: 30px auto 0;
 	background: url(../images/login_box_bg.png) no-repeat;
 }
 .login_left{
@@ -551,10 +555,16 @@ DIV.jogger .next{
 	padding-right: 20px;
 	float: right;
 }
+.reg_wrap .login_right{
+	width: 450px;
+}
 .login_right h3{
 	color: #fff;
 	font-size: 14px;
 	padding-left: 200px;
+}
+.reg_wrap .login_right h3 {
+	padding-left: 310px;
 }
 .login_right h3 a{
 	color: #fff;
@@ -580,6 +590,25 @@ DIV.jogger .next{
 	height: 48px;
 	padding-left: 80px;
 	background: url(../images/password_bg.png) no-repeat;
+}
+.input_box input.login_captcha{
+	width: 106px;
+	height: 48px;
+	padding-left: 80px;
+	background: url(../images/captcha_bg.png) no-repeat;
+	vertical-align: bottom;
+}
+.input_box .agreement{
+	color: #fff;
+}
+.input_box .agreement a{
+	color: #fff;
+}
+.input_box .agreement a:active{
+}
+.input_box .img_captcha{
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
 }
 .login_check{
 	vertical-align: middle;
@@ -1010,7 +1039,7 @@ select{
 .count p{
 	color: #9f9f9f;
 }
-.count em{
+.count em, .count .amount{
 	display: inline-block;
 	width: 100px;
 	color: #3db79b;
