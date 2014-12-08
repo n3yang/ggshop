@@ -32,6 +32,11 @@ $posts = query_posts($args);
                 <div class="list_con">
                     
                     <div class="list_item_wrap">
+                        <?php
+                        if ($wp_query->post_count>0){
+                            echo "<div class=\"search_tips\">根据您搜索的“<strong>{$search_query}</strong>”，为您找到如下 <strong>{$wp_query->post_count}<strong> 件商品。</div>";
+                        }
+                        ?>
                         <ul>
                             <?php 
                             if (have_posts()){ while ( have_posts() ) : the_post(); global $product;

@@ -265,7 +265,9 @@ body{
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-
+.list_item_wrap .search_tips{
+	margin: 10px 20px 20px 20px;
+}
 
 DIV.jogger {
 	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; MARGIN: 7px; PADDING-TOP: 2px; text-align: right;
