@@ -52,7 +52,7 @@ $posts = query_posts($args);
                             <?php
                                 endwhile;
                             } else {
-                                echo '<div class="list_con" style="text-align: center"><h3>没有找到符合要求的产品</h3></div>';
+                                echo '<div class="list_con" style="text-align: center"><h3>对不起，没有符合您需要的商品。</h3></div>';
                             }
                             ?>
                         </ul>
