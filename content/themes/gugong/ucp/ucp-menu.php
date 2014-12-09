@@ -24,6 +24,7 @@
  					<dd><a href="/ucp/info">基本资料</a></dd>
 					<dd><a href="#">登录绑定</a></dd>
 					-->
+					<dd><a href="/ucp/avatar"></a></dd>
 					<dd><a href="/ucp/password">修改密码</a></dd>
 				</dl>
 			</div>

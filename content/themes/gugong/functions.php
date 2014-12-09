@@ -217,7 +217,9 @@ function get_the_product_image_html($product){
 	}
 }
 
-
+add_filter( 'woocommerce_alipay_icon', function (){
+	
+});
 
 
 // add query vars
@@ -243,3 +245,4 @@ function fhandle_api_requests() {
 	exit;
 }
 */
+// unset( WC()->session->order_awaiting_payment )
