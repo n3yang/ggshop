@@ -64,6 +64,8 @@ function register_my_custom_menu_page(){
 	add_filter('update_footer', function(){echo '感谢使用';});
 
 	add_theme_support( 'woocommerce' );
+
+	remove_submenu_page('toplevel_page_woocommerce', 'admin.php?page=wc-settings');
 }
 // remove the logo in admin login page
 add_action('login_head', function(){
@@ -218,7 +220,7 @@ function get_the_product_image_html($product){
 }
 
 add_filter( 'woocommerce_alipay_icon', function (){
-	
+	return get_bloginfo('template_url').'/images/alipay.png';
 });
 
 
