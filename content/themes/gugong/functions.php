@@ -7,10 +7,11 @@
  */
 
 
+
 // turn off auto update
 remove_action( 'wp_version_check', 'wp_version_check' );
-add_filter( 'pre_site_transient_update_core', function(){return;});
 remove_action('wp_head', 'wp_generator');
+add_filter('pre_site_transient_update_core', function(){return;});
 // turn off links in header
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wlwmanifest_link');
@@ -238,6 +239,7 @@ function ggshop_add_endpoint() {
 	add_rewrite_rule( 'ucp/([^/]+)', 'index.php?pagename=ucp&ucp-mod=$matches[1]', 'top' );
 }
 
+add_filter('wpua_is_author_or_above', function(){return false;});
 /*
 // handle REST/legacy API request
 add_action( 'parse_request', 'fhandle_api_requests', 0 );

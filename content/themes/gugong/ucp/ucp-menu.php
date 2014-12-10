@@ -1,6 +1,6 @@
 <div class="user_center_menu">
 				<h2>
-					<img src="<?php bloginfo('template_url') ?>/images/tx.jpg" alt="">
+					<?php echo get_wp_user_avatar();?>
 				</h2>
 				<h3><?php echo wp_get_current_user()->display_name; ?></h3>
 				<dl>
@@ -24,7 +24,7 @@
  					<dd><a href="/ucp/info">基本资料</a></dd>
 					<dd><a href="#">登录绑定</a></dd>
 					-->
-					<dd><a href="/ucp/avatar"></a></dd>
 					<dd><a href="/ucp/password">修改密码</a></dd>
+					<dd><a href="/ucp/avatar">设置头像</a></dd>
 				</dl>
 			</div>
