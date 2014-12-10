@@ -2,15 +2,27 @@
 
 
 ggshop_redirect_not_login();
+$current_user = wp_get_current_user();
 
+// 默认头像
+
+$upload_size_limit = isset($wpua_upload_size_limit) ? $wpua_upload_size_limit : 256000;
+$upload_size_limit_k = $upload_size_limit/1000;
 if ($_POST['submit'] && wp_verify_nonce($_POST['nonce'], 'avatar')) {
 
-	var_dump($wp_user_avatar);
-
+	// ($_POST['submit'])
+	if (!empty($_FILES['wpua-file']['name'])) {
+		// $filetype = wp_check_filetype($_FILES['qa_pic']['name']);
+		$filetype = wp_check_filetype($_FILES['wpua-file']['name']);
+		if (!preg_match('/^image/', $filetype['type'])) {
+			$error = '只允许上传jpg、png或gif类型的图片文件';
+		} else if ($_FILES['wpua-file']['size'] > $upload_size_limit) {
+			$error = '允许上传的图片的大小最大为'.$upload_size_limit_k.'K';
+		}
+	} else {
+		;
+	}
 	$wp_user_avatar->wpua_action_process_option_update($current_user->ID);
-
-	echo get_wp_user_avatar();
-	
 }
 
 
@@ -40,9 +52,9 @@ get_header();
 						</div>
 						
 						<div class="input_line">
-							您也可以上传一张自己的图片作为头像
+							您也可以上传一张自己的jpg、png或gif格式的图片作为头像
 						</div>
-						<div>
+						<div class="">
 							<label for="wpua-file">选择图片：</label>
 							<input type="file" name="wpua-file" id="wpua-file" />
 						</div>
@@ -64,6 +76,10 @@ get_header();
 
 	</div>
 
-
+<script type="text/javascript">
+$('#wpua-file').click(function(){
+	$('#default_avatar_1, #default_avatar_2').attr('checked', false);
+});
+</script>
 
 <?php get_footer() ?>

@@ -1,6 +1,6 @@
 <div class="user_center_menu">
 				<h2>
-					<?php echo get_wp_user_avatar();?>
+					<?php echo get_wp_user_avatar(wp_get_current_user()->ID);?>
 				</h2>
 				<h3><?php echo wp_get_current_user()->display_name; ?></h3>
 				<dl>

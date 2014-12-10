@@ -40,7 +40,7 @@ get_header();
 			<div class="user_center_box">
 				
 				<div class="user_center_title">
-					<h3>我的最爱</h3>
+					<h3>我的收藏</h3>
 					<div class="user_center_cen">
 						<div class="shop_pic_list">
 							<?php
