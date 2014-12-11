@@ -239,7 +239,19 @@ function ggshop_add_endpoint() {
 	add_rewrite_rule( 'ucp/([^/]+)', 'index.php?pagename=ucp&ucp-mod=$matches[1]', 'top' );
 }
 
-add_filter('wpua_is_author_or_above', function(){return false;});
+add_filter('wpua_is_author_or_above', function($is_author_or_above){
+	if ($_POST['default_avatar']) {
+		return false;
+	} else {
+		return $is_author_or_above;
+	}
+});
+// add_action('wpua_update', function(){
+// 	if ($_POST['default_avatar']){
+
+// 	}
+// 	return;
+// });
 /*
 // handle REST/legacy API request
 add_action( 'parse_request', 'fhandle_api_requests', 0 );

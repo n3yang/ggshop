@@ -6,23 +6,48 @@ $current_user = wp_get_current_user();
 
 // 默认头像
 
+
 $upload_size_limit = isset($wpua_upload_size_limit) ? $wpua_upload_size_limit : 256000;
 $upload_size_limit_k = $upload_size_limit/1000;
 if ($_POST['submit'] && wp_verify_nonce($_POST['nonce'], 'avatar')) {
 
-	// ($_POST['submit'])
 	if (!empty($_FILES['wpua-file']['name'])) {
 		// $filetype = wp_check_filetype($_FILES['qa_pic']['name']);
 		$filetype = wp_check_filetype($_FILES['wpua-file']['name']);
 		if (!preg_match('/^image/', $filetype['type'])) {
 			$error = '只允许上传jpg、png或gif类型的图片文件';
 		} else if ($_FILES['wpua-file']['size'] > $upload_size_limit) {
-			$error = '允许上传的图片的大小最大为'.$upload_size_limit_k.'K';
+			$error = '允许上传的图片的尺寸最大为'.$upload_size_limit_k.'K';
 		}
+		do_action('wpua_update', $current_user->ID);
+
 	} else {
-		;
+		
+		$q = array(
+			'post_name'			=> 'system-default-avatar',
+			'post_type'			=> 'page',
+			'post_status'		=> 'any',
+			'posts_per_page'	=> 1,
+		);
+		$matrix = get_posts($q);
+
+		$q_avatar = array(
+			'post_parent'		=> $matrix[0]->ID,
+			'post_type'			=> 'attachment',
+			'post_status'		=> 'inherit',
+			'posts_per_page'	=> -1,
+			'order'				=> 'ASC',
+		);
+
+		$avatars = get_posts($q_avatar);
+
+		if ($_POST['default_avatar'] == 1){
+			$default_avatar = $avatars[0]->ID;
+		} else {
+			$default_avatar = $avatars[1]->ID;
+		}
+		update_user_meta($current_user->ID, $wpdb->get_blog_prefix($blog_id).'user_avatar', $default_avatar);
 	}
-	$wp_user_avatar->wpua_action_process_option_update($current_user->ID);
 }
 
 

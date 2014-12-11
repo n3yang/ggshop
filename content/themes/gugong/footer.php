@@ -5,6 +5,13 @@
  * @package Gugong
  * @subpackage GugongShop
  */
+
+if ( current_user_can( 'administrator' ) ) {
+    // global $wpdb;
+    // echo "<pre>";
+    // print_r( $wpdb->queries );
+    // echo "</pre>";
+}
 ?>
 
 
