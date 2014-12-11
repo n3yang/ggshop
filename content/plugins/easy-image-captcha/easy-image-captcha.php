@@ -40,7 +40,7 @@ function EasyImageCaptchaGetCaptchaUrl() {
 
 function EasyImageCaptchaCheckCaptcha($captcha) {
     $eic = new EasyImageCaptcha();
-    return $eic->check($code);
+    return $eic->check($captcha);
 }
 
 function EasyImageCaptchaInit()
@@ -50,10 +50,12 @@ function EasyImageCaptchaInit()
 add_action( 'plugins_loaded', 'EasyImageCaptchaInit' );
 
 add_filter( 'woocommerce_process_registration_errors', 'EasyImageCaptchaCheckCaptchaProcessRegistration', 9,  1);
-function EasyImageCaptchaCheckCaptchaProcessRegistration(){
-    if (! empty( $_POST['register'])){
+function EasyImageCaptchaCheckCaptchaProcessRegistration($validation_error){
+    if ( !empty( $_POST['register']) ){
         if ( !EasyImageCaptchaCheckCaptcha($_POST['captcha']) ){
             return new WP_Error('easy-image-captcha-error-captcha', '请输入正确的验证码');
+        } else {
+            return $validation_error;
         }
     }
 }
