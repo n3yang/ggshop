@@ -138,7 +138,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 				<tbody>
 					<tr>
 						<th style="text-align:left;">
-							购物金额小计 <?php echo WC()->cart->get_cart_subtotal(); ?>元
+							购物金额小计 <?php echo WC()->cart->get_cart_subtotal(); ?>
 						</th>
 						<th style="text-align:right;" class="del">
 							<input type="submit" class="cart-button" name="update_cart" value="<?php _e( 'Update Cart', 'woocommerce' ); ?>" />
@@ -160,9 +160,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 <?php do_action( 'woocommerce_after_cart_table' ); ?>
 
 </form>
-
 			<div class="btn_wrap">
-				<a href="/shop" >
+				<a href="javascript:history.back();" >
 					<img src="<?php bloginfo('template_url') ?>/images/goon_shop.png" alt="">
 				</a>
 				<a href="/checkout" class="">

@@ -17,7 +17,7 @@ if ($_POST['submit'] && wp_verify_nonce($_POST['nonce'], 'avatar')) {
 		if (!preg_match('/^image/', $filetype['type'])) {
 			$message = '只允许上传jpg、png或gif类型的图片文件';
 		} else if ($_FILES['wpua-file']['size'] > $upload_size_limit) {
-			$message = '允许上传的图片的尺寸最大为'.$upload_size_limit_k.'K';
+			$message = '允许上传的图片的尺寸最大为'.$upload_size_limit_k.'Kb';
 		} else {
 			do_action('wpua_update', $current_user->ID);
 			$message = '设置成功！';
