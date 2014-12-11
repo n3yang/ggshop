@@ -240,7 +240,7 @@ function ggshop_add_endpoint() {
 }
 
 add_filter('wpua_is_author_or_above', function($is_author_or_above){
-	if ($_POST['default_avatar']) {
+	if ($_POST['ucp_avatar']) {
 		return false;
 	} else {
 		return $is_author_or_above;

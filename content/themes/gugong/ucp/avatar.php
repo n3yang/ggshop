@@ -15,12 +15,13 @@ if ($_POST['submit'] && wp_verify_nonce($_POST['nonce'], 'avatar')) {
 		// $filetype = wp_check_filetype($_FILES['qa_pic']['name']);
 		$filetype = wp_check_filetype($_FILES['wpua-file']['name']);
 		if (!preg_match('/^image/', $filetype['type'])) {
-			$error = '只允许上传jpg、png或gif类型的图片文件';
+			$message = '只允许上传jpg、png或gif类型的图片文件';
 		} else if ($_FILES['wpua-file']['size'] > $upload_size_limit) {
-			$error = '允许上传的图片的尺寸最大为'.$upload_size_limit_k.'K';
+			$message = '允许上传的图片的尺寸最大为'.$upload_size_limit_k.'K';
+		} else {
+			do_action('wpua_update', $current_user->ID);
+			$message = '设置成功！';
 		}
-		do_action('wpua_update', $current_user->ID);
-
 	} else {
 		
 		$q = array(
@@ -60,12 +61,22 @@ get_header();
 		<div class="user_center_wrap base-clear">
 			
 			<?php get_template_part('ucp/ucp-menu') ?>
+			
 			<div class="user_center_box">
 				<form method="post" enctype="multipart/form-data">
 				<div class="user_center_title">
 					<h3>设置头像</h3>
 					<div class="user_center_cen">
-						<?php echo $message; ?>
+					
+						<?php if ($message):?>
+						<div class="ggshop-message">
+						    <button type="button" class="close">×</button>
+						    <?php echo $message; ?>
+						</div>
+						<div class="input_line">
+						</div>
+						<?php endif;?>
+
 						您可以选择其中一张作为头像，也可以上传一张自己的图片。
 						<div class="input_line">
 							<input type="radio" name="default_avatar" id="default_avatar_1" value="1" />
@@ -88,6 +99,7 @@ get_header();
 							<input type="submit" name="submit" value="确认修改" class="center_btn" />
 							<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('avatar') ?>" />
 							<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr($current_user->ID); ?>" />
+							<input type="hidden" name="ucp_avatar" id="ucp_avatar" value="true" />
 						</div>
 
 					</div>
