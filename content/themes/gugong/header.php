@@ -65,8 +65,7 @@ $header_css = array('header');
 $requri = $_SERVER['REQUEST_URI'];
 if (strpos($requri,'/account?reg')===0) {
 	$header_css[] = 'reg_header';
-}
-if (strpos($requri, '/account?login')===0 || $requri=='/account/lost-password') {
+} else if (strpos($requri, '/account')===0) {
 	$header_css[] = 'login_header';
 }
 $header_css = implode(' ', $header_css);

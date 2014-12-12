@@ -19,7 +19,7 @@ if ( current_user_can( 'administrator' ) ) {
 		<p>
 			北京市公安局朝阳分居备案编号110105014669  京ICP证070359号  互联网药品信息服务资格证编号（京）-非经营性- 2011-0034   新出发京零字第大120007号<br>网络文化经营许可证  京网文（2011）0168-061号 Copyright  © 2004-2013  故宫GD.COM版权所有
 		</p>
-		<?php if ($_SERVER['REQUEST_URI'] == '/account?reg' || $_SERVER['REQUEST_URI']=='/account?login' || $_SERVER['REQUEST_URI']=='/account/lost-password' ){ ?>
+		<?php if (strpos($_SERVER['REQUEST_URI'], '/account')===0) { ?>
 		<img src="<?php bloginfo('template_url'); ?>/images/login_footer.jpg" alt="">
 		<?php }else{ ?>
 		<div class="qq_link">
@@ -36,7 +36,5 @@ if ( current_user_can( 'administrator' ) ) {
 	</div>
 </div>
 <?php wp_footer(); ?>
-<link rel='stylesheet' id='open_social_css-css'  href='http://ggshop.local/content/plugins/open-social/images/os.css?ver=3.7.4' type='text/css' media='all' />
-<script type='text/javascript' src='http://n3yang.com/wp-content/plugins/open-social/images/os.js?ver=4.0.1'></script>
 </body>
 </html>

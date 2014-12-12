@@ -68,7 +68,7 @@ if (isset($_REQUEST['redirect'])){
 					</div>
 					<div class="input_box">
 						<?php wp_nonce_field( 'woocommerce-login' ); ?>
-						<a class="login_info" href="#/account/lost-password">忘记密码</a>
+						<a class="login_info" href="/account/lost-password">忘记密码</a>
 						<a class="login_info" href="/account">还没有商城账号，请从这里开始！</a>
 					</div>
 				<?php do_action( 'woocommerce_login_form_end' ); ?>
