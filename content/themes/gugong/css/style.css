@@ -535,6 +535,23 @@ DIV.jogger .next{
 	margin: 30px auto 0;
 	background: url(../images/login_box_bg.png) no-repeat;
 }
+/***** open social rebuild start *****/
+.login_left .login_box{
+	background: none;
+	width: 30%;
+	height: 100%;
+	margin: 0px auto 20px;
+	display: inline-block;
+}
+.login_left .open_social_box .login_button{
+	width: 50px;
+	height: 50px;
+	margin: 0px 40px 0px 0px;
+}
+.login_left .open_social_box .login_icon_qq{
+	background: url(../images/qq.png) no-repeat;
+}
+/***** open social rebuild end *****/
 .login_left{
 	float: left;
 	width: 250px;

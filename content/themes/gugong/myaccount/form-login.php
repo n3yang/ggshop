@@ -20,7 +20,6 @@ if (isset($_REQUEST['redirect'])){
 
 <?php do_action( 'woocommerce_before_customer_login_form' ); ?>
 
-
 	<?php
 	if (isset($_GET['login'])){
 	?>
@@ -30,14 +29,14 @@ if (isset($_REQUEST['redirect'])){
 			
 			<div class="login_left">
 				<div class="dib-wrap">
+
+					<?php echo open_social_login_html(array('qq','weibo'));?>
+
 					<span class="dib">
-						<a href="#" title="微博"><img src="<?php bloginfo('template_url')?>/images/weibo.png" alt=""></a>
+						<a href="###" onclick="javascript:alert('稍后推出，敬请期待')" title="微博"><img src="<?php bloginfo('template_url')?>/images/weibo.png" alt=""></a>
 					</span>
 					<span class="dib">
-						<a href="#" title="腾讯QQ"><img src="<?php bloginfo('template_url')?>/images/qq.png" alt=""></a>
-					</span>
-					<span class="dib">
-						<a href="#" title="微信"><img src="<?php bloginfo('template_url')?>/images/weixin.png" alt=""></a>
+						<a href="###" onclick="javascript:alert('稍后推出，敬请期待')" title="微信"><img src="<?php bloginfo('template_url')?>/images/weixin.png" alt=""></a>
 					</span>
 				</div>
 				<h3>登录帐号后，您已同意用户条款！</h3>

@@ -35,6 +35,8 @@ if ( current_user_can( 'administrator' ) ) {
 		<?php } ?>
 	</div>
 </div>
-
+<?php wp_footer(); ?>
+<link rel='stylesheet' id='open_social_css-css'  href='http://ggshop.local/content/plugins/open-social/images/os.css?ver=3.7.4' type='text/css' media='all' />
+<script type='text/javascript' src='http://n3yang.com/wp-content/plugins/open-social/images/os.js?ver=4.0.1'></script>
 </body>
 </html>
