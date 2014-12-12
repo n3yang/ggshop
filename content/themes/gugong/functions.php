@@ -90,6 +90,10 @@ add_action( 'load-index.php', function () {
 
 add_action('init', function(){
 	wp_enqueue_style('jquery-ui-style', get_template_directory_uri().'/css/jquery-ui.css');
+	if (strpos($_SERVER['REQUEST_URI'], '/account?')===0) {
+		wp_enqueue_style('open_social_css', plugins_url('open-social').'/images/os.css');
+		wp_enqueue_script('open_social_js', plugins_url('open-social').'/images/os.js', '', '', true);
+	}
 }, 0);
 
 

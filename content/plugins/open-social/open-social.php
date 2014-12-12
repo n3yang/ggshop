@@ -828,7 +828,7 @@ function open_action($os){
 					include_once( ABSPATH . WPINC . '/registration.php' );
 				} 
 				$wpuid = wp_insert_user($userdata);
-				wp_update_user(array('ID'=>$wpuid, 'role'=>'subscriber'));//too open to have an option here
+				wp_update_user(array('ID'=>$wpuid, 'role'=>'customer'));//too open to have an option here
 			}
 		} 
 	} 
