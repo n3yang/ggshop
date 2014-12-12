@@ -50,14 +50,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php else : ?>
 
-        <p><?php echo apply_filters( 'woocommerce_reset_password_message', __( 'Enter a new password below.', 'woocommerce') ); ?></p>
-
-        <p class="form-row form-row-first">
+        <div class="input_box">
+            <?php echo apply_filters( 'woocommerce_reset_password_message', __( 'Enter a new password below.', 'woocommerce') ); ?>
+        </div>
+        <div class="input_box">
             <input type="password" class="login_password" name="password_1" id="password_1" placeholder="<?php _e( 'New password', 'woocommerce' ); ?>" />
-        </p>
-        <p class="form-row form-row-last">
+        </div>
+        <div class="input_box">
             <input type="password" class="login_password" name="password_2" id="password_2" placeholder="<?php _e( 'Re-enter new password', 'woocommerce' ); ?>" />
-        </p>
+        </div>
 
         <input type="hidden" name="reset_key" value="<?php echo isset( $args['key'] ) ? $args['key'] : ''; ?>" />
         <input type="hidden" name="reset_login" value="<?php echo isset( $args['login'] ) ? $args['login'] : ''; ?>" />
