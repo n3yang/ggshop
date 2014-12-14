@@ -33,7 +33,7 @@ if (isset($_REQUEST['redirect'])){
 					<?php // echo open_social_login_html(array('qq','weibo'));?>
 
 					<span class="dib">
-						<a href="###" onclick="login_button_click('qq','http://ggshop.local/')" title=""><img src="http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/img/Connect_logo_5.png" alt=""></a>
+						<a href="###" onclick="login_button_click('qq','<?bloginfo('siteurl')?>')" title=""><img src="http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/img/Connect_logo_5.png" alt=""></a>
 					</span>
 					<span class="dib">
 						<a href="###" onclick="javascript:alert('稍后推出，敬请期待')" title="微博"><img src="<?php bloginfo('template_url')?>/images/weibo.png" alt=""></a>
