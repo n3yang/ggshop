@@ -20,7 +20,7 @@ global $woocommerce, $product, $post;
 			<tbody>
 				<?php $loop = 0; foreach ( $attributes as $name => $options ) : $loop++; ?>
 					<tr>
-						<td class="label"><label for="<?php echo sanitize_title($name); ?>"><?php echo wc_attribute_label( $name ); ?>：</label></td>
+						<td class="label"><label for="<?php echo sanitize_title($name); ?>"><span><?php echo wc_attribute_label( $name ); ?></span>：</label></td>
 						<td class="value"><select id="<?php echo esc_attr( sanitize_title( $name ) ); ?>" name="attribute_<?php echo sanitize_title( $name ); ?>">
 							<option value="">请选择&hellip;</option>
 							<?php
@@ -85,13 +85,13 @@ global $woocommerce, $product, $post;
 			<div class="single_variation"></div>
 
 			<div class="variations_button">
-				<input type="image" src="<?php bloginfo('template_url') ?>/images/btn1.png" >
+				<input id="submit_to_cart" type="image" src="<?php bloginfo('template_url') ?>/images/btn1.png" >
 				<a id="add_favorite" href="javascript:;" class="btn" data-pid="<?php echo $product->id ?>"><img src="<?php bloginfo('template_url') ?>/images/btn2.png" alt=""></a>
 			</div>
 
 			<input type="hidden" name="add-to-cart" value="<?php echo $product->id; ?>" />
 			<input type="hidden" name="product_id" value="<?php echo esc_attr( $post->ID ); ?>" />
-			<input type="hidden" name="variation_id" value="" />
+			<input type="hidden" name="variation_id" id="variation_id" value="" />
 
 			<?php do_action( 'woocommerce_after_single_variation' ); ?>
 		</div>

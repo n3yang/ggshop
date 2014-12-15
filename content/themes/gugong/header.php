@@ -19,6 +19,24 @@
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.blockUI.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+	$.blockUI.defaults.overlayCSS = {
+		background: "#fff",
+		opacity: 0.6,
+		cursor: 'wait'
+	};
+	$.blockUI.defaults.css = {
+		padding:        '20px', 
+		margin:         0, 
+		width:          '30%', 
+		top:            '40%', 
+		left:           '35%', 
+		textAlign:      'center', 
+		color:          '#555', 
+		border:         '3px solid #aaa', 
+		backgroundColor:'#fff', 
+		cursor:         'wait' 
+	};
+
 	$(".search_btn").click(function() {
 		location.href='/search/'+encodeURI($("#search-text").val());
 	});

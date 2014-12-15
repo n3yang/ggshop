@@ -149,7 +149,23 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		</div>
 
 	</div>
-	<script type="text/javascript">
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#submit_to_cart').click(function() {
+		if ($('#variation_id').val()=='') {
+			var labelstring = '';
+			$('table.variations label span').each(function(){
+				labelstring += labelstring=='' ? $(this).text() : '、' + $(this).text();
+			});
+			alert('请选择' + labelstring);
+			return false;
+		}
+		$.blockUI({
+			message: '正在加入购物车，请稍后⋯⋯'
+		});
+		return true;
+	});
 	$('#add_favorite').click(function(event) {
 		var request_uri = '/ucp/favorite?ajax=1&act=add&pid='+$(this).attr('data-pid')
 		$.get(request_uri, function(data) {
@@ -157,6 +173,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		});
 		
 	});
-	</script>
+});
+</script>
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>
