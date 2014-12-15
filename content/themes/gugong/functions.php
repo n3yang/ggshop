@@ -203,6 +203,17 @@ add_action('woocommerce_before_checkout_form', function(){
 	}
 });
 
+// 添加结算跳转页面的wrap
+add_action('before_woocommerce_pay', function(){
+	echo '
+	<div class="main shop_bg" style="min-height: 400px">
+		<div class="shop_wrap" style="width: 600px">';
+});
+add_action('after_woocommerce_pay', function(){
+	echo '</div></div>';
+});
+
+
 function get_the_product_image_html($product){
 
 	$attachment_ids = $product->get_gallery_attachment_ids();

@@ -1213,8 +1213,11 @@ select{
 	margin-right: 15px
 }
 
-.order_details {
-	display: none;
+ul.order_details{
+	margin: 40px 100px 40px 100px;
+}
+ul.order_details li{
+	margin: 3px;
 }
 .shop_wrap .order_detail{
 	display: block;

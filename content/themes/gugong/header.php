@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/base.css" />
 <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/style.css" />
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.blockUI.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$(".search_btn").click(function() {

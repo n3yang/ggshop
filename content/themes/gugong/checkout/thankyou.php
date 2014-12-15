@@ -83,12 +83,3 @@ if ( $order ) : ?>
 	<p><?php _e( 'Thank you. Your order has been received.', 'woocommerce' ); ?></p>
 
 <?php endif; ?>
-
-<style type="text/css">
-.order_details{
-	margin: 40px 100px 40px 100px;
-}
-.order_details li{
-	margin: 3px;
-}
-</style>
