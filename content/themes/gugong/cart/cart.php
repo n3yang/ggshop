@@ -61,7 +61,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 					<td class="product-thumbnail">
 						<?php
-							$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', wp_get_attachment_image( get_post_thumbnail_id($product_id) ), $cart_item, $cart_item_key );
+							$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', get_the_product_image_html($_product), $cart_item, $cart_item_key );
 
 							if ( ! $_product->is_visible() )
 								echo $thumbnail;
@@ -134,7 +134,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 				</tbody>
 			</table>
 
-			<table class="table" width="100%" align="center" border="0" cellpadding="5" cellspacing="1">
+			<table class="table" width="100%" align="center" border="0" cellpadding="5" cellspacing="0">
 				<tbody>
 					<tr>
 						<th style="text-align:left;">
