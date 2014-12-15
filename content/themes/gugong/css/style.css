@@ -703,7 +703,7 @@ a.login_info{
 }
 
 .table th{
-	text-align: left;
+	text-align: center;
 	height: 30px;
 	line-height: 30px;
 	background: #dbdbdc;
