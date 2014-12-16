@@ -20,16 +20,16 @@ $list = array(
         'name'  => '宫廷文房',
     ),
     array(
-        'link'  => 'media',
-        'name'  => '宫廷音画',
-    ),
-    array(
         'link'  => 'toys',
         'name'  => '宫廷童趣',
     ),
     array(
         'link'  => 'zhuangmei',
         'name'  => '壮壮美美',
+    ),
+    array(
+    	'link'	=> 'limited-edtion',
+    	'name'	=> '限量发售',
     ),
 );
 
