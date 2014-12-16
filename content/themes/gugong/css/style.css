@@ -166,25 +166,25 @@ body{
 
 @keyframes myfirst
 {
-0% {background: #fff;border: 5px solid #fff;}
+0% {background: #efefef;border: 5px solid #efefef;}
 100% {background: #D5BA5A;border: 5px solid #D5BA5A;}
 }
 
 @-moz-keyframes myfirst /* Firefox */
 {
-0% {background: #fff;border: 5px solid #fff;}
+0% {background: #efefef;border: 5px solid #efefef;}
 100% {background: #D5BA5A;border: 5px solid #D5BA5A;}
 }
 
 @-webkit-keyframes myfirst /* Safari 和 Chrome */
 {
-0% {background: #fff;border: 5px solid #fff;}
+0% {background: #efefef;border: 5px solid #efefef;}
 100% {background: #D5BA5A;border: 5px solid #D5BA5A;}
 }
 
 @-o-keyframes myfirst /* Opera */
 {
-0% {background: #fff;border: 5px solid #fff;}
+0% {background: #efefef;border: 5px solid #efefef;}
 100% {background: #D5BA5A;border: 5px solid #D5BA5A;}
 }
 .list_item_wrap ul{
@@ -197,7 +197,7 @@ body{
 	margin-left: 80px;
 	padding-bottom: 10px;
 	margin-bottom: 50px;
-	background: #fff;border: 5px solid #fff;
+	background: #efefef;border: 5px solid #efefef;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
@@ -1262,4 +1262,4 @@ button.close {
 	opacity: .2;
 	filter: alpha(opacity=20);
 }
-
+/*rgb(124, 124, 124) 0px 0px 30px 5px*/
