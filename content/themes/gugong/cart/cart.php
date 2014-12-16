@@ -35,7 +35,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 			<table class="table" width="100%" align="center" border="0" cellpadding="5" cellspacing="1">
 					<tr>
-						<th width="50px"><input class="check_all" id="all" type="checkbox" /><label class="check_label" for="all">全选</label></th>
+						<th width="50px"><!-- <input class="check_all" id="all" type="checkbox" /><label class="check_label" for="all">全选</label> --></th>
 						<th colspan="2">商品名称</th>
 						<th>商品定价</th>
 						<th>优惠价</th>
@@ -56,7 +56,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 				<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 
 					<td class="check_set">
-						<input type="checkbox" >
+					<!--<input type="checkbox" >-->
 					</td>
 
 					<td class="product-thumbnail">
@@ -141,8 +141,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 							购物金额小计 <?php echo WC()->cart->get_cart_subtotal(); ?>
 						</th>
 						<th style="text-align:right;" class="del">
-							<input type="submit" class="cart-button" name="update_cart" value="<?php _e( 'Update Cart', 'woocommerce' ); ?>" />
-							<input type="button" class="cart-button" name="empty_cart" onclick="location.href='/cart?empty-cart'" value="清空购物车" />
+							<input type="submit" class="cart-button-update" name="update_cart" value=" " />
+							<input type="button" class="cart-button-empty" name="empty_cart" onclick="location.href='/cart?empty-cart'" value=" " />
 						</th>
 					</tr>
 
