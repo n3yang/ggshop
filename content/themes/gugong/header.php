@@ -45,8 +45,11 @@ $(document).ready(function() {
 		return false;
 	});
 	$('.ggshop-message .close').click(function() {
-		$(this).parent().hide();
+		$(this).parent().slideUp();
 	});
+	setTimeout(function() {
+		$('.ggshop-message').slideDown();
+	}, 1000);
 });
 </script>
 </head>
