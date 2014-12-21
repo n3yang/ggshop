@@ -95,7 +95,6 @@
 		};
 		
 		function showSlide(){
-			opts.aA.eq( page ).addClass( "active" ).siblings().removeClass( "active" );
 			opts.aLi.eq( page ).css({ "opacity" : 1 });
 			opts.aLi.eq( page ).siblings().animate( { "opacity" : 0 }, opts.showTime, function(){
 				opts.aLi.eq( page ).css({"z-index":1}).siblings().css({"z-index":0});
@@ -139,16 +138,17 @@
 		});
 
 		opts.aA.mouseover(function(){
-			if( !opts.aLi.is( ":animated" ) ){
+			// if( !opts.aLi.is( ":animated" ) ){ // remove group
 				var index = opts.aA.index( this ); 
 				page = index;
-				showSlide();
-			}
+				// showSlide(); // remove group
+				opts.aA.eq( page ).addClass( "active" ).siblings().removeClass( "active" );
+			// } // remove group
 		});
 		
 		
 		this.hover( function(){
-			clearInterval(play);
+			// clearInterval(play); // remove group
 		}, function(){
 			play = setInterval(function(){
 				playSlide();
