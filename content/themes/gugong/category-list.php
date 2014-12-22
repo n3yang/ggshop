@@ -28,7 +28,7 @@ $list = array(
         'name'  => '壮壮美美',
     ),
     array(
-    	'link'	=> 'limited-edtion',
+    	'link'	=> 'limited-edition',
     	'name'	=> '限量发售',
     ),
 );
