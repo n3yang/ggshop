@@ -61,23 +61,19 @@ $current_user = wp_get_current_user();
 <div class="wrap">
 	
 	<div class="top_bar base-clear">
-		<div class="top_left"><?php echo $current_user->ID==0 ? '亲' : $current_user->display_name; ?>，欢迎您来到故宫商城！</div>
+		<div class="top_left">
+				<?php if ($current_user->ID==0){ ?>
+				亲，欢迎您来到故宫商城！<a href="/account?login">登录</a> | <a href="/account?reg">注册</a>
+				<?php }else{ ?>
+				<?=$current_user->display_name;?>，欢迎您来到故宫商城！<a href="<?php echo wp_logout_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>"?>退出</a>
+				<?php } ?>
+		</div>
 		<div class="top_right">
 			<span id="searchBox">
 				<form id="header_search" action="/search/" method="get">
 					<input id="search-text" class="search" type="text" name="s" />
 					<input class="search_btn" type="submit" value="" />
 				</form>
-			</span>
-			<span>
-				<?php if ($current_user->ID==0){ ?>
-				<a href="/account?login">登录</a> | <a href="/account?reg">注册</a>
-				<?php }else{ ?>
-				<a href="<?php echo wp_logout_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>"?>退出</a>
-				<?php } ?>
-			</span>
-			<span>
-				<a id="shop" href="/cart">您的购物车</a>
 			</span>
 		</div>
 	</div>
@@ -101,7 +97,7 @@ $header_css = implode(' ', $header_css);
 				<li class="c_nav"></li>
 				<li><a class="nav4" href="#"></a></li>
 				<li><a class="nav5" href="#"></a></li>
-				<li><a class="nav6" href="#"></a></li>
+				<li><a class="nav6" href="/cart"></a></li>
 			</ul>
 		</div>
 	</div>

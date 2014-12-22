@@ -10,9 +10,12 @@ body{
 }
 .top_bar{
 	height: 43px;
-	padding: 0 105px;
+	padding: 0 115px;
 	font-size: 12px;
 	background: url(../images/top_bar.jpg) no-repeat;
+}
+.top_bar a{
+	color: #f8dcac;
 }
 .header{
 	height: 150px;
@@ -27,9 +30,6 @@ body{
 .top_right{
 	float: right;
 	padding-top: 5px;
-	color: #f8dcac;
-}
-.top_right a{
 	color: #f8dcac;
 }
 .top_right span{
