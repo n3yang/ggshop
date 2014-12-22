@@ -38,6 +38,11 @@
 		                	<a style="position:absolute;width:1200px;height:367px;" href="category/zhuangmei"></a>
 		                </div>
 		            </li>
+		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/101.jpg">
+		                <div class="slide-pic">
+		                	<a style="position:absolute;width:1200px;height:367px;" href="category/limited-edition"></a>
+		                </div>
+		            </li>
 		        </ul>
 		        <div class="slide-trigger dib-wrap">
 		            <a class="dib a2 active" href="category/hot"></a>
@@ -47,6 +52,7 @@
 		            <a class="dib a6" href="category/electronics"></a>
 		            <a class="dib a7" href="category/clothing"></a>
 		            <a class="dib a9" href="category/zhuangmei"></a>
+		            <a class="dib a10" href="category/limited-edition"></a>
 		        </div>
 
 		        <div class="slide-btn">
