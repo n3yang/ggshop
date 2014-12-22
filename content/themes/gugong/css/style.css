@@ -254,6 +254,9 @@ body{
 	line-height: 16px;
 	margin-left: 7px;
 }
+.list_item_wrap li a div span.amount{
+	display: inline;
+}
 .list_item_wrap li a div span{
 	display: block;
 	line-height: 16px;

@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 										<?php the_post_thumbnail('shop_catalog') ?>
 									</em>
 									<div>
-										<p>RMB: <strong><?php echo ($product->get_price()); ?></strong></p>
+										<p><strong><?php echo ($product->get_price_html()); ?></strong></p>
 										<span><?php the_title() ?></span>
 									</div>
 								</a>
