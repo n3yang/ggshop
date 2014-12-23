@@ -4,6 +4,10 @@ $product_cat = get_query_var('product_cat');
 
 $list = array(
     array(
+        'link'  => 'hot',
+        'name'  => '热销产品',
+    ),
+    array(
         'link'  => 'clothing',
         'name'  => '宫廷服饰',
     ),
