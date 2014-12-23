@@ -44,10 +44,20 @@ body{
 	background: url(../images/search_bg.png) no-repeat;
 	position: relative;
 }
+#searchBox input::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #f8dcac;
+}
+#searchBox input:-moz-placeholder, #searchBox input::-moz-placeholder { /* Mozilla Firefox 4 to 18 */ /* Mozilla Firefox 19+ */
+    color:    #f8dcac;
+    opacity:  1;
+}
+#searchBox input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #f8dcac;
+}
 .search{
 	width: 200px;
 	height: 22px;
-	padding: 4px;
+	padding: 4px 0px 0px 12px;
 	background: none;
 	border:none;
 	color: #f8dcac;

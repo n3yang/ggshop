@@ -71,7 +71,7 @@ $current_user = wp_get_current_user();
 		<div class="top_right">
 			<span id="searchBox">
 				<form id="header_search" action="/search/" method="get">
-					<input id="search-text" class="search" type="text" name="s" />
+					<input id="search-text" class="search" type="text" name="s" placeholder="搜索您想要的商品" />
 					<input class="search_btn" type="submit" value="" />
 				</form>
 			</span>
