@@ -1053,8 +1053,14 @@ select{
 	cursor: pointer;
 	vertical-align: middle;
 	display: inline-block;
-	border: 2px solid #fff;
+	border: 1px solid #fff;
 	line-height: 0;
+}
+.shop_add_box label.selected{
+	border: 1px solid #3ab69b;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
 }
 .shop_add_box span{
 	display: inline-block;

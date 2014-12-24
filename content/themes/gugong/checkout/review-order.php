@@ -267,33 +267,17 @@ jQuery(document).ready(function($) {
 		}
 	});
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	function add_selected_border(){
-		$('.shop_add_box input').each(function(i,e) {
-			if($(e).checked){
-				$(e).next('label').children('img').hide();
-				
+		$('.shop_add_box input').each(function(i,el) {
+			if($(el).attr('checked')){
+				$(el).next('label').addClass('selected');
+			}else{
+				$(el).next('label').removeClass('selected');
 			}
 		});
 	}
-
-	$('.shop_add_box input').select(add_selected_border());
+	add_selected_border();
+	$('.shop_add_box input[name=payment_method]').change(function(){add_selected_border();});
 
 
 
