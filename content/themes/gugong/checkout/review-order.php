@@ -267,6 +267,37 @@ jQuery(document).ready(function($) {
 		}
 	});
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	function add_selected_border(){
+		$('.shop_add_box input').each(function(i,e) {
+			if($(e).checked){
+				$(e).next('label').children('img').hide();
+				
+			}
+		});
+	}
+
+	$('.shop_add_box input').select(add_selected_border());
+
+
+
+
 });
 </script>
 	</div>
