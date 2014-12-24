@@ -1158,6 +1158,7 @@ select{
 	color: #3468b1;
 }
 .mct_t th{
+	font-weight: normal;
 	background: #f1f1f1;
 	border-top: 1px solid #ccc;
 }
