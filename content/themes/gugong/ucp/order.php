@@ -81,7 +81,7 @@ get_header();
 										endforeach; ?>
 									</td>
 									<td class="rmb">
-										￥<?=sprintf('%.2f',$order->get_order_total())?>元<br>
+										￥<?=sprintf('%.2f',$order->get_order_total())?><br>
 										<span>
 											在线支付
 										</span>
