@@ -392,6 +392,10 @@ class WC_Alipay extends WC_Payment_Gateway {
 
             unset( $_GET['order'] );
             unset( $_GET['key'] );
+            // fix bug by n3yang on 2014-12-25
+            // if the permalink is open, the $alipayNotify->verifyReturn allways renturn false.
+            // we must remove the param 'q' from $_GET, it works. 
+            unset( $_GET['q'] );
 
             if ( $this->debug == 'yes' ){
                 $log = true;
@@ -628,7 +632,10 @@ class WC_Alipay extends WC_Payment_Gateway {
 
                     $order->add_order_note( __( 'The order is completed', 'alipay' ) );
 
-                    $this->payment_complete( $order );                   
+                    // fix bug by n3yang on 2014-12-25
+                    // if the payment is successful, the order should be complete, just like $this->thankyou_page
+                    // $this->payment_complete( $order );                 
+					$order->payment_complete();  
 
                     if( isset($_POST['trade_no']) && !empty($_POST['trade_no']) ){
                         update_post_meta( $order_id, 'Alipay Trade No.', wc_clean( $_POST['trade_no'] ) );
