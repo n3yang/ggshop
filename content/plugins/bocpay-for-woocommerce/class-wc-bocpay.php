@@ -227,7 +227,7 @@ class WC_Bocpay extends WC_Payment_Gateway {
         $order = new WC_Order($order_id);
 
         if( $order->status != 'completed'){
-            $this->payment_complete($order);
+            $order->payment_complete();
             $order->add_order_note ('支付成功');
             update_post_meta( $order_id, 'Bocpay Trade No.', wc_clean( $sources[8] ) );
             $this->log->add('bocpay', "code: 000000\tmessage: ".$notifyMsg);
@@ -420,7 +420,7 @@ class WC_Bocpay extends WC_Payment_Gateway {
         $order_id = $sources[5];
         $order = new WC_Order($order_id);
         if( $order->status != 'completed'){
-            $this->payment_complete( $order );
+            $order->payment_complete();
             $order->add_order_note ('支付成功');
             update_post_meta( $order_id, 'Bocpay Trade No.', wc_clean( $sources[8] ) );
             $this->log->add('bocpay', "code: 000000\tmessage: ".$notifyMsg);
