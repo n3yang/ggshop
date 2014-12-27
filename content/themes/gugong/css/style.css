@@ -1,4 +1,4 @@
-body{
+`body{
 	background: #282828;
 	margin: 0
 }
@@ -300,7 +300,7 @@ DIV.jogger A:hover {
 DIV.jogger A:active {
 	COLOR: #fff; BACKGROUND-COLOR: #9a2d26
 }
-DIV.jogger SPAN.current {
+DIV.jogger .current {
 	padding: 5px 10px;
 	COLOR: #fff; BACKGROUND-COLOR: #9a2d26; 
 	-moz-border-radius: 2px;     
