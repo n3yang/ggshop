@@ -96,6 +96,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 					</td>
 
 					<td class="product-quantity">
+						<span class="quantity-update" data-method="subtract"> - </span>
 						<?php
 							if ( $_product->is_sold_individually() ) {
 								$product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" size="4" />', $cart_item_key );
@@ -110,6 +111,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 							echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key );
 						?>
+						<span class="quantity-update" data-method="add"> + </span>
 					</td>
 
 					<td class="product-subtotal">
@@ -214,6 +216,43 @@ wp_reset_postdata();
 </div>
 
 
-<style>
-.quantity input{ width: 50px;}
+<style type="text/css">
+.quantity{
+	display: inline;
+}
+.quantity input{ width: 30px;}
+.cart-button-update {
+	/*display: none;*/
+}
+
+.product-quantity .quantity-update {
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	overflow: hidden;
+	line-height: 14px;
+	background: #fff;
+	border: 1px solid #ccc;
+	text-align: center;
+	color: #666;
+	vertical-align: middle;
+	cursor: pointer;
+}
 </style>
+
+
+
+<script type="text/javascript">
+	$('.product-quantity .quantity-update').click(function(event) {
+		qinput = $(this).parent().find('input');
+		if ($(this).data('method')=='subtract'){
+			qinput.val(parseInt(qinput.val())-1);
+		} else {
+			qinput.val(parseInt(qinput.val())+1);
+		}
+		$.blockUI({
+			message: '正在更新，请稍后⋯⋯'
+		});
+		$('.cart-button-update').click();
+	});
+</script>
