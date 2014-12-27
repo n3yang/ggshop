@@ -3,14 +3,14 @@
 		<div class="banner">
 			<div id="ui-slide">
 		        <ul class="slide">
+		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/101.jpg">
+		                <div class="slide-pic">
+		             		<a style="position:absolute;width:1200px;height:367px;" href="category/hot"></a>
+		                </div>
+		            </li>
 		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/11.jpg">
 		                <div class="slide-pic">
 		                	<a style="position:absolute;width:1200px;height:367px;" href="category/toys"></a>
-		                </div>
-		            </li>
-		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/22.jpg">
-		                <div class="slide-pic">
-		             		<a style="position:absolute;width:1200px;height:367px;" href="category/media"></a>
 		                </div>
 		            </li>
 		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/44.jpg">
@@ -38,7 +38,7 @@
 		                	<a style="position:absolute;width:1200px;height:367px;" href="category/zhuangmei"></a>
 		                </div>
 		            </li>
-		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/101.jpg">
+		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/88.jpg">
 		                <div class="slide-pic">
 		                	<a style="position:absolute;width:1200px;height:367px;" href="category/limited-edition"></a>
 		                </div>
