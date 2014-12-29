@@ -98,6 +98,10 @@
 				"opacity": 1,
 				'z-index': 1
 			}); 
+			// autoplay
+			play = setInterval(function(){
+				playSlide();
+			}, opts.autoPlayTime);
 		};
 		
 		function showSlide(){
@@ -152,14 +156,15 @@
 			// } // remove group
 		});
 		
-		
+		/* remove group
 		this.hover( function(){
-			// clearInterval(play); // remove group
+			clearInterval(play); // remove group
 		}, function(){
 			play = setInterval(function(){
 				playSlide();
 			}, opts.autoPlayTime);
 		}).trigger( "mouseleave" );
+		*/
 	};
 	
 	
