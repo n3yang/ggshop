@@ -14,7 +14,9 @@ if ( ! $messages ) return;
 
 <div class="ggshop-message">
     <button type="button" class="close">×</button>
+    <span>
     <?php foreach ( $messages as $message ) : ?>
     <?php echo wp_kses_post( $message ); ?>
     <?php endforeach; ?>
+	</span>
 </div>

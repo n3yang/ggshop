@@ -149,10 +149,10 @@
 
 		opts.aA.mouseover(function(){
 			// if( !opts.aLi.is( ":animated" ) ){ // remove group
-				var index = opts.aA.index( this ); 
-				page = index;
+				// var index = opts.aA.index( this ); 
+				// page = index;
 				// showSlide(); // remove group
-				opts.aA.eq( page ).addClass( "active" ).siblings().removeClass( "active" );
+				opts.aA.eq( opts.aA.index( this ) ).addClass( "active" ).siblings().removeClass( "active" );
 			// } // remove group
 		});
 		

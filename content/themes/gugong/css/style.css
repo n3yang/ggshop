@@ -501,7 +501,7 @@ DIV.jogger .next{
 
 #ui-slide .slide-pic{
 	width:1200px;
-	height:347px;
+	height:348px;
 	margin:10px auto;
 }
 
@@ -1261,7 +1261,23 @@ ul.order_details li{
 	border-width: 0px;
 	cursor: pointer;
 }
-
+.item_title_right #submit_to_cart{
+	background: url(../images/add-to-cart-btn.png) no-repeat -42px -25px;
+	width: 124px;
+	height: 36px;
+}
+.item_title_right #submit_to_cart:hover{
+	background: url(../images/add-to-cart-btn.png) no-repeat -42px -78px;
+}
+.item_title_right #add_favorite{
+	display: inline-block;
+	background: url(../images/add-to-cart-btn.png) no-repeat -179px -25px;
+	width: 124px;
+	height: 36px;
+}
+.item_title_right #add_favorite:hover{
+	background: url(../images/add-to-cart-btn.png) no-repeat -179px -78px;
+}
 .ggshop-message {
 	padding: 8px 8px 8px 14px;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.5);

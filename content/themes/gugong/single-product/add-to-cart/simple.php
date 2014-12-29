@@ -39,8 +39,8 @@ if ( ! $product->is_purchasable() ) return;
 
 	 	<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
 
-	 	<input type="image" id="submit_to_cart" src="<?php bloginfo('template_url') ?>/images/btn1.png" >
-		<a id="add_favorite" href="javascript:;" class="btn" data-pid="<?php echo $product->id ?>"><img src="<?php bloginfo('template_url') ?>/images/btn2.png" alt=""></a>
+	 	<input type="image" id="submit_to_cart"  value="  " >
+		<a id="add_favorite" href="javascript:;" class="btn" data-pid="<?php echo $product->id ?>"></a>
 
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 	</form>
