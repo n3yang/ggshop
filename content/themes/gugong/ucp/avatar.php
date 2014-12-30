@@ -25,7 +25,7 @@ if ($_POST['submit'] && wp_verify_nonce($_POST['nonce'], 'avatar')) {
 	} else {
 		
 		$q = array(
-			'post_name'			=> 'system-default-avatar',
+			'name'				=> 'system-default-avatar',
 			'post_type'			=> 'page',
 			'post_status'		=> 'any',
 			'posts_per_page'	=> 1,
