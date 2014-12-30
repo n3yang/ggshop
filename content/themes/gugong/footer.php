@@ -17,7 +17,8 @@ if ( current_user_can( 'administrator' ) ) {
 
 	<div class="footer">
 		<p>
-			北京市公安局朝阳分居备案编号110105014669  京ICP证070359号  互联网药品信息服务资格证编号（京）-非经营性- 2011-0034   新出发京零字第大120007号<br>网络文化经营许可证  京网文（2011）0168-061号 Copyright  © 2004-2013  故宫GD.COM版权所有
+			京ICP证070359号<br>
+			版权所有 © 2015 故宫商城
 		</p>
 		<?php if (strpos($_SERVER['REQUEST_URI'], '/account')===0) { ?>
 		<img src="<?php bloginfo('template_url'); ?>/images/login_footer.jpg" alt="">
