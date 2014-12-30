@@ -6,7 +6,6 @@
  * @package Gugong
  * @subpackage GugongShop
  */
-
 get_header()
 ?>
 	<div class="main help_center_bg">
@@ -26,8 +25,8 @@ get_header()
 					<dt>售后服务</dt>
 					<dd><a href="">退换货规则</a></dd>
 					<dt>优惠活动</dt>
-					<dd><a href="">代金券</a></dd>
-					<dt><a href="">联系我们</a></dt>
+					<dd><a href="how-to-use-coupons">代金券</a></dd>
+					<dt><a href="contact-us">联系我们</a></dt>
 				</dl>
 			</div>
 
