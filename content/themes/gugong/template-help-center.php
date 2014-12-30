@@ -23,7 +23,7 @@ get_header()
 					<dd><a href="">支付方式</a></dd>
 					<dd><a href="">发票说明</a></dd>
 					<dt>售后服务</dt>
-					<dd><a href="">退换货规则</a></dd>
+					<dd><a href="returns-and-replacements">退换货规则</a></dd>
 					<dt>优惠活动</dt>
 					<dd><a href="how-to-use-coupons">代金券</a></dd>
 					<dt><a href="contact-us">联系我们</a></dt>
