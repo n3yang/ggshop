@@ -8,24 +8,24 @@ $list = array(
         'name'  => '热销产品',
     ),
     array(
-        'link'  => 'clothing',
-        'name'  => '宫廷服饰',
-    ),
-    array(
-        'link'  => 'electronics',
-        'name'  => '宫廷数码',
-    ),
-    array(
-        'link'  => 'home',
-        'name'  => '宫廷家居',
+        'link'  => 'toys',
+        'name'  => '宫廷童趣',
     ),
     array(
         'link'  => 'study',
         'name'  => '宫廷文房',
     ),
     array(
-        'link'  => 'toys',
-        'name'  => '宫廷童趣',
+        'link'  => 'home',
+        'name'  => '宫廷家居',
+    ),
+    array(
+        'link'  => 'electronics',
+        'name'  => '宫廷数码',
+    ),
+    array(
+        'link'  => 'clothing',
+        'name'  => '宫廷服饰',
     ),
     array(
         'link'  => 'zhuangmei',
