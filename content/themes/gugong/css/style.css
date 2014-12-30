@@ -1325,3 +1325,66 @@ button.close {
 	filter: alpha(opacity=20);
 }
 /*rgb(124, 124, 124) 0px 0px 30px 5px*/
+
+
+
+
+.help_center_bg{
+	min-height: 500px;
+	background: url(../images/help-center-banner.jpg) top center no-repeat #f5f3f4;
+	padding-top: 220px;
+	padding-bottom: 50px;
+}
+.help_center_wrap{
+	width: 990px;
+	margin: 0 auto;
+	background: url(../images/help-center-bg.jpg) repeat-y;
+}
+.help_center_menu{
+	float: left;
+	width: 190px;
+}
+.help_center_menu a:hover, .help_center_menu a.current{
+	color: #D0A542;
+	text-decoration: none;
+}
+.help_center_menu dl{
+	border-right: 1px solid #c9c9c9;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+.help_center_menu dt{
+	height: 44px;
+	width: 170px;
+	margin-top: 15px;
+	padding-left: 50px;
+	line-height: 45px;
+	/*font-weight: bold;*/
+	font-size: 18px;
+	font-family: "\5FAE\8F6F\96C5\9ED1","\5b8b\4f53";
+	background: url(../images/help-center-menu-bg.jpg) no-repeat;
+}
+.help_center_menu dd{
+	width: 184px;
+	padding: 5px 0px 0px 5px;
+	line-height: 33px;
+	border-bottom: 1px solid #c9c9c9;
+}
+.help_center_title{
+	margin-top: 20px;
+}
+.help_center_title h3{
+	font-size: 16px;
+	height: 20px;
+	line-height: 20px;
+	padding-left: 15px;
+	border-left: 5px solid #D0A542;
+}
+.help_center_title hr{
+	border: solid #D0A542 1px;
+	margin-top: 16px;
+}
+.help_center_content{
+	margin-top: 40px;
+	line-height: 200%;
+}
