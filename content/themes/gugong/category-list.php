@@ -31,10 +31,10 @@ $list = array(
         'link'  => 'zhuangmei',
         'name'  => '壮壮美美',
     ),
-    array(
-    	'link'	=> 'limited-edition',
-    	'name'	=> '限量发售',
-    ),
+    // array(
+    // 	'link'	=> 'limited-edition',
+    // 	'name'	=> '限量发售',
+    // ),
 );
 
 ?>
