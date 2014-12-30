@@ -63,7 +63,7 @@ $current_user = wp_get_current_user();
 	<div class="top_bar base-clear">
 		<div class="top_left">
 				<?php if ($current_user->ID==0){ ?>
-				亲，欢迎您来到故宫商城！<a href="/account?login">登录</a> | <a href="/account?reg">注册</a>
+				欢迎您来到故宫商城！<a href="/account?login">登录</a> | <a href="/account?reg">注册</a>
 				<?php }else{ ?>
 				<?=$current_user->display_name;?>，欢迎您来到故宫商城！<a href="<?php echo wp_logout_url( get_permalink( wc_get_page_id( 'shop' ) ) )?>"?>退出</a>
 				<?php } ?>
