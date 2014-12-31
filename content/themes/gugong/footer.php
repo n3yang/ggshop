@@ -28,7 +28,7 @@ if ( current_user_can( 'administrator' ) ) {
 			<a onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&amp;sid=2695890168&amp;q=7&amp;ref='+document.location, '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');">QQ2：2695890168</a>
 		</div>
 		<div class="a_link">
-			<a href="#"><em>1</em>购买流程</a>
+			<a href="/how-to-buy"><em>1</em>购买流程</a>
 			<a href="/returns-and-replacements"><em>2</em>退换货规则</a>
 			<a href="/how-to-use-coupons"><em>3</em>代金券规则</a>
 			<a href="/contact-us"><em>4</em>联系我们</a>
