@@ -24,8 +24,8 @@ if ( current_user_can( 'administrator' ) ) {
 		<img src="<?php bloginfo('template_url'); ?>/images/login_footer.jpg" alt="">
 		<?php }else{ ?>
 		<div class="qq_link">
-			<a onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&amp;sid=2287916807&amp;q=7&amp;ref='+document.location, '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');">QQ1：2287916807</a>
-			<a onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&amp;sid=2695890168&amp;q=7&amp;ref='+document.location, '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');">QQ2：2695890168</a>
+			<a onclick="javascript:return(0);">QQ1：2287916807</a>
+			<a onclick="javascript:return(0);">QQ2：2695890168</a>
 		</div>
 		<div class="a_link">
 			<a href="/how-to-buy"><em>1</em>购买流程</a>
