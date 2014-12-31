@@ -21,7 +21,7 @@ get_header()
 					<dd><a href="how-to-register-or-login">登陆/注册</a></dd>
 					<dt>付款方式</dt>
 					<dd><a href="how-to-checkout">支付方式</a></dd>
-					<dd><a href="#">发票说明</a></dd>
+					<!-- <dd><a href="#">发票说明</a></dd> -->
 					<dt>售后服务</dt>
 					<dd><a href="returns-and-replacements">退换货规则</a></dd>
 					<dt>优惠活动</dt>
