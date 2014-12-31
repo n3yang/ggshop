@@ -24,9 +24,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<?php get_template_part('category-list') ?>
 							
 				<div class="list_con" style="text-align: center">
-					
-						<h3>没有找到符合要求的产品</h3>
-
+					<?php
+					if (get_query_var('product_cat')=='zhuangmei') {
+						echo '<img src="'.get_bloginfo('template_url').'/images/zhuangmei-category-block.jpg" />';
+					} else {
+						echo '<h3>没有找到符合要求的产品</h3>';
+					}
+					?>
 				</div>
 
 

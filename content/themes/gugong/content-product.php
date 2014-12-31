@@ -48,9 +48,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 							?>
 						</ul>
 
-						<!-- <div class="jogger"><a class="prev" href=""> &lt; 上一页</a> <span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a><a href="#?page=4">4</a><a href="#?page=5">5</a><a href="#?page=6">6</a><a class="next" href="#?page=2">下一页 &gt; </a></div> -->
-
-
 							<?php 
 							ggshop_pagin_nav();
 		/*
