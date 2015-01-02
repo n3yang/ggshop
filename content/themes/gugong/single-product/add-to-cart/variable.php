@@ -85,7 +85,7 @@ global $woocommerce, $product, $post;
 			<div class="single_variation"></div>
 
 			<div class="variations_button">
-				<input id="submit_to_cart" type="image" src="<?php bloginfo('template_url') ?>/images/btn1.png" >
+				<input id="submit_to_cart" type="image" value="  " >
 				<a id="add_favorite" href="javascript:;" class="btn" data-pid="<?php echo $product->id ?>"></a>
 			</div>
 
