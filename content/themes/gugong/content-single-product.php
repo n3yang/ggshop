@@ -108,7 +108,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 				<?php
-				$related = $product->get_related( 4 );
+				$related = $product->get_related( 8 );
 
 				if ( sizeof( $related ) > 0 ) {
 				$args = apply_filters( 'woocommerce_related_products_args', array(
