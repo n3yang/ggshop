@@ -24,8 +24,8 @@ if ( current_user_can( 'administrator' ) ) {
 		<img src="<?php bloginfo('template_url'); ?>/images/login_footer.jpg" alt="">
 		<?php }else{ ?>
 		<div class="qq_link">
-			<a onclick="javascript:return(0);">QQ1：2287916807</a>
-			<a onclick="javascript:return(0);">QQ2：2695890168</a>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2287916807&site=qq&menu=yes">QQ1：2287916807</a>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2695890168&site=qq&menu=yes">QQ2：2695890168</a>
 		</div>
 		<div class="a_link">
 			<a href="/how-to-buy"><em>1</em>购买流程</a>
