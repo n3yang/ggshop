@@ -40,5 +40,14 @@
 	<div>
 		<a href="/shop"><img src="<?=bloginfo('template_url')?>/images/index_btn.png" alt="" onmouseover="javascript:this.src='<?=bloginfo('template_url')?>/images/index_btn_over.png'" onmouseout="javascript:this.src='<?=bloginfo('template_url')?>/images/index_btn.png'"></a>
 	</div>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?ea16ca62bf991c2150676da256bd23d0";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </body>
 </html>

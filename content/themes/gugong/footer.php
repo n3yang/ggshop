@@ -38,5 +38,14 @@ if ( current_user_can( 'administrator' ) ) {
 	</div>
 </div>
 <?php wp_footer(); ?>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?ea16ca62bf991c2150676da256bd23d0";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </body>
 </html>
