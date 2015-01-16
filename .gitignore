@@ -51,7 +51,4 @@ Desktop.ini
 .htaccess
 wp-config.php
 content/uploads/*
-.buildpath
-.project
-.settings/*
 content/plugins/woocommerce/logs/*.txt
