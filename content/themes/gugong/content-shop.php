@@ -68,15 +68,7 @@
 		</div>
 	</div>
 
-	<div style="position: fixed; top: 170px; right: 0px; z-index: 99">
-		<img src="<? bloginfo('template_url') ?>/images/shipping-notice-left.png" style="height: 245px; width:0px" id="shipping-notice-left"><a href="javascript:;"><img src="<? bloginfo('template_url'); ?>/images/shipping-notice-right.png" id="shipping-notice-right"></a>
-	</div>
 <script>
-$('#shipping-notice-right').hover(function() {
-	$('#shipping-notice-left').animate({width:"490px"},200);
-},function(){
-	$('#shipping-notice-left').animate({width:"0"},200);
-});
 (function($){
 		
 	//slide

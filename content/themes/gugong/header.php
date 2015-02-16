@@ -50,6 +50,13 @@ $(document).ready(function() {
 	setTimeout(function() {
 		$('.ggshop-message').slideDown();
 	}, 1000);
+
+
+	$('#shipping-notice-right').hover(function() {
+		$('#shipping-notice-left').animate({width:"490px"},200);
+	},function(){
+		$('#shipping-notice-left').animate({width:"0"},200);
+	});
 });
 </script>
 </head>
@@ -58,6 +65,11 @@ $(document).ready(function() {
 <?php
 $current_user = wp_get_current_user();
 ?>
+
+<div style="position: fixed; top: 170px; right: 0px; z-index: 99">
+	<img src="<? bloginfo('template_url') ?>/images/shipping-notice-left.png" style="height: 245px; width:0px" id="shipping-notice-left"><a href="javascript:;"><img src="<? bloginfo('template_url'); ?>/images/shipping-notice-right.png" id="shipping-notice-right"></a>
+</div>
+
 <div class="wrap">
 	
 	<div class="top_bar base-clear">
