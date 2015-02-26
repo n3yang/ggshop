@@ -66,8 +66,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 							</td>
 						</tr>
 						<tr>
-							<td>需要发票 </td>
-							<td><input type="checkbox" id="invoice_box"></td>
+							<td>发票信息</td>
+							<td class="s"><input type="checkbox" id="invoice_box"> <label for="invoice_box">勾选以填写发票抬头</label></td>
 						</tr>
 						<tr id="invoice_title_tr" style="display: none">
 							<td>发票抬头：</td>
