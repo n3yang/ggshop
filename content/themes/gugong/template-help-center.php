@@ -15,13 +15,13 @@ get_header()
 	
 			<div class="help_center_menu">
 				<dl>
-					<dt>新手指南</dt>
+					<dt>购物指南</dt>
 					<dd><a href="how-to-buy">购买流程</a></dd>
 					<dd><a href="how-to-get-password-back">找回密码</a></dd>
 					<dd><a href="how-to-register-or-login">登陆/注册</a></dd>
-					<dt>付款方式</dt>
-					<dd><a href="how-to-checkout">支付方式</a></dd>
-					<!-- <dd><a href="#">发票说明</a></dd> -->
+					<dd><a href="how-to-get-invoice">商品发票</a></dd>
+					<dt><a href="how-to-checkout">付款</a></dt>
+					<dt><a href="how-to-deliver-product">配送与收货</a></dt>
 					<dt>售后服务</dt>
 					<dd><a href="returns-and-replacements">退换货规则</a></dd>
 					<dt>优惠活动</dt>
