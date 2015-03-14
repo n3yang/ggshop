@@ -144,7 +144,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				?>
 			<!-- #product-<?php the_ID(); ?> -->
 
-
+				<span id="back-to-top"></span>
 			</div>
 		</div>
 
@@ -172,6 +172,21 @@ $(document).ready(function() {
 			alert(data);
 		});
 		
+	});
+
+	$(function() {
+		$(window).scroll(function(){
+			if ($(window).scrollTop()>100){
+				$("#back-to-top").fadeIn(500);
+				$("#back-to-top").css('right', ($(window).width()-1280)/2+80);
+			} else {
+				$("#back-to-top").fadeOut(500);
+			}
+		});
+		$("#back-to-top").click(function(){
+			$('body,html').animate({scrollTop:0},600);
+			return false;
+		});
 	});
 });
 </script>

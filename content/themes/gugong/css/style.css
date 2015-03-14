@@ -1392,3 +1392,15 @@ button.close {
 	list-style-type: decimal;
 	margin-left: 20px;
 }
+
+#back-to-top{
+    position: fixed;
+    display: none;
+    bottom: 100px;
+    right: 80px;
+    background: url(../images/icon-back-to-top.png) no-repeat;
+    width: 52px;
+    height: 52px;
+    cursor: pointer;
+    z-index: 1;
+}
