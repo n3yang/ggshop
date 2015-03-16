@@ -1,20 +1,33 @@
 <?php
 
 
-if ($_REQUEST['ajax'] && $_REQUEST['act']=='add' && !empty($_REQUEST['pid'])) {
-	$new_fav = intval($_REQUEST['pid']);
-	$user = wp_get_current_user();
-	if ($user->ID==0) {
-		exit('请登陆后再收藏');
-	}
-	// TODO: 检测pid的有效性
-	$favorite = ggshop_get_user_favorite();
-	if (array_key_exists($new_fav, $favorite)){
+if ($_REQUEST['ajax']){
+	if ($_REQUEST['act']=='add' && !empty($_REQUEST['pid'])) {
+		$new_fav = intval($_REQUEST['pid']);
+		$user = wp_get_current_user();
+		if ($user->ID==0) {
+			exit('请登陆后再收藏');
+		}
+		// TODO: 检测pid的有效性
+		$favorite = ggshop_get_user_favorite();
+		if (array_key_exists($new_fav, $favorite)){
+			exit('已添加到收藏');
+		}
+		$favorite[$new_fav] = array('ctime'=>time());
+		update_user_meta( get_current_user_id(), 'ggshop_user_favorite',  json_encode($favorite));
 		exit('已添加到收藏');
 	}
-	$favorite[$new_fav] = array('ctime'=>time());
-	update_user_meta( get_current_user_id(), 'ggshop_user_favorite',  json_encode($favorite));
-	exit('已添加到收藏');
+	if ($_REQUEST['act']=='remove' && !empty($_REQUEST['pid'])) {
+		$remove_fav = intval($_REQUEST['pid']);
+		$user = wp_get_current_user();
+		if ($user->ID==0) {
+			exit('请登陆后再操作');
+		}
+		$favorite = ggshop_get_user_favorite();
+		unset($favorite[$_REQUEST['pid']]);
+		update_user_meta( get_current_user_id(), 'ggshop_user_favorite',  json_encode($favorite));
+		exit('删除成功');
+	}
 }
 
 ggshop_redirect_not_login();
@@ -24,9 +37,11 @@ $favorite = ggshop_get_user_favorite();
 if ($favorite) {
 	$posts = query_posts(array(
 		'post__in'	=> array_keys($favorite),
-		'post_type'	=> 'product'
+		'post_type'	=> 'product',
+		'nopaging'	=> true
 	));
 }
+
 get_header();
 ?>
 
@@ -51,6 +66,7 @@ get_header();
 									$product = new WC_Product($p);
 									$imgsrc = get_the_product_image_html($product); ?>
 								<li>
+									<span class="remove_fav" data-pid="<?=$product->id?>"><img src="<?bloginfo('template_url')?>/images/icon-remove.png" alt="取消收藏"></span>
 									<a class="s_p_l_a" href="<?=$product->get_permalink()?>"><?=$imgsrc?></a>
 									<h5><?=wc_price($product->get_price())?></h5>
 									<p><?=$product->get_categories() ?><br><?=$product->get_title()?></p>
@@ -74,7 +90,28 @@ get_header();
 
 	</div>
 
-
+<style type="text/css">
+.remove_fav{
+	float: right;
+	position: relative;
+	right: 20px;
+	top: 35px;
+	width: 22px;
+	cursor: pointer;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.remove_fav').click(function(event) {
+		var request_uri = '/ucp/favorite?ajax=1&act=remove&pid='+$(this).attr('data-pid')
+		var e_span = $(this)
+		$.get(request_uri, function(data) {
+			e_span.parent('li').remove();
+			alert(data);
+		});
+	});
+});
+</script>
 <?php
 get_footer();
 ?>
