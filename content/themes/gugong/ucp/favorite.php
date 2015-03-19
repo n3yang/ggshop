@@ -57,7 +57,6 @@ get_header();
 				<div class="user_center_title">
 					<h3>我的收藏</h3>
 					<div class="user_center_cen">
-						<div class="shop_pic_list">
 							<?php
 							if ($favorite): ?>
 							<ul class="base-clear">
@@ -79,7 +78,6 @@ get_header();
 							else:
 								echo '<p><a href="/shop">您还没有任何收藏，快去看看我们的商品吧~</a></p>';
 							endif;?>
-						</div>
 					</div>
 				</div>
 
