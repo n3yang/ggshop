@@ -161,11 +161,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 						<tr>
 							<th style="text-align:left; vertical-align: top">
 
-							<form class="checkout_coupon" method="post" style="display:none">
-								<label for="">激活代金卷</label>
-								<input type="text" name="coupon_code" class="form_text" placeholder="<?php _e( 'Coupon code', 'woocommerce' ); ?>" id="coupon_code" value="" />
-								<input class="form_btn" type="submit" name="apply_coupon" value="激活" />
-							</form>
 							</th>
 							<th style="text-align:right;" class="count">
 								<?php foreach ( WC()->cart->get_coupons( 'order' ) as $code => $coupon ) : ?>
@@ -223,6 +218,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
 
 		</div>
+		<span style="position:relative; top:-280px;">
+			<form class="checkout_coupon" method="post" style="display:none">
+				<label for="">激活代金卷</label>
+				<input type="text" name="coupon_code" class="form_text" placeholder="<?php _e( 'Coupon code', 'woocommerce' ); ?>" id="coupon_code" value="" />
+				<input class="form_btn" type="submit" name="apply_coupon" value="激活" />
+			</form>
+		</span>
 
 	</div>
 
