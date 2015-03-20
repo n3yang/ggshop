@@ -94,7 +94,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 	</table>
 
-				<table class="table" width="100%" align="center" border="0" cellpadding="5" cellspacing="1">
+				<table id="table_cart_footer" class="table" width="100%" align="center" border="0" cellpadding="5" cellspacing="1">
 					<tbody>
 						<tr>
 							<th style="text-align:right;">
@@ -175,7 +175,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 								<?php wc_cart_totals_shipping_html(); ?>
 								<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
 								<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
-								<h3>付款金额: <em><?php wc_cart_totals_order_total_html(); ?></em></h3>
+								<h3 id="h_amount_total">付款金额: <em><?php wc_cart_totals_order_total_html(); ?></em></h3>
 								<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
 								<p>
 									收货人: <span id="shipping_name_reivew"></span>
@@ -206,7 +206,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			<?php
 			$order_button_text = apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) );
 			
-			echo apply_filters( 'woocommerce_order_button_html', '<input type="image" src="' . get_bloginfo('template_url') . '/images/ok.png" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '" />' );
+			echo apply_filters( 'woocommerce_order_button_html', '<input type="hidden" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '" />
+				<img id="img_place_order" src="' . get_bloginfo('template_url') . '/images/ok.png" class="button alt" style="cursor:pointer" />
+				' );
 			?>
 
 			<?php if ( wc_get_page_id( 'terms' ) > 0 && apply_filters( 'woocommerce_checkout_show_terms', true ) ) { 
@@ -229,6 +231,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 <?php if ( ! is_ajax() ) : ?>
 <script type="text/javascript">
 jQuery(document).ready(function($) {
+
+	$('#img_place_order').click(function() {
+		$('form.checkout').submit();
+	});
+
 	$('#shipping_name_reivew').text($('#shipping_first_name').val());
 	$('#shipping_address_review').text($('#shipping_address_1').val());
 
@@ -237,6 +244,7 @@ jQuery(document).ready(function($) {
 		$('#shipping_address_review').text($('#shipping_address_1').val());
 	});
 
+	// 用户输入信息检测
 	$('.checkout').submit(function() {
 		if ($('#shipping_first_name').val()==''){
 			alert('请输入收货人姓名');
@@ -259,6 +267,7 @@ jQuery(document).ready(function($) {
 		return true;
 	});
 
+	// 发票信息勾选效果
 	$('#invoice_box').change(function() {
 		if ($('#invoice_box').attr('checked')){
 			$('#invoice_title_tr').show();
@@ -267,6 +276,8 @@ jQuery(document).ready(function($) {
 		}
 	});
 	
+
+	// 付费方式选择框
 	function add_selected_border(){
 		$('.shop_add_box input').each(function(i,el) {
 			if($(el).attr('checked')){
@@ -279,8 +290,23 @@ jQuery(document).ready(function($) {
 	add_selected_border();
 	$('.shop_add_box input[name=payment_method]').change(function(){add_selected_border();});
 
+	// 运费切换价格变换效果
+	var amount_total_with_shipping = $('#h_amount_total .amount').text();
+	$('.shipping_method').change(function() {
+		if ($(this).val()=='free_shipping') {
+			$('#h_amount_total .amount').text($('#table_cart_footer .amount').text());
+		} else {
+			$('#h_amount_total .amount').text(amount_total_with_shipping);
+		}
+	});
 
-
+	<? //if ($_POST['coupon_code']): ?>
+	// $('').scroll(function(event) {
+		/* Act on the event */
+		// $('#coupon_code').animate({scrollTop:330},600);
+	//	$('body,html').animate({scrollTop:330},600);
+	// });
+	<? //endif; ?>
 
 });
 </script>
