@@ -39,7 +39,7 @@ if ( $attachment_ids ) {
 			$image_single = wp_get_attachment_image_src( $attachment_id, 'shop_single');
 
 			echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', 
-				sprintf( '<a href="#" class="small_pic_item dib" title="%s" data-single-pic="%s">%s</a>', $image_title, $image_single[0], $image ), 
+				sprintf( '<a href="javascript:;" class="small_pic_item dib" title="%s" data-single-pic="%s">%s</a>', $image_title, $image_single[0], $image ), 
 				$attachment_id, 
 				$post->ID, 
 				$image_class );

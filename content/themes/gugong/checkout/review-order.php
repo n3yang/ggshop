@@ -302,13 +302,9 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	<? //if ($_POST['coupon_code']): ?>
-	// $('').scroll(function(event) {
-		/* Act on the event */
-		// $('#coupon_code').animate({scrollTop:330},600);
-	//	$('body,html').animate({scrollTop:330},600);
-	// });
-	<? //endif; ?>
+	<? if ($_POST['coupon_code']): ?>
+	$('body,html').animate({scrollTop:$('.count_box').offset().top-150},600)
+	<? endif; ?>
 
 });
 </script>
