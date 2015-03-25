@@ -10,6 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta property="wb:webmaster" content="92658cbfc3f9c5f5" />
 <title>故宫商城</title>
 
 <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/css/base.css" />
