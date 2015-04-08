@@ -178,7 +178,7 @@ $(document).ready(function() {
 		$(window).scroll(function(){
 			if ($(window).scrollTop()>100){
 				$("#back-to-top").fadeIn(500);
-				$("#back-to-top").css('right', ($(window).width()-1280)/2+80);
+				$("#back-to-top").css('right', ($(window).width()-1280)/2-15);
 			} else {
 				$("#back-to-top").fadeOut(500);
 			}
