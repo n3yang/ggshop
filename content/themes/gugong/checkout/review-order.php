@@ -83,23 +83,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 						do_action( 'woocommerce_review_order_after_cart_contents' );
 						?>
-					</tbody>
-
-		<tfoot>
-
-
-
-
-		</tfoot>
-
-	</table>
+						</tbody>
+					<tfoot></tfoot>
+				</table>
 
 				<table id="table_cart_footer" class="table" width="100%" align="center" border="0" cellpadding="5" cellspacing="1">
-					<tbody>
-						<tr>
-							<th style="text-align:right;">
-								购物车金额小计:  <?php wc_cart_totals_subtotal_html(); ?>元 </br>
-					</tbody>
+					<th style="text-align:right;">
+						购物车金额小计:  <?php wc_cart_totals_subtotal_html(); ?>元 </br>
+					</th>
 				</table>
 
 			</div>
