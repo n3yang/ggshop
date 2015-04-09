@@ -219,7 +219,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 		</div>
 
-	</div>
 
 	<?php do_action( 'woocommerce_review_order_after_payment' ); ?>
 
@@ -301,6 +300,5 @@ jQuery(document).ready(function($) {
 
 });
 </script>
-	</div>
 
 <?php endif; ?>

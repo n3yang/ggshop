@@ -57,12 +57,14 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 
 </form>
 
-		<div style="position:relative; top:-370px; left:130px">
-			<form class="checkout_coupon" method="post">
-				<label for="">激活代金卷</label>
-				<input type="text" name="coupon_code" class="form_text" placeholder="<?php _e( 'Coupon code', 'woocommerce' ); ?>" id="coupon_code" value="" />
-				<input class="form_btn" type="submit" name="apply_coupon" value="激活" />
-			</form>
-		</div>
+			<div class="" style="position:relative; top:-290px;">
+				<form class="checkout_coupon" method="post">
+					<label for="">激活代金卷</label>
+					<input type="text" name="coupon_code" class="form_text" placeholder="<?php _e( 'Coupon code', 'woocommerce' ); ?>" id="coupon_code" value="" />
+					<input class="form_btn" type="submit" name="apply_coupon" value="激活" />
+				</form>
+			</div>
 
+		</div>
+	</div>
 <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
