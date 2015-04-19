@@ -555,7 +555,7 @@ DIV.jogger .next{
 /***** open social rebuild start *****/
 .login_left .login_box{
 	background: none;
-	width: 30%;
+	width: 60%;
 	height: 100%;
 	margin: 0px auto 20px;
 	display: inline-block;
@@ -567,6 +567,9 @@ DIV.jogger .next{
 }
 .login_left .open_social_box .login_icon_qq{
 	background: url(../images/qq.png) no-repeat;
+}
+.login_left .open_social_box .login_icon_sina{
+	background: url(../images/weibo.png) no-repeat;
 }
 /***** open social rebuild end *****/
 .login_left{

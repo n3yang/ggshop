@@ -33,9 +33,6 @@ if (isset($_REQUEST['redirect'])){
 					<?php echo open_social_login_html(array('qq','weibo'));?>
 
 					<span class="dib">
-						<a href="###" onclick="javascript:alert('稍后推出，敬请期待')" title="微博"><img src="<?php bloginfo('template_url')?>/images/weibo.png" alt=""></a>
-					</span>
-					<span class="dib">
 						<a href="###" onclick="javascript:alert('稍后推出，敬请期待')" title="微信"><img src="<?php bloginfo('template_url')?>/images/weixin.png" alt=""></a>
 					</span>
 				</div>
