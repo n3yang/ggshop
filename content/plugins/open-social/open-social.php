@@ -174,7 +174,7 @@ function open_social_locale( $lang ) {
 		$languages = explode( ",", $languages );
 		$languages = explode( "-", $languages[0] );
 		$_SESSION['WPLANG_LOCALE'] = strtolower($languages[0]) . '_' . strtoupper($languages[1]);
-		$_SESSION['WPLANG'] = $_SESSION['WPLANG_LOCALE'];
+		// $_SESSION['WPLANG'] = $_SESSION['WPLANG_LOCALE'];
 	}
 	if ( isset( $_GET['open_lang'] ) && strpos($_GET['open_lang'], "_") ) {
 		$_SESSION['WPLANG'] = $_GET['open_lang'];
