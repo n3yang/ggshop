@@ -80,7 +80,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 						}
 					?>
 						
-						<h3><?php echo $product->get_categories(); ?></h3>
+						<!--h3><?php echo $product->get_categories(); ?></h3-->
 						<h4><?php the_title() ?></h4>
 
 						<?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?>
