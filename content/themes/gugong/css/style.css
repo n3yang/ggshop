@@ -1408,3 +1408,16 @@ button.close {
     cursor: pointer;
     z-index: 1;
 }
+
+.wechatpay-qrcode-wrap {
+	text-align: center;
+}
+.wechatpay-qrcode-wrap p{
+	line-height: 200%;
+}
+.wechatpay-payment-message {
+	margin: 20px 0 20px 0;
+	text-align: center;
+	font-weight: bold;
+	line-height: 200%;
+}

@@ -62,6 +62,8 @@ class WC_Wechatpay extends WC_Payment_Gateway {
 
         // Display Wechatpay Trade No. in the backend.
         add_action( 'woocommerce_admin_order_data_after_billing_address',array( $this, 'wc_wechatpay_display_order_meta_for_admin' ) );
+
+        add_action( 'woocommerce_thankyou_wechatpay', array( $this, 'thankyou_page_payment_message') );
     }
 
 
@@ -175,39 +177,20 @@ class WC_Wechatpay extends WC_Payment_Gateway {
      * @return void
      */
     function thankyou_page( $orderId ) {
-
+        // 显示支付结果信息在 thankyou_page_payment_message 方法
         return;
+    }
 
-        $_POST = stripslashes_deep( $_POST );
-        $this->log('received front notify post: '.json_encode($_POST), 'Info');
-        if (!$this->verify_response($_POST)){
-            $this->log('verify response faild');
-            return false;
-        }
-        
-        $notifyOrderId = substr($_POST['orderId'], 14, strlen($_POST['orderId']));
-        if ($orderId!=$notifyOrderId){
-            echo "<p><strong>订单号错误！</strong></p>";
-            $this->log('error order ID');
-            return false;
-        }
-
-        if ($_POST['respCode']!='00'){
-            echo "<p>订单支付失败！请重新支付</p>";
-            $this->log('error payment result. respCode:'.$_POST['respCode']);
-            return false;
-        }
+    function thankyou_page_payment_message( $orderId ) {
 
         $order = new WC_Order($orderId);
-
-        if( $order->status != 'completed'){
-            $order->payment_complete();
-            $order->add_order_note ('支付成功');
-            update_post_meta( $orderId, 'Wechatpay Trade No.', wc_clean( $_POST['queryId'] ) );
-            $this->log('Wechatpay Trade No. '.$_POST['queryId'], 'Success');
-            return true;
+        if ($order->needs_payment()) {
+            $message = '<p>支付结果正在确认中。</p>'
+                .'<p>如您已确认成功支付，请刷新本页，查看最新的支付结果。</p>';
+        } else {
+            $message = '<p>支付完成</p>';
         }
-
+        echo '<div class="wechatpay-payment-message">' . $message . '</div>';
     }
 
     /**
@@ -241,7 +224,6 @@ class WC_Wechatpay extends WC_Payment_Gateway {
         if (!$order->needs_payment()){
             return;
         }
-        // var_dump($order->get_item_count());
 
         // 调用统一下单API，生成预支付交易
         // 统一下单API URL
@@ -282,9 +264,12 @@ class WC_Wechatpay extends WC_Payment_Gateway {
         if ($rdata['result_code']) {
 
         }
-        echo '';
+        $returnUrl = $this->get_return_url($order);
+        echo '<div class="wechatpay-qrcode-wrap">';
+        echo '<p>请使用微信的“扫一扫”功能扫描下面的二维码图片</p>';
         echo $this->build_qrcode_image( $rdata['code_url'] );
-        echo '';
+        echo "<p><a href=\"$returnUrl\">在微信支付完成后，请点击此处，查看支付结果</a></p>";
+        echo '</div>';
     }
 
     /**
@@ -449,7 +434,7 @@ class WC_Wechatpay extends WC_Payment_Gateway {
         if (key_exists('sign', $params) && $passSign) {
             unset($params['sign']);
         }
-        echo $str = $this->build_params_str($params).'&key='.$this->merchantKey;
+        $str = $this->build_params_str($params).'&key='.$this->merchantKey;
         return strtoupper(md5($str));
     }
     /**
