@@ -11,6 +11,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 <title><?php bloginfo( 'name' );?></title>
 
 <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/base.css" />
