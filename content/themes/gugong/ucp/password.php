@@ -8,7 +8,7 @@ if ($_POST['submit'] && wp_verify_nonce($_POST['nonce'], 'chpwd')) {
 	$error = '';
 	$password = $_POST['password'];
 
-	if (strlen($passwor)<6) {
+	if (strlen($password)<6) {
 		$error = '您输入的新密码小于6位，请重新输入';
 	}
 	$user = wp_get_current_user();
