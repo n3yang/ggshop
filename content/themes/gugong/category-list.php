@@ -35,6 +35,10 @@ $list = array(
     // 	'link'	=> 'limited-edition',
     // 	'name'	=> '限量发售',
     // ),
+    array(
+        'link'  => 'old-photos',
+        'name'  => '老照片展',
+    ),
 );
 
 ?>
