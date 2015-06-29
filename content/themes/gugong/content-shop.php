@@ -53,6 +53,7 @@
 		            <a class="dib a7" href="category/clothing"></a>
 		            <a class="dib a9" href="category/zhuangmei"></a>
 <!-- 		            <a class="dib a10" href="category/limited-edition"></a> -->
+		            <a class="dib a11" href="category/old-photos"></a>
 		        </div>
 
 		        <div class="slide-btn">
