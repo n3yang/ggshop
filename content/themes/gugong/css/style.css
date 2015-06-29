@@ -495,6 +495,9 @@ DIV.jogger .next{
 #ui-slide .slide-trigger .a10{
 	background: url(../images/a10.png) center top no-repeat;
 }
+#ui-slide .slide-trigger .a11{
+	background: url(../images/a11.png) center top no-repeat;
+}
 #ui-slide .slide-trigger a.active{
 	background-position: 0 -196px
 }
