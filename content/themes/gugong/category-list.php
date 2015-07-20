@@ -4,6 +4,10 @@ $product_cat = get_query_var('product_cat');
 
 $list = array(
     array(
+        'link'  => 'presales',
+        'name'  => '超前预售',
+    ),
+    array(
         'link'  => 'hot',
         'name'  => '热销产品',
     ),
@@ -47,7 +51,7 @@ $list = array(
                     <ul>
                         <?foreach ($list as $l):?>
                         <li>
-                            <a href="/category/<?=$l['link']?>" <?if($l['link']==$product_cat){echo'class="active"';} ?>><?=$l['name']?></a>
+                            <a href="/category/<?=$l['link']?>" <?if($l['link']==$product_cat){echo'class="active"';}?>><?=$l['name']?></a>
                         </li>
                         <?endforeach; ?>
                     </ul>

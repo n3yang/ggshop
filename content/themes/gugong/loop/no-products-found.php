@@ -25,8 +25,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 							
 				<div class="list_con" style="text-align: center">
 					<?php
-					if (get_query_var('product_cat')=='zhuangmei') {
-						echo '<img src="'.get_bloginfo('template_url').'/images/zhuangmei-category-block.jpg" />';
+					if (get_query_var('product_cat')=='presales') {
+						echo '<img src="'.get_bloginfo('template_url').'/images/presales-category-block.jpg" />';
 					} else {
 						echo '<h3>没有找到符合要求的产品</h3>';
 					}
