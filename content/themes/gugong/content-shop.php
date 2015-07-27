@@ -1,4 +1,3 @@
-`
 	<div class="main">
 		<div class="banner">
 			<div id="ui-slide">
