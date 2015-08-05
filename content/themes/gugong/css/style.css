@@ -420,6 +420,7 @@ DIV.jogger .next{
 }
 .itme_info{
 	padding: 50px 0;
+	min-height: 200px;
 }
 
 .itme_info p{
@@ -795,6 +796,9 @@ td.product-title{
 	vertical-align: top;
 	padding-top: 60px;
 }
+td.product-title a {
+	display: block;
+}
 .product-thumbnail{
 	width: 135px;
 }
@@ -958,7 +962,7 @@ dl.variation dd{
 	border: 2px solid #ccc;
 	padding: 5px;
 }
-input.center_btn, a.center_btn{
+input.center_btn, a.center_btn, button.center_btn{
 	display: inline-block;
 	text-align: center;
 	padding: 10px 40px;
