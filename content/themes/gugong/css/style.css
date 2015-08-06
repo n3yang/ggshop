@@ -742,7 +742,7 @@ a.login_info{
 	vertical-align: middle;
 	margin-left: 2px
 }
-a.shop_pic, .product-thumbnail img{
+a.shop_pic{
 	display: inline-block;
 	width: 130px;
 	height: 130px;
