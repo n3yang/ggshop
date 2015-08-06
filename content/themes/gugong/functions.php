@@ -244,6 +244,7 @@ add_filter( 'woocommerce_alipay_icon', function (){
 add_filter( 'query_vars', 'ggshop_add_query_vars', 0 );
 function ggshop_add_query_vars( $vars ) {
 	$vars[] = 'ucp-mod';
+	$vars[] = 'ggshop-diy-shell';
 	return $vars;
 }
 
@@ -252,7 +253,18 @@ add_action( 'init', 'ggshop_add_endpoint' );
 function ggshop_add_endpoint() {
 	// REST API
 	add_rewrite_rule( 'ucp/([^/]+)', 'index.php?pagename=ucp&ucp-mod=$matches[1]', 'top' );
+	add_rewrite_rule( '^diy-shell', 'index.php?ggshop-diy-shell=true', 'top' );
 }
+add_action( 'parse_request', function (){
+	global $wp;
+	if ( ! empty( $_GET['ggshop-diy-shell'] ) )
+		$wp->query_vars['ggshop-diy-shell'] = $_GET['ggshop-diy-shell'];
+	if ( ! empty( $wp->query_vars['ggshop-diy-shell'] ) ) {
+		require 'diy-shell.php';
+		exit;
+	}
+}, 0 );
+
 
 add_filter('wpua_is_author_or_above', function($is_author_or_above){
 	if ($_POST['ucp_avatar']) {
@@ -277,3 +289,4 @@ function fhandle_api_requests() {
 }
 */
 // unset( WC()->session->order_awaiting_payment )
+

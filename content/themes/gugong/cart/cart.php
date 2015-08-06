@@ -72,12 +72,27 @@ do_action( 'woocommerce_before_cart' ); ?>
 					<td class="product-title">
 						<?php
 							if ( ! $_product->is_visible() )
-								echo apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key );
+								echo apply_filters( 'woocommerce_cart_item_name', '<a href="###">'.$_product->get_title().'</a>', $cart_item, $cart_item_key );
 							else
-								echo apply_filters( 'woocommerce_cart_item_name', sprintf( '<a class="shop_pic_info" href="%s">%s</a>', $_product->get_permalink(), $_product->get_title() ), $cart_item, $cart_item_key );
+								echo apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', $_product->get_permalink(), $_product->get_title() ), $cart_item, $cart_item_key );
 
 							// Meta data
 							echo WC()->cart->get_item_data( $cart_item );
+
+							// show diy-shell infomation
+							if ($_product->post->post_name == 'diy-shell') {
+								$item_data = array(
+									array(
+										'key' => '预览效果',
+										'value' => "<a href=\"{$cart_item['variation']['preview']}\" target=\"_blank\">点击查看</a>"
+									),
+									array(
+										'key' => '手机类型',
+										'value' => $cart_item['variation']['phone'].'</b>'
+									)
+								);
+								wc_get_template( 'cart/cart-item-data.php', array( 'item_data' => $item_data ) );
+							}
 
                				// Backorder notification
                				if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item['quantity'] ) )
