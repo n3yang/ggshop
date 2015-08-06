@@ -64,7 +64,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 							$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', get_the_product_image_html($_product), $cart_item, $cart_item_key );
 
 							if ( ! $_product->is_visible() )
-								print '<a class="shop_pic" href="###">' . $thumbnail . '</a>';
+								echo $thumbnail;
 							else
 								printf( '<a class="shop_pic" href="%s">%s</a>', $_product->get_permalink(), $thumbnail );
 						?>
