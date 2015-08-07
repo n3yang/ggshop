@@ -138,7 +138,7 @@ require 'header.php' ?>
 								<div id="cover-preview"></div>
 								<div style="text-align: center">
 									<button class="center_btn" type="button" id="back-step-1">返回修改</button>
-									<input class="center_btn" name="submit" value="加入购物车" type="submit" />
+									<input class="center_btn" id="submit-to-cart" name="submit" value="加入购物车" type="submit" />
 									<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('shell') ?>" />
 									<input id="preview-data" name="preview" type="hidden" />
 								</div>
@@ -176,7 +176,7 @@ $(function(){
 	support.datauri = support.fileList && support.blobURLs
 
 	if (!support.formData) {
-			alert(msgBrowserIsLow);
+		alert(msgBrowserIsLow);
 	}
 
 	$('.step-2, #cover-view, #btn-bar').hide();
@@ -296,6 +296,12 @@ $(function(){
 	}
 	
 		
+	$('#submit-to-cart').click(function() {
+		$.blockUI({
+			message: '正在加入购物车，请稍后⋯⋯'
+		});
+		return true;
+	});
 });
 
 
