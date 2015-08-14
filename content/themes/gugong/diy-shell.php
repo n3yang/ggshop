@@ -115,7 +115,6 @@ require 'header.php' ?>
 									</div>
 									<div class="custom">
 										<h4>提示：</h4>1.请上传分辨率大于1200x700像素的图片以保证制作效果；2.目前支持的图片格式有：JPG、JPEG、PNG等。
-										</ul>
 									</div>
 								</div>
 
@@ -210,8 +209,8 @@ $(function(){
 					$cover.cropper({
 						aspectRatio: 7 / 12,
 						autoCropArea: 1,
-						minCropBoxWidth: 700,
-						minCropBoxHeight: 1200,
+						minCropBoxWidth: 350,
+						minCropBoxHeight: 600,
 						strict: false,
 						guides: false,
 						highlight: true,
@@ -219,7 +218,7 @@ $(function(){
 						cropBoxMovable: false,
 						cropBoxResizable: false,
 						touchDragZoom: false,
-						mouseWheelZoom: false,
+						mouseWheelZoom: true,
 						doubleClickToggle: false
 					});
 					$cover.cropper('replace', this.url);
@@ -254,11 +253,11 @@ $(function(){
 		$('.step-2').show();
 
 		// $('#cover-preview').html('<img src="' + $cover.attr('src') + '">');
-		canvas = $cover.cropper('getCroppedCanvas', {width:700, height:1200});
+		canvas = $cover.cropper('getCroppedCanvas', {width:350, height:600});
 		context = canvas.getContext('2d');
 
 		// 遍历像素点，将透明色改为不透明
-		// var imageData = context.getImageData(0, 0, 700, 1200);
+		// var imageData = context.getImageData(0, 0, 350, 600);
 		// var pixels = imageData.data;
 		// for (var i = 0; i < pixels.length; i++) {
 		// 	if (pixels[i*4+3]==0){
@@ -272,7 +271,7 @@ $(function(){
 
 		var kr = new Image();
 		kr.src = getPhonePic();
-		context.drawImage(kr, 0, 0, 700, 1200);
+		context.drawImage(kr, 0, 0, 350, 600);
 
 		$('#cover-preview').html(canvas);
 		$('#preview-data').val(canvas.toDataURL());
@@ -286,7 +285,7 @@ $(function(){
 
 	function setPhonePic() {
 		$('#phone').val();
-		$('.cropper-face').css('background-image', 'url(ip5.png)');
+		$('.cropper-face').css('background-image', 'url(diy-shell-iphone5.png)');
 	}
 
 	function getPhonePic() {
@@ -309,7 +308,7 @@ $(function(){
 
 <style type="text/css">
 #cover-view{
-	height: 1200px;
+	height: 600px;
 	width: 950px;
 	margin: 20px 0 20px 0;
 }
@@ -318,14 +317,13 @@ $(function(){
 	background-color: #fff;
 }
 .cropper-face{
-	background: url(<? bloginfo('template_url'); ?>/images/ip5.png) no-repeat center 100%;
-	width: 700px;
-	height: 1200px;
+	background: url(<? bloginfo('template_url'); ?>/images/diy-shell-iphone5.png) no-repeat center 100%;
+	height: 600px;
 	opacity: 1;
 }
 .cropper-view-box{
-	width: 700px;
-	height: 1200px;
+	width: 350px;
+	height: 600px;
 	outline: 0px;
 }
 #cover-preview{
