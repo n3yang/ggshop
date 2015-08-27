@@ -106,7 +106,11 @@ require 'header.php' ?>
 									<div class="custom">
 										<h4>请选择手机型号：</h4>
 										<select id="phone" name="phone">
-											<option value="iPhone5" selected="selected">iPhone5</option>
+											<option value="iPhone5" selected="selected" data-url="iphone5.png">iPhone5</option>
+											<option value="iPhone6" data-url="iphone6.png">iPhone6</option>
+											<option value="iPhone6 Plus" data-url="iphone6-plus.png">iPhone6 Plus</option>
+											<option value="三星 Note 3" data-url="samsung-note3.png">三星 Note 3</option>
+											<option value="三星 Note 4" data-url="samsung-note4.png">三星 Note 4</option>
 										</select>
 									</div>
 									<div class="custom">
@@ -282,11 +286,12 @@ $(function(){
 		$('.step-2').hide();
 	})
 
+	$('#phone').change(function() {
+		d = $(this).find('option:selected').data()
+		url = '<? bloginfo('template_url'); ?>/images/diy-shell/' + d.url
+		$('.cropper-face').css('background-image', 'url(' + url + ')');
 
-	function setPhonePic() {
-		$('#phone').val();
-		$('.cropper-face').css('background-image', 'url(diy-shell-iphone5.png)');
-	}
+	});
 
 	function getPhonePic() {
 		c = $('.cropper-face').css('background-image');
@@ -317,7 +322,7 @@ $(function(){
 	background-color: #fff;
 }
 .cropper-face{
-	background: url(<? bloginfo('template_url'); ?>/images/diy-shell-iphone5.png) no-repeat center 100%;
+	background: url(<? bloginfo('template_url'); ?>/images/diy-shell/iphone5.png) no-repeat center 100%;
 	height: 600px;
 	opacity: 1;
 }
