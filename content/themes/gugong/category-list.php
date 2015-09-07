@@ -41,7 +41,7 @@ $list = array(
     // ),
     array(
         'link'  => 'old-photos',
-        'name'  => '老照片展',
+        'name'  => '故宫随展',
     ),
 );
 
