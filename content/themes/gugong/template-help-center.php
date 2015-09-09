@@ -27,7 +27,7 @@ get_header()
 					<dt>优惠活动</dt>
 					<dd><a href="how-to-use-coupons">代金券</a></dd>
 					<dt><a href="contact-us">联系我们</a></dt>
-					<!-- <dt><a href="partner-sites">友情链接</a></dt> -->
+					<dt><a href="partner-sites">友情链接</a></dt>
 				</dl>
 			</div>
 
