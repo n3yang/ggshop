@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 							?>
 							<li>
 								<?php do_action( 'woocommerce_before_shop_loop_item' ); ?>
-								<a href="<?php the_permalink(); ?>">
+								<a href="<?php the_permalink(); ?>" target="_blank">
 									<em>
 										<?php the_post_thumbnail('shop_catalog') ?>
 									</em>
