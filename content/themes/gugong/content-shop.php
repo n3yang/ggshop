@@ -44,7 +44,7 @@
 		            </li> -->
 		        </ul>
 		        <div class="slide-trigger dib-wrap">
-		            <a class="dib a12 active" href="category/presales"></a>
+		            <a class="dib a13 active" href="diy-shell"></a>
 		            <a class="dib a1" href="category/toys"></a>
 		            <a class="dib a4" href="category/study"></a>
 		            <a class="dib a5" href="category/home"></a>

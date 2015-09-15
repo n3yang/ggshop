@@ -4,8 +4,8 @@ $product_cat = get_query_var('product_cat');
 
 $list = array(
     array(
-        'link'  => 'presales',
-        'name'  => '超前预售',
+        'link'  => 'diy-shell',
+        'name'  => '宫廷定制',
     ),
     array(
         'link'  => 'hot',
@@ -39,6 +39,10 @@ $list = array(
     // 	'link'	=> 'limited-edition',
     // 	'name'	=> '限量发售',
     // ),
+    // array(
+    //     'link'  => 'presales',
+    //     'name'  => '超前预售',
+    // ),
     array(
         'link'  => 'old-photos',
         'name'  => '故宫随展',
@@ -51,7 +55,11 @@ $list = array(
                     <ul>
                         <?foreach ($list as $l):?>
                         <li>
+                        <? if ($l['link'] == 'diy-shell'): ?>
+                            <a  href="/diy-shell"><?=$l['name']?></a>
+                        <? else: ?>
                             <a href="/category/<?=$l['link']?>" <?if($l['link']==$product_cat){echo'class="active"';}?>><?=$l['name']?></a>
+                        <? endif ?>
                         </li>
                         <?endforeach; ?>
                     </ul>
