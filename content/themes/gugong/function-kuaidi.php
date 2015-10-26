@@ -56,15 +56,16 @@ function wc_kuaidi100_save($post_id)
 	if ( $old_track_id != $_POST['kuaidi100_track_id'] ||  $old_company != $_POST['kuaidi100_company'] ) {
 		$subscribe = array();
 		$salt = substr(md5(time()), 0, 8);
+
 		$subscribe["schema"] = 'json' ;
 		$subscribe["param"] = json_encode(array(
 			'company'		=> $_POST['kuaidi100_company'],
 			'number'		=> $_POST['kuaidi100_track_id'],
 			'key'			=> 'gpMFwvVj273',
-			'parameters'	=> [
-				'callbackurl' => WC()->api_request_url( 'kuaidi100_sync' ),
+			'parameters'	=> array(
+				'callbackurl' => WC()->api_request_url( 'kuaidi100_sync' ) . '?p=' . $post_id,
 				'salt' => $salt
-			]
+			)
 		));
 
 		$ch = curl_init();
@@ -82,7 +83,7 @@ function wc_kuaidi100_save($post_id)
 		}
 		// Update the meta field in the database.
 		update_post_meta( $post_id, '_kuaidi100_company', sanitize_text_field( $_POST['kuaidi100_company'] ) );
-		update_post_meta( $post_id, '_kuaidi100_track_id', sanitize_text_field( $_POST['kuaidi100_track_id'] ));
+		update_post_meta( $post_id, '_kuaidi100_track_id', sanitize_text_field( $_POST['kuaidi100_track_id'] ) );
 		update_post_meta( $post_id, '_kuaidi100_poll_salt', $salt);
 	}
 }
@@ -90,8 +91,27 @@ add_action( 'save_post', 'wc_kuaidi100_save' );
 
 
 // kuaidi100 callback
+// 1000556304735
 add_action( 'woocommerce_api_kuaidi100_sync', function(){
-	return 2;
+	
+	error_log(var_export($_REQUEST, 1), 3, '/tmp/kd.log');
+	$post_id = intval($_GET['p']);
+	if ( !$post_id ) {
+		return;
+	}
+
+	// check salt value
+	$salt = get_post_meta($post_id, '_kuaidi100_poll_salt', true);
+	if ( !$salt ) {
+		return;
+	}
+	if ( md5($_POST['param'].$salt) != $_POST['sign'] ) {
+		return;
+	}
+
+	update_post_meta( $post_id, '_kuaidi100_track_result', $_POST['param'] );
+
+	die;
 });
 
 
