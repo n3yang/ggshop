@@ -115,19 +115,19 @@ function ggshop_pagin_nav($range = 4){
 	echo '<div class="jogger">';
 	if($paged != 1){echo "<a href='" . get_pagenum_link(1) . "' class='extend'>首页</a>";}
 	previous_posts_link('上页');
-    if($max_page > $range){
+	if($max_page > $range){
 		if($paged < $range){for($i = 1; $i <= ($range + 1); $i++){echo "<a href='" . get_pagenum_link($i) ."'";
 		if($i==$paged)echo " class='current'";echo ">$i</a>";}}
-    elseif($paged >= ($max_page - ceil(($range/2)))){
+	elseif($paged >= ($max_page - ceil(($range/2)))){
 		for($i = $max_page - $range; $i <= $max_page; $i++){echo "<a href='" . get_pagenum_link($i) ."'";
 		if($i==$paged)echo " class='current'";echo ">$i</a>";}}
 	elseif($paged >= $range && $paged < ($max_page - ceil(($range/2)))){
 		for($i = ($paged - ceil($range/2)); $i <= ($paged + ceil(($range/2))); $i++){echo "<a href='" . get_pagenum_link($i) ."'";if($i==$paged) echo " class='current'";echo ">$i</a>";}}}
-    else{for($i = 1; $i <= $max_page; $i++){echo "<a href='" . get_pagenum_link($i) ."'";
-    if($i==$paged)echo " class='current'";echo ">$i</a>";}}
+	else{for($i = 1; $i <= $max_page; $i++){echo "<a href='" . get_pagenum_link($i) ."'";
+	if($i==$paged)echo " class='current'";echo ">$i</a>";}}
 	next_posts_link('下页');
-    if($paged != $max_page){echo "<a href='" . get_pagenum_link($max_page) . "' class='extend'>尾页</a>";}
-    echo '</div>';}
+	if($paged != $max_page){echo "<a href='" . get_pagenum_link($max_page) . "' class='extend'>尾页</a>";}
+	echo '</div>';}
 }
 
 /**
@@ -238,6 +238,11 @@ function get_the_product_image_html($product){
 add_filter( 'woocommerce_alipay_icon', function (){
 	return get_bloginfo('template_url').'/images/alipay.png';
 });
+
+require_once 'function-kuaidi.php';
+
+/********************** woocommerce 定制 结束 ***********************/
+
 
 
 // add query vars
