@@ -17,8 +17,12 @@ if ($current_user_id != $order->customer_user) {
 
 // get kuaidi100 tracking log
 $track_log = json_decode(get_post_meta($order_id, '_kuaidi100_track_log', true), true);
-$track_log_data = empty($track_log['lastResult']['data']) ? array() : $track_log['lastResult']['data'];
-
+if ( !empty($track_log['lastResult']['data']) ) {
+	$track_log_data = $track_log['lastResult']['data'];
+	$track_id = $track_log['lastResult']['nu'];
+} else {
+	$track_log_data = array();
+}
 get_header();
 ?>
 
@@ -37,7 +41,7 @@ get_header();
 					<thead>
 						<tr>
 							<th colspan="2">
-								<?=ggshop_get_kuaidi100_company_name($order_id)?>：单号 <?=get_post_meta($order_id, '_kuaidi100_track_id', true)?>
+								<?=ggshop_get_kuaidi100_company_name($order_id)?>：单号 <?=$track_id?>
 							</th>
 						</tr>
 					</thead>

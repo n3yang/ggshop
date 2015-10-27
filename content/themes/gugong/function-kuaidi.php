@@ -43,12 +43,13 @@ class Wc_Kuaidi100_Tracking_Sync
 	public function render_meta_box($post)
 	{
 		wp_nonce_field( 'wc_kuaidi100_save', 'kuaidi100_save_nonce' );
-		$track_id = get_post_meta($post->ID, '_kuaidi100_track_id', true);
+		$track_info = get_post_meta($post->ID, '_kuaidi100_track_info', true);
+
 		echo '
 			<select name="kuaidi100_company">
 				<option value="yunda" selected="selected">韵达快递</option>
 			</select>
-			<input type="text" name="kuaidi100_track_id" value="'.$track_id.'" placeholder="请输入快递单号">
+			<input type="text" name="kuaidi100_track_id" value="'.$track_info['id'].'" placeholder="请输入快递单号">
 		';
 
 		// display tracking log
@@ -88,11 +89,22 @@ class Wc_Kuaidi100_Tracking_Sync
 		}
 
 		// if the first time, lets subscribe
-		$old_track_id = get_post_meta( $post_id, '_kuaidi100_track_id', true);
-		$old_company = get_post_meta( $post_id, '_kuaidi100_company', true);
-		if ( $old_track_id != $_POST['kuaidi100_track_id'] ||  $old_company != $_POST['kuaidi100_company'] ) {
+		$old_track_info = get_post_meta( $post_id, '_kuaidi100_track_info', true);
+		if ( isset($old_track_info['salt']) ) {
+			unset($old_track_info['salt']);
+		}
+		$new_track_info = array(
+			'company' => sanitize_text_field( $_POST['kuaidi100_company'] ),
+			'id'      => sanitize_text_field( $_POST['kuaidi100_track_id'] ),
+		);
+		@ksort($new_track_info);
+		@ksort($old_track_info);
+
+		if ( md5(json_encode($new_track_info)) != md5(json_encode($old_track_info)) ) {
+			
 			$subscribe = array();
 			$salt = substr(md5(time()), 0, 8);
+			update_post_meta( $post_id, '_kuaidi100_track_info', $new_track_info);
 
 			$subscribe["schema"] = 'json' ;
 			$subscribe["param"] = json_encode(array(
@@ -120,10 +132,10 @@ class Wc_Kuaidi100_Tracking_Sync
 
 			}
 			// Update the meta field in the database.
-			update_post_meta( $post_id, '_kuaidi100_company', sanitize_text_field( $_POST['kuaidi100_company'] ) );
-			update_post_meta( $post_id, '_kuaidi100_track_id', sanitize_text_field( $_POST['kuaidi100_track_id'] ) );
-			update_post_meta( $post_id, '_kuaidi100_poll_salt', $salt);
+			$new_track_info['salt'] = $salt;
+			update_post_meta( $post_id, '_kuaidi100_track_info', $new_track_info);
 		}
+
 	}
 
 	/**
@@ -133,7 +145,7 @@ class Wc_Kuaidi100_Tracking_Sync
 	 */
 	public function wc_api_kuaidi100_callback()
 	{
-		$this->log(var_export($_REQUEST, 1));
+		// $this->log(var_export($_REQUEST, 1));
 
 		$post_id = intval($_GET['p']);
 		if ( ! $post_id ) {
@@ -142,12 +154,14 @@ class Wc_Kuaidi100_Tracking_Sync
 		}
 
 		// check salt value
-		$salt = get_post_meta($post_id, '_kuaidi100_poll_salt', true);
+		$info = get_post_meta($post_id, '_kuaidi100_track_info', true);
+		$salt = empty($info['salt']) ? '' : $info['salt'];
 		if ( ! $salt ) {
 			exit;
 		}
-		if ( md5($_POST['param'].$salt) != strtolower($_POST['sign']) ) {
+		if ( md5(stripcslashes($_POST['param']).$salt) != strtolower($_POST['sign']) ) {
 			$error = 'Cheking fails. My md5:'.md5($_POST['param'].$salt) . ', ' . 'post md5:'.$_POST['sign'];
+			$error .= 'Input Data: ' . var_export($_REQUEST, 1);
 			$this->log($error);
 			exit;
 		}
