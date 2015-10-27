@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * 
  */
@@ -10,23 +8,33 @@ add_action( 'add_meta_boxes', function (){
 	add_meta_box( 
 		'wc-kuaidi100-track', 
 		'快递信息', 
-		'wc_kuaidi100_callback', 
+		'wc_kuaidi100_meta_box_callback', 
 		'shop_order', 
-		'side', 
-		'high' 
+		'normal',
+		'default' 
 	);
 });
 
-function wc_kuaidi100_callback()
+function wc_kuaidi100_meta_box_callback($post)
 {
 	wp_nonce_field( 'wc_kuaidi100_save', 'kuaidi100_save_nonce' );
-	
+	$track_id = get_post_meta($post->ID, '_kuaidi100_track_id', true);
 	echo '
 		<select name="kuaidi100_company">
 			<option value="yunda" selected="selected">韵达快递</option>
 		</select>
-		<input type="text" name="kuaidi100_track_id" value="" placeholder="请输入快递单号">
+		<input type="text" name="kuaidi100_track_id" value="'.$track_id.'" placeholder="请输入快递单号">
 	';
+
+	// display tracking log
+	$track_log = json_decode(get_post_meta($post->ID, '_kuaidi100_track_log', true), true);
+	$track_log_data = empty($track_log['lastResult']['data']) ? array() : $track_log['lastResult']['data'];
+	foreach ($track_log_data as $v) {
+		$log .= sanitize_text_field($v['ftime']) . "\t" . sanitize_text_field($v['context']) . "\n";
+	}
+	if ( !empty($log) ) {
+		echo '<hr /><pre style="overflow:scroll">' . $log . '</pre>';
+	}
 }
 
 function wc_kuaidi100_save($post_id)
@@ -68,6 +76,7 @@ function wc_kuaidi100_save($post_id)
 			)
 		));
 
+		// TODO: 异步订阅提升可靠性（WP CRON）
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -94,26 +103,43 @@ add_action( 'save_post', 'wc_kuaidi100_save' );
 // 1000556304735
 add_action( 'woocommerce_api_kuaidi100_sync', function(){
 	
-	error_log(var_export($_REQUEST, 1), 3, '/tmp/kd.log');
+	error_log(var_dump($_REQUEST, 1), 3, '/tmp/kd.log');
 	$post_id = intval($_GET['p']);
 	if ( !$post_id ) {
-		return;
+		exit;
 	}
 
 	// check salt value
 	$salt = get_post_meta($post_id, '_kuaidi100_poll_salt', true);
 	if ( !$salt ) {
-		return;
+		exit;
 	}
-	if ( md5($_POST['param'].$salt) != $_POST['sign'] ) {
-		return;
+	if ( md5($_POST['param'].$salt) != strtolower($_POST['sign']) ) {
+		error_log('my md5:'.md5($_POST['param'].$salt), 3, '/tmp/kd.log');
+		error_log('post md5:'.$_POST['sign'], 3, '/tmp/kd.log');
+		exit;
 	}
 
-	update_post_meta( $post_id, '_kuaidi100_track_result', $_POST['param'] );
-
-	die;
+	update_post_meta( $post_id, '_kuaidi100_track_log', $_POST['param'] );
+	// print result
+	$rdata = array(
+		'result'     => true,
+		'returnCode' => 200,
+		'message'    => '成功'
+	);
+	echo json_encode($rdata);
+	exit;
 });
 
+
+function ggshop_get_kuaidi100_company_name($post_id)
+{
+	$mapping = array(
+		'yunda' => '韵达快递'
+	);
+	$en_name = get_post_meta($post_id, '_kuaidi100_company', true);
+	return $mapping[$en_name];
+}
 
 /*
 // handle REST/legacy API request

@@ -15,6 +15,10 @@ if ($current_user_id != $order->customer_user) {
 	wp_redirect('/shop');
 }
 
+// get kuaidi100 tracking log
+$track_log = json_decode(get_post_meta($order_id, '_kuaidi100_track_log', true), true);
+$track_log_data = empty($track_log['lastResult']['data']) ? array() : $track_log['lastResult']['data'];
+
 get_header();
 ?>
 
@@ -24,7 +28,33 @@ get_header();
 			
 			<?php get_template_part('ucp/ucp-menu') ?>
 			<div class="user_center_box">
-				
+
+				<? if ($track_log_data): // 显示物流信息：开始 ?>
+				<div class="user_center_title">
+					<h3>物流信息</h3>
+				</div>
+				<table class="table1 mct" width="100%" align="center" border="0" cellpadding="5" cellspacing="1">
+					<thead>
+						<tr>
+							<th colspan="2">
+								<?=ggshop_get_kuaidi100_company_name($order_id)?>：单号 <?=get_post_meta($order_id, '_kuaidi100_track_id', true)?>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<? foreach ($track_log_data as $k => $v): ?>
+						<tr>
+							<td width="20%"><?=sanitize_text_field($v['ftime'])?></td>
+							<td><?=sanitize_text_field($v['context'])?></td>
+						</tr>
+						<? endforeach; ?>
+						<tr>
+							<td colspan="2" height="20"> </td>
+						</tr>
+					</tbody>
+				</table>
+				<? endif; // 显示物流信息：结束 ?>
+
 				<div class="user_center_title">
 					<h3>我的订单 #<?=$order_id?></h3>
 				</div>
