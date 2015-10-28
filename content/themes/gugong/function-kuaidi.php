@@ -88,7 +88,7 @@ class Wc_Kuaidi100_Tracking_Sync
 			return $post_id;
 		}
 
-		// if the first time, lets subscribe
+		// If we got new data, lets subscribe it
 		$old_track_info = get_post_meta( $post_id, '_kuaidi100_track_info', true);
 		if ( isset($old_track_info['salt']) ) {
 			unset($old_track_info['salt']);
@@ -99,7 +99,7 @@ class Wc_Kuaidi100_Tracking_Sync
 		);
 		@ksort($new_track_info);
 		@ksort($old_track_info);
-
+		// compare the data
 		if ( md5(json_encode($new_track_info)) != md5(json_encode($old_track_info)) ) {
 			
 			$subscribe = array();
@@ -116,6 +116,7 @@ class Wc_Kuaidi100_Tracking_Sync
 					'salt' => $salt
 				)
 			));
+			$this->log('Subsribe: ' . json_encode($new_track_info), 'Info');
 
 			// TODO: 异步订阅提升可靠性（WP CRON）
 			$ch = curl_init();
@@ -131,6 +132,7 @@ class Wc_Kuaidi100_Tracking_Sync
 			} else {
 
 			}
+			$this->log('Subscribe result: ' . json_encode($result), 'Info');
 			// Update the meta field in the database.
 			$new_track_info['salt'] = $salt;
 			update_post_meta( $post_id, '_kuaidi100_track_info', $new_track_info);
@@ -149,7 +151,7 @@ class Wc_Kuaidi100_Tracking_Sync
 
 		$post_id = intval($_GET['p']);
 		if ( ! $post_id ) {
-			$this->log('Failed. Not get p');
+			$this->log('Failed. Need param p');
 			exit;
 		}
 
@@ -182,16 +184,16 @@ class Wc_Kuaidi100_Tracking_Sync
 	 * write log
 	 * @param  string $message the message
 	 * @param  string $type    message type
-	 * @return bool            true or false
+	 * @return bool            true
 	 */
 	function log($message, $type='Error'){
-		if ( ! $this->debug ) {
+		if ( strtolower($type) == 'info' && ! $this->debug ) {
 			return;
 		}
 		if ( ! $this->logger ) {
 			$this->logger = new WC_Logger();
 		}
-		$message = '['.$type.'] '.$message;
+		$message = '['.$type.'] ' . $message;
 		$this->logger->add('kuaidi100', $message);
 		return true;
 	}
