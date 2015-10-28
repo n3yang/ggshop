@@ -208,8 +208,8 @@ function ggshop_get_kuaidi100_company_name($post_id)
 	$mapping = array(
 		'yunda' => '韵达快递'
 	);
-	$en_name = get_post_meta($post_id, '_kuaidi100_company', true);
-	return $mapping[$en_name];
+	$info = get_post_meta($post_id, '_kuaidi100_track_info', true);
+	return $mapping[$info['company']];
 }
 /*
 // handle REST/legacy API request
