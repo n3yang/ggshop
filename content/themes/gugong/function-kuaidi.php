@@ -168,7 +168,8 @@ class Wc_Kuaidi100_Tracking_Sync
 			exit;
 		}
 
-		update_post_meta( $post_id, '_kuaidi100_track_log', $_POST['param'] );
+		$update_result = update_post_meta( $post_id, '_kuaidi100_track_log', $_POST['param'] );
+		$this->log('Receive API request: q=' . $_REQUEST['q'] . ' update: ' . var_export($update_result, 1));
 		// print result
 		$rdata = array(
 			'result'     => true,
