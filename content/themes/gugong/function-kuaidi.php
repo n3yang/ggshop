@@ -166,7 +166,7 @@ class Wc_Kuaidi100_Tracking_Sync
 		if ( ! $salt ) {
 			exit;
 		}
-		if ( md5(stripcslashes($_POST['param']).$salt) != strtolower($_POST['sign']) ) {
+		if ( md5(stripslashes($_POST['param']).$salt) != strtolower($_POST['sign']) ) {
 			$error = 'Cheking fails. My md5:'.md5($_POST['param'].$salt) . ', ' . 'post md5:'.$_POST['sign'];
 			$error .= 'Input Data: ' . var_export($_REQUEST, 1);
 			$this->log($error);
