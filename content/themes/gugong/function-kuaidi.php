@@ -9,6 +9,9 @@ class Wc_Kuaidi100_Tracking_Sync
 {
 	public $debug = true;
 	public $logger = '';
+	public static $cname_mapping = array(
+		'yunda' => '韵达快递'
+	);
 
 	function __construct()
 	{
@@ -135,7 +138,9 @@ class Wc_Kuaidi100_Tracking_Sync
 			$this->log('Subscribe result: ' . json_encode($result), 'Info');
 			// Update the meta field in the database.
 			$new_track_info['salt'] = $salt;
-			update_post_meta( $post_id, '_kuaidi100_track_info', $new_track_info);
+			update_post_meta( $post_id, '_kuaidi100_track_info', $new_track_info );
+			$order = new WC_Order($post_id);
+			$order->add_order_note("更新快递信息: {$new_track_info['company']} {$new_track_info['id']}");
 		}
 
 	}
@@ -169,7 +174,7 @@ class Wc_Kuaidi100_Tracking_Sync
 		}
 
 		$update_result = update_post_meta( $post_id, '_kuaidi100_track_log', $_POST['param'] );
-		$this->log('Receive API request: q=' . $_REQUEST['q'] . ' update: ' . var_export($update_result, 1));
+		$this->log('Receive API request: q=' . $_REQUEST['q'] . ' update: ' . var_export($update_result, 1), 'Success');
 		// print result
 		$rdata = array(
 			'result'     => true,
@@ -205,11 +210,8 @@ new Wc_Kuaidi100_Tracking_Sync();
 
 function ggshop_get_kuaidi100_company_name($post_id)
 {
-	$mapping = array(
-		'yunda' => '韵达快递'
-	);
 	$info = get_post_meta($post_id, '_kuaidi100_track_info', true);
-	return $mapping[$info['company']];
+	return Wc_Kuaidi100_Tracking_Sync::$cname_mapping[$info['company']];
 }
 /*
 // handle REST/legacy API request
