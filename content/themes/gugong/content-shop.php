@@ -2,6 +2,11 @@
 		<div class="banner">
 			<div id="ui-slide">
 		        <ul class="slide">
+		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/banner-20160128.jpg">
+		                <div class="slide-pic">
+		             		<a style="position:absolute;width:1200px;height:367px;" href="javascript:;"></a>
+		                </div>
+		            </li>
 		            <li class="slide-panel" data-pic="<?php bloginfo('template_url'); ?>/images/101.jpg">
 		                <div class="slide-pic">
 		             		<a style="position:absolute;width:1200px;height:367px;" href="category/hot"></a>
