@@ -296,7 +296,7 @@ $(function(){
 	function getPhonePic() {
 		c = $('.cropper-face').css('background-image');
 		r = c.match(/url\((.*)\)$/);
-		return r[1];
+		return r[1].replace(/["']/g, "");
 	}
 	
 		
