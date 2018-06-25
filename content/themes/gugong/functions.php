@@ -16,6 +16,11 @@ add_filter('pre_site_transient_update_core', function(){return;});
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wlwmanifest_link');
 remove_action('template_redirect', 'wp_shortlink_header', 11 );
+// turn off pingback in header
+add_filter('wp_headers', function($headers){
+	unset($headers['X-Pingback']);
+	return $headers;
+});
 
 // add user's tel in user pannel
 // add_filter('user_contactmethods', function ($user_contactmethods){
